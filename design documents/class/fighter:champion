@@ -1,0 +1,23 @@
+level 3:
+	improved critical
+		during weapon attack
+			critical is 19 or 20 (note)
+
+level 7:
+	remarkable athlete
+		unskilled bonus = half proficiency modifier (rounded up) for all str, dex, con checks
+		running long jump distance += str_mod
+
+level 10:
+	pick another fighting style
+
+level 15:
+	remove improved critical
+	superior critical
+		critical is 18 to 20 (note)
+
+level 18
+	survivor
+		at beginning of turn
+			if hp <= hp_max / 2
+				hp += 5 + con_mod

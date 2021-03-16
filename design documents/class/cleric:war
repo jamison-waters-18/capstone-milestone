@@ -1,0 +1,64 @@
+level 1:
+	divine favor as domain
+	sheild of faith as domain
+	proficiency with martial weapons
+	proficiency with heavy armor
+	war priest
+		war priest charge = wis mod (min 1)
+		long rest:
+			war priest charge = wis mod (min 1)
+		if weapon attack action
+			new bonus action
+				costs 1 war priest charge
+				weapon attack
+
+level 2:
+	channel divinity: guided strike
+		new attack mod (after roll?)
+			costs 1 channel divinity charge
+			attack roll + 10
+
+level 3:
+	magic weapon as domain
+	spiritual weapon as domain
+
+level 5:
+	crusader's mantle as domain
+	spirit guardians as domain
+
+level 6:
+	channel divinity: war god's blessing
+		new reaction (creature within 30 feet makes attack roll)
+			their attack gets a +10 bonus
+
+level 7:
+	freedom of movement as domain
+	stoneskin as domain
+
+level 8:
+	divine strike:
+		start of turn:
+			divine strike point = 1
+		on damage calc:
+			cost 1 divine strike point
+			obtain damage type of current weapon
+			damage + 1d8 ^ damage
+
+level 9:
+	flame strike as domain
+	hold monster as domain
+
+level 14:
+	remove divine strike
+	divine strike:
+		start of turn:
+			divine strike point = 1
+		on damage calc:
+			cost 1 divine strike point
+			obtain damage type of current weapon
+			damage + 2d8 ^ damage
+
+level 17:
+	avatar of battle
+		if weapon nonmagical 
+			resistance to bludgeoning, piercing, slashing damage

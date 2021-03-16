@@ -1,0 +1,27 @@
+for some things, (sorcerer)
+	spells are known, both real spells and cantrips
+for others, (druid)
+	cantrips are known
+	other spells are prepared every morning from the whole repetoire
+for wizard
+	cantrips are known
+	other spells are prepared every morning from spellbook
+
+only some classes can cast ritual spells
+spellcasting focus
+	depends on the class
+		includes arcane focuses, druidic focuses, holy symbols, instruments
+
+you must be proficient in the armor you're wearing in order to cast a spell
+
+verbal
+	must be able to speak
+somatic
+	must have 1 hand free, altought it can be holding a focus or component pouch
+	must be able to move
+material
+	must have 1 hand free
+	if doesn't have specific cost or list consumption
+		must have component pouch or class's focus
+	else
+		must have specific thing in inventory

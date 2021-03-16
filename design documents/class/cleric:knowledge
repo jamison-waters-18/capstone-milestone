@@ -1,0 +1,63 @@
+level 1:
+	command as domain spell
+	identify as domain spell
+	learn any 2 languages
+	gain proficiency and expertise in two: arcana, history, nature, religion
+
+level 2:
+	channel divinity: knowledge of the ages
+		new action:
+			cost 1 channel divinity charge
+			gain proficiency with a skill or tool for 10 minutes
+
+level 3:
+	augury as domain spell
+	suggestion as domain spell
+
+level 5:
+	nondetection as domain spell
+	speak with dead as domain spell
+
+level 6:
+	channel divinity: read thoughts
+		new action:
+			cost 1 channel divinity charge
+			read thoughts timer = 10
+			read creature's surface level thoughts
+			new action:
+				cast suggestion for free
+				begin concentrating
+				read thoughts timer = 0
+			ends when:
+				read thoughts timer = 0
+				cast suggestion
+			end of turn:
+				read thoughts timer -1
+
+level 7:
+	arcane eye as domain spell
+	confusion as domain spell
+
+level 8:
+	potent spellcasting:
+		if casting cleric cantrip
+			damage += wis mod
+
+level 9:
+	legend lore as domain spell
+	scrying as domain spell
+
+level 17:
+	see visions = 1
+	long rest:
+		see visions = 1
+	visions of the past:
+		costs 1 see visions
+		vision timer = wis * 10 turns
+		begin concentration
+		end turn:
+			vision timer -= 1
+		ends when
+			concentration broken
+			at will
+			vision timer = 0

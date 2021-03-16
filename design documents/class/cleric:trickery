@@ -1,0 +1,80 @@
+level 1:
+	charm person as domain
+	disguise self as domain
+	blessing of the trickster:
+		new action:
+			can give other creature advantage on stealth checks for next hour (note)
+
+level 2:
+	channel divinity: invoke duplicity
+		new action:
+			costs 1 channel divinity charge
+			invoke duplicity timer = 10
+			create duplicate of self in empty space within 30 feet
+			can cast spells from duplicat's position
+			can create advantage via flanking
+			begin concentration
+			new bonus action:
+				move duplicate (must stay within 120 ft)
+			ends when
+				invoke duplicity timer = 0
+			end of turn:
+				invoke duplicity timer -= 1
+
+level 3:
+	mirror image as domain
+	pass without trace as domain
+
+level 5:
+	blink as domain
+	dispel magic as domain
+
+level 6:
+	channel divinity: cloak of shadows:
+		new action:
+			costs 1 channel divinity
+			cloak of shadows timer = 2
+			end of turn:
+				cloak of shadows timer -= 1
+
+level 7:
+	dimension door as domain
+	polymorph as domain
+
+level 8:
+	divine strike:
+		start of turn:
+			divine strike point = 1
+		on damage calc:
+			cost 1 divine strike point
+			damage + 1d8 poison damage
+
+level 9:
+	dominate person as domain
+	modify memory as domain
+
+level 14:
+	remove divine strike
+	divine strike:
+		start of turn:
+			divine strike point = 1
+		on damage calc:
+			cost 1 divine strike point
+			damage + 1d8 poison damage
+
+level 17:
+	remove channel divinity: invoke duplicity
+	channel divinity: improved duplicity
+		new action:
+			costs 1 channel divinity charge
+			invoke duplicity timer = 10
+			create up to 4 duplicates of self in empty spaces within 30 feet
+			can cast spells from duplicat's position
+			can create advantage via flanking
+			begin concentration
+			new bonus action:
+				move duplicate (must stay within 120 ft)
+			ends when
+				invoke duplicity timer = 0
+			end of turn:
+				invoke duplicity timer -= 1

@@ -1,0 +1,33 @@
+level 1
+	dragon ancestor
+		language: draconic
+		proficiency is doubled for proficient charisma skills when dealing with dragons
+		subclass
+	draconic resilience
+		if unarmored
+			ac += 3
+		hp += sorcerer level
+
+level 14
+	dragon wings
+		new bonus action
+			if armored
+				check to see if it has wing holes
+			flying speed = walking speed
+			new bonus action
+				flying speed = 0
+
+level 18
+	draconic presence
+		costs 5 sorcery points
+		choose charm or frighten
+		begin concentration
+		for 1 minute
+			any creature within 60 ft makes wis save
+			if fail
+				charmed or frightened
+			else
+				immune to effects for 24 hours
+			ends if
+				concentration broken
+

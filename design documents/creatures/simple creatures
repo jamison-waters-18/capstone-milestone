@@ -1,0 +1,20 @@
+size (tiny, small, medium, large
+type (aberrations, beast, celestials, fiend, dragon, fey, undead, construct, elemental, giant, monstrosities, oozes, plants)
+alignment(unaligned, netural good, lawful evil, chaotic evil, neutral evil)
+bonus ac
+armor (like warhorse barding)
+speed
+swim speed
+climb speed
+fly speed
+ability scores
+skills (perception + x
+damage vulternabilities (bludgeoning)
+damage resistances (cold, bludgeoning, piercing, slashing (can be conditioned on magical/silvered weapon status))
+damage immunities (fire, poison)
+condition immunities (exhauston, poisoned)
+senses (blingsight, passive perception x
+languages (none, common, auran, infernal, draconic, abyssal, elvish, sylvan)
+cr (0, 1/8, 1/4, 1/2, 1
+notes
+actions (can include multiattack, 

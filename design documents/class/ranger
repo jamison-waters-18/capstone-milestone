@@ -1,0 +1,133 @@
+multiclass requirement: wis 13 AND dex 13
+proficiencies: light armor, medium armor, shields, simple weapons, martial weapons, one of: animal handling, athletics, insight, investigation, nature, perception, stealth, survival
+hit dice: 1d10
+
+1st character level only proficiencies:
+	str saves, dex saves
+	any two: animal handling, athletics, insight, investigation, nature, perception, stealth, survival
+	starting equipment:
+		scale mail OR leather armor
+		two shortswords OR two simple weapons
+		dungeoneer's pack OR explorer's pack
+		longbow
+		quiver
+		20 arrows
+
+level 1
+	favored enemy
+		choosed enemy type: aberrations, beasts, celestials, constructs, dragons, elementals, fey, fiends, giants, monstrosities, oozes, plants, or undead
+		OR choose two races of humanoid
+			advantage on wis checks tracking enemy
+			advantage on int checks rrecalling information on enemy
+			if favored enemy has language
+				learn language
+	natural explorer
+		choose arctic, coast, desert, forest, grassland, mountain, swamp, underdark
+			difficult terrain doesn't slow groups travel
+			cant get lost nonmagically
+			alert to danger in travel, even when preoccupied
+			if alone, move stealthily at normal pace
+			find twice as much food foraging
+			when tracking, know exact number, sizes, and time since passing
+	
+level 2
+	ranger known spells = 2
+	fighting style:
+		select one of the following:	// doesn't have protection or great weapon fighting
+			archery:
+				if making RANGED weapon attack
+					+2
+			defense:
+				if wearing armor
+					ac += 1
+			dueling
+				if melee weapon in one hand and no other weapons
+					damage +2
+			two weapon fighting
+				if duel wielding
+					second attack += ability mod
+
+level 3
+	ranger spells known += 1
+	subclass
+	primeval awareness
+		new action
+			costs 1 spell slot
+			for 1 minute per spell slot level
+				can detect if any of the following are within a mile
+					aberrations, celestials, dragons, elementals, fey, fiends, undead
+
+level 4
+	ability score improvement
+
+level 5
+	ranger spells known += 1
+	extra attack
+
+level 6
+	new favored enemy
+	new natural explorer
+
+level 7
+	ranger spells known += 1
+
+level 8
+	ability score improvement
+	land's stride
+		moving through nonmagical difficult terrain doesn't hamper movement
+		moving through nonmagicla plants doesn't hamper movement or cause piercing damage
+		advantage on saving throwns against plants that are magically created or manipulated to impede movement (ie entangle)
+
+level 9
+	ranger spells known += 1
+
+level 10
+	new natural explorer
+	hide in plain sight
+		new non-combat ability
+			if have acess to fresh mud, dirt plants soot, etc
+				spend 1 minute camoflaging yourself
+				stealth checks += 10 so long as you stay still and actionless
+
+level 11
+	ranger spells known += 1
+
+level 12
+	ability score improvement
+
+level 13
+	ranger spells known += 1
+
+level 14
+	new favored enemy
+	vanish
+		new bonus action
+			hide
+		can't be tracked by nonmagical means (unless you leave trail on purpose)
+
+level 15
+	ranger spells known += 1
+
+level 16
+	ability score improvement
+
+level 17
+	ranger spells known += 1
+
+level 18
+	feral senses
+		no disadvantage when attacking creatures you can't see
+		know location of any invisible creature within 30 ft, unless its hiding or you're blind/deaf
+
+level 19
+	ranger spells known += 1
+	ability score improvement
+
+level 20
+	foe slayer
+		beginning of each turn
+			foe slayer charges = 1
+		when attacking favored enemy
+			costs 1 foe slayer charge
+			add wis mod to attack roll OR damage roll
+				can do these after the roll

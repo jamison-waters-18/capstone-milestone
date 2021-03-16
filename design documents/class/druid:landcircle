@@ -1,0 +1,35 @@
+level 2:
+	known druid cantrips += 1
+	natural recovery charges = 1
+	long rest:
+		natural recovery charges = 1
+	during short rest
+		costs 1 natural recovery charge
+		select expended spell slots
+		if no spell slots > 5 AND spell slot sum <= druid level
+			spell slots recovered
+
+level 3:
+	subclass
+
+level 6:
+	land's stride
+		moving through nonmagical difficult terrain doesn't hamper movement
+		moving through nonmagicla plants doesn't hamper movement or cause piercing damage
+		advantage on saving throwns against plants that are magically created or manipulated to impede movement (ie entangle)
+
+level 10:
+	nature's ward
+		immune to poison
+		immune to disease
+		cannot be charmed or frightened by elementals or fey
+
+level 14:
+	nature's sanctuary
+		new non action
+			attacking animals/plants make wis saving throw
+			if fail
+				choose different target. if none available, they automiss
+			if succeed
+				creature immune for 24 hours
+			creature knows this before it attacks

@@ -1,0 +1,14 @@
+level 3:
+	proficiency with medium armor
+	proficiency with shields
+	proficiency with martial weapons
+	combat inspiration
+		can add inspiration to damage roll, or AC as reaction (note)
+
+level 6:
+	extra attack
+
+level 14:
+	if action == spell -> bard
+		new bonus action:
+			weapon attack

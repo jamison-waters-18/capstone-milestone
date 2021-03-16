@@ -1,0 +1,66 @@
+level 3:
+	frenzy
+		new bonus action: frenzy
+			if "raging" = false
+				costs 1 "rage count"
+				"raging" = true
+		while frenzied:
+			raging = true
+			str check advantage
+			str save advantage
+			if melee attack AND str mod:
+				damage += "rage damage"
+			resistance to blugeoning, piercing, slashing damage
+			cannot cast spells
+			cannot concentrate
+			rage timer: 1 minute (10 turns)
+			rage ends when:
+				timer ends
+				knocked unconscious
+				no attack OR no take damage
+			new bonus action:
+				make melee attack
+			end of turn: rage timer -= 1
+		upon ending frenzy:
+			raging = false
+			exhaustion += 1new bonus action: activate rage
+
+level 6:
+	if raging
+		cannot be charmed
+		cannot be frightened
+		ignore being charmed
+		ignore being frightened
+
+level 10:
+	intimidating presence:
+		new action: intimidating presence (ALL NOTE)
+
+level 15:
+	remove frenzy
+	persistent frenzy
+		new bonus action: activate rage
+			if "raging" = false
+				costs 1 "rage count"
+				"raging" = true
+		while raging:
+			str check advantage
+			str save advantage
+			if melee attack AND str mod:
+				damage += "rage damage"
+			resistance to blugeoning, piercing, slashing damage
+			cannot cast spells
+			cannot concentrate
+			rage timer: 1 minute (10 turns)
+			rage ends when:
+				timer ends
+				knocked unconscious
+			new bonus action:
+				make melee attack
+			end of turn:
+				rage timer - 1
+		long rest:
+			rage count = rage count max
+
+
+			

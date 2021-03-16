@@ -1,0 +1,25 @@
+level 1
+	wild magic surge
+		let dm know that, once per turn, immediately after you cast a spell (non-cantrip), they can ask you to roll a d20
+		if you crit fail, you get a wild magic surge. roll percentile on the wild magic table
+	tides of chaos
+		gain advantage on an attack roll, ability check, or save
+		can only do this once between long rests
+		let dm know that, after youve expended this feature, they can have you roll percentile on the
+		wild magic table (no crit fail needed) whenever you cast a spell. if your dm takes you up on this,
+		you regain this feature (skipping the need for a long rest)
+
+level 6
+	new reaction (a creature makes attack, check or save)
+		costs 2 sorcery points
+			add/subtract 1d4 to this roll
+
+level 14
+	controlled chaos
+		when you roll wild magic, you can roll twice and use either number
+
+level 18
+	spell bombardment
+		when casting spell that does damage
+			if any one of your damage dice maxes out
+				can roll another die of same value and add it to damage

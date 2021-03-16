@@ -1,0 +1,38 @@
+dex + 2
+size medium
+speed 30
+darkvision [NOTE]
+proficiency with perception
+saving throw advantage charm
+cannot be put to sleep magically [NOTE]
+long rest 4 hours
+language:common
+language:elven
+
+high elf:
+int + 1
+proficiency with longsword
+proficiency with shortsword
+proficiency with shortbow
+proficiency with longbow
+a cantrip (WIZ, INT)
+
+wood elf:
+wis + 1
+proficiency with longsword
+proficiency with shortsword
+proficiency with shortbow
+proficiency with longbow
+speed 35
+mask of the wild [NOTE]
+
+drow:
+cha + 1
+superior darkvision [NOTE]
+sunlight sensitivity [NOTE]
+inate dancing lights
+inate faerie fire (3rd level)
+inate darkness (5th level)
+proficiency with rapier
+proficiency with shortsword
+proficiency with hand crossbow

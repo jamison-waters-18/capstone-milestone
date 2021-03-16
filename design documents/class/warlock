@@ -1,0 +1,130 @@
+multiclass requirement: str 13 OR dex 13
+proficiencies: light armor, simple weapons
+hit dice: 1d8
+special counters:
+
+
+1st character level only proficiencies:
+	wis saves, cha saves
+	any two: arcana, deception, history, intimidation, investigation, nature, religion
+	starting equipment:
+		light crossbow AND 20 bolts OR any simple weapon
+		component pouch OR arcane focus
+		scholar's pack OR dungeoneer's pack
+		leather armor
+		any simple weapon
+		2 daggers
+
+level 1
+	subclass
+	warlock spell slot level = 1
+	warlock cantrips known = 2
+	warlock spells known = 1
+	level 1 spell slots += 1
+
+level 2
+	warlock spells known += 1
+	level 1 spell slots += 1
+	learn 2 invocations
+
+level 3
+	warlock spell slot level = 2
+	warlock spells known += 1
+	level 1 spell slots -= 2
+	level 2 spell slots += 2
+	offer invocation swap
+	select pact boon
+
+level 4
+	warlock cantrips known += 1
+	warlock spells known += 1
+	offer invocation swap
+	ability score improvement
+
+level 5
+	warlock spell slot level = 3
+	warlock spells known += 1
+	level 2 spell slots -= 2
+	level 3 spell slots += 2
+	offer invocation swap
+	learn 1 invocation
+
+level 6
+	warlock spells known += 1
+	offer invocation swap
+
+level 7
+	warlock spell slot level = 4
+	warlock spells known += 1
+	level 3 spell slots -= 2
+	level 4 spell slots += 2
+	offer invocation swap
+	learn 1 invocation
+
+level 8
+	warlock spells known += 1
+	offer invocation swap
+	ability score improvement
+
+level 9
+	warlock spell slot level = 5
+	warlock spells known += 1
+	level 4 spell slots -= 2
+	level 5 spell slots += 2
+	offer invocation swap
+	learn 1 invocation
+
+level 10
+	warlock cantrips known += 1
+	offer invocation swap
+
+level 11
+	warlock spells known += 1
+	level 5 spell slots += 1
+	offer invocation swap
+	new "mystic arcanum" spell list (inate, basically)
+	add 6th level spell to mystic arcanum spell list
+
+level 12
+	learn 1 invocation
+	offer invocation swap
+	ability score improvement
+
+level 13
+	warlock spells known += 1
+	offer invocation swap
+	add 7th level spell to mystic arcanum spell list
+
+level 14
+	offer invocation swap
+
+level 15
+	warlock spells known += 1
+	offer invocation swap
+	learn 1 invocation
+	add 8th level spell to mystic arcanum spell list
+
+level 16
+	ability score improvement
+
+level 17
+	warlock spells known += 1
+	level 5 spell slots += 1
+	add 9th level spell to mystic arcanum spell list
+
+level 18
+	offer invocation swap
+	learn 1 invocation
+
+level 19
+	warlock spells known += 1
+	ability score improvement
+
+level 20
+	eldritch master
+		eldritch master charge = 1
+		long rest
+			eldritch master charge = 1
+		new non combat feature (1 minute)
+			costs 1 eldritch master charge
+				5th level spell slots = 4

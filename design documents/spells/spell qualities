@@ -1,0 +1,37 @@
+private-name
+public-name
+spell level
+school of magic
+ritual tag
+casting time (action, reaction, bonus action, time interval (1+ minutes)
+range (self, touch, or multiples of 5 ft)
+verbal component?
+somatic component?
+misc materials (what can be substituted by a component pouch or a spellcasting focus)
+valued materials (must be in inventory, must be able to check an item's value)
+consumed materials (must be in inventory, must be removed)
+duration (omit concentration) (instantaneous, minutes, hours
+uses concentration?
+number of targets (can be "any number," or specify if willing or unwilling)
+area shape
+area size
+
+written description
+
+spell ability
+	cantrips can aimplify in power based on CHARACTER level
+	type of save needed
+	can add a temporary bonus to hit point maximum????
+	can amplyfy in power based on the used spell slot level
+	change ac
+	change swim speed
+	change unarmed strikes (proficiency, damage type, damage val, attack bonus, damage bonus)
+	set arbitrary state
+	multiple damages
+	add an action, bonus action on the condition of an arbitrary state
+	can give temporary hit points
+	can add damage to next weapon attack
+	set a minimum AC
+	casting level can grant non-linear duration bonuses
+	casting level can prevent the need for concentration
+	choose a damage type

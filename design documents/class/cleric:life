@@ -1,0 +1,48 @@
+level 1:
+	bless as domain spell
+	cure wounds as domain spell
+	proficiency with heavy armor
+	disciple of life
+	level 1+ healing spells += 2 + spell level
+
+level 2:
+	channel divinity: preserve life
+		new action:
+			cost 1 channel divinity charge
+			heal 5 * cleric level, divided between anyone within 30 feet
+			any healing creature gets capped at half its hp max
+
+level 3:
+	lesser restoration as domain spell
+	spiritual wapon as domain spell
+
+level 5:
+	beacon of hope as domain spell
+	revivify as domain spell
+
+level 6:
+	blessed healer:
+		when casting level 1+ healing spells, you get + 2 + spell leve hp
+
+level 7:
+	death ward as domain spell
+	guardian of faith as domain spell
+
+level 8:
+	divine strike:
+		if weapon attack
+			damage += 1d8 radiant
+
+level 9:
+	mass cure wounds as domain spell
+	raise dead as domain spell
+
+level 14:
+	remove divine strike
+	divine strike:
+		if weapon attack
+			damage += 2d8 radiant
+
+level 17:
+	supreme healing
+		automatically max out healing rolls

@@ -1,0 +1,57 @@
+level 2:
+	remove copying spell
+	copyng spells into book
+		new non-combat activity:
+			select spell
+			if spell has attribute "transmutation"
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 5 gp (1 hour)
+					else
+						costs 25 gp (2 hours)
+			else
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 10 gp (1 hour)
+					else
+						costs 50 gp (2 hours)
+	minor alchemy
+		new non-combat ability
+			uses concentration
+			select any object made entirely of wood, stone, iron, copper, or silver
+			it becomes a different one of those materials, at 10 minutes per cubic foot
+			stops after 1 hour
+
+level 6
+	new non-combat activity
+		takes 8 hours
+		make transmuter's stone
+		stores one of the following abilities
+			darkvision
+			speed += 10
+			proficiency in con saves
+			resistance to acid, cold, fire, lightning, or thunder
+		when casting spell
+			if spell->school == transmutation AND spell->level > 0 AND inventory contains transmuter's stone
+				prompt to change abilities of transmuter's stone
+
+level 10
+	shapechanger
+		if polymorph not in spellbook
+			add polymorph to spellbook
+		shapechanger charge = 1
+		short rest
+			shapechanger charge = 1
+		long rest
+			shapechanger charge = 1
+		new action
+			costs 1 shapechanger charge
+			like polymorph, but can only target yourself and challange rating max of 1
+
+level 14
+	master transmuter
+		new action
+			costs 1 transmuter stone
+			choose 1 of following benefits
+				major transformation: over 10 minutes transform up to 5ft cube of nonmagical object into another nonmagical object of similar mass and size, and lesser or equal value
+				panacea: removes all curses, poisons, and diseases, and hp = hp max
+				restore life: apply effects of "raise dead" spell
+				restore youth: creature's apparent age to reduce by max(13,3d10) years (doesn't extend lifespan)

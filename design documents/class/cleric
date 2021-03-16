@@ -1,0 +1,90 @@
+multiclass requirement: wis 13
+proficiencies: light armor, medium armor, shields
+hit dice: 1d8
+special counters:
+cleric cantrips
+channel divinity charges
+channel divinity max
+divine intervention charge
+
+prepared spells = wis + cleric level
+
+1st level only proficiencies:
+	simple weapons
+	wis save, cha save
+	two from history, insight, mediocre, persuasion, religion
+	equipment:
+		mace OR warhammer (if proficient)
+		scale mail OR leather armor OR chain mail (if proficient)
+		light crossbow AAND 20 bolts OR any simple weapon
+		priest's pack OR explorer's pack
+		shield
+		Any holy symbol
+
+level 1:
+	cleric cantrips = 3
+	can cast any prepared spell as ritual
+	divine domain
+
+level 2:
+	channel divinity: turn undead:
+		new action:
+			costs 1 channel divinity charge
+				big note
+		short rest:
+			channel divinity charges = channel divinity max
+		long rest:
+			channel divinity charges = channel divinity max
+			
+
+level 4:
+	cleric cantrips += 1
+	ability score improvement
+
+level 5:
+	change turn undead note to include destroy undead
+
+level 6:
+	channel divinity max += 1
+
+level 8:
+	ability score improvement
+	change turn undead note to update cr
+
+level 10:
+	divine intervention:
+		new action:
+			costs 1 divine intervention
+			if percentile <= cleric level
+				dm gives you intervention
+				divine intervention disabled for 7 days		//consider codifying the 7 day wait on success
+		long rest:
+			divine intervention charge = 1
+
+level 11:
+	cleric cantrips += 1
+	change turn undead note to update cr
+
+level 12:
+	ability score improvement
+
+level 14:
+	change turn undead note to update cr
+
+level 16:
+	ability score improvement
+
+level 17:
+	change turn undead note to update cr
+
+level 19:
+	ability score improvement
+
+level 20:
+	divine intervention:
+		new action:
+			costs 1 divine intervention
+			dm gives you intervention
+			divine intervention disabled for 7 days		//consider codifying the 7 day wait on success
+		long rest:
+			divine intervention charge = 1

@@ -1,0 +1,19 @@
+dex + 2
+size small
+speed 25
+reroll crit fail attack
+reroll crit fail check
+reroll crit fail save
+saving throw advantage frightened
+halfling numbleness [NOTE]
+language:common
+language:halfling
+
+lightfoot:
+cha + 1
+naturally stealthy [NOTE]
+
+stout:
+con + 1
+saving throw advantage (poison) [NOTE]
+damage resistance (poison)

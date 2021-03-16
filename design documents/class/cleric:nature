@@ -1,0 +1,67 @@
+level 1:
+	animal friendship as domain spell
+	speak with animals as domain spell
+	acolyte of nature:
+		gain one druid cantrip
+		proficiency in one of animal handling, nature, survival
+	proficiency with heavy armor
+
+level 2:
+	channel divinity:  charm animals and plants
+		new action:
+			charm plants and animals = 10
+			cost 1 channel divinity charge
+			foes make wis save
+			if fail
+				charmed
+				charm ends if
+					take damage
+					1 minute
+			end of turn:
+				charm plants and animals -= 1
+
+level 3:
+	barkskin as domain spell
+	spike growth as domain spell
+
+level 5:
+	plant growth as domain spell
+	wind wall as domain spell
+
+level 6:
+	dampen elements:
+		new reaction: (you or other within 30 feet takes acid, cold, fire, lightning, or thunder damage)
+			character gets resistance to that damage
+
+level 7:
+	dominate beast as domain spell
+	grasping vine as domain spell
+
+level 8:
+	divine strike:
+		start of turn:
+			divine strike point = 1
+		on damage calc:
+			cost 1 divine strike point
+			select damage type cold, fire, lightning
+			damage + 1d8 ^ damage
+
+level 9:
+	insect plague as domain spell
+	tree stride as domain spell
+
+level 14:
+	remove divine strike
+	divine strike:
+		start of turn:
+			divine strike point = 1
+		on damage calc:
+			cost 1 divine strike point
+			select damage type cold, fire, lightning
+			damage + 2d8 ^ damage
+
+level 17:
+	master of nature:
+		new bonus action:
+			if charm plants and animals > 0
+				verbally command each charmed creature

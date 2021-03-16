@@ -1,0 +1,44 @@
+level 2:
+	remove copying spell
+	copyng spells into book
+		new non-combat activity:
+			select spell
+			if spell has attribute "conjuration"
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 5 gp (1 hour)
+					else
+						costs 25 gp (2 hours)
+			else
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 10 gp (1 hour)
+					else
+						costs 50 gp (2 hours)
+	minor conjuration
+		can conjure an arbitrary object for 1 hour
+			must be <= 3 ft to a side, weigh <= 10 lbs, must resemble nonmagical object youve seen
+			radiates dim light for 5 feet
+			disappeares after hour, if takes or deals damage, or if minor conjuration is used again
+
+level 6
+	benign transportation
+		benign transportation charge = 1
+		long rest
+			benign transportation charge = 1
+		when casting spell
+			if spell->school == conjuration
+				benign transportation charge = 1
+		new action
+			costs 1 benign transportation charge
+				teleport to empty spot within 30 feet, or swap places with a small or medium willing creature within 30 ft
+		
+
+level 10
+	focused conjuration
+		when casting spell
+			if spell->school = concentration && spell -> concentration = true
+				concentration->damage exception = true
+
+level 14
+	durable summons
+		when summoning creature with jonjuration spell
+			creature cets 30 thp

@@ -1,0 +1,47 @@
+level 2:
+	remove copying spell
+	copyng spells into book
+		new non-combat activity:
+			select wizard spell
+			if spell has attribute "evocation"
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 5 gp (1 hour)
+					else
+						costs 25 gp (2 hours)
+			else
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 10 gp (1 hour)
+					else
+						costs 50 gp (2 hours)
+	sculpt spells
+		when casting spell
+			if spell->school == evocation AND spell->aoe == true
+				can select 1 + spell level friends in area of effect
+					friends automatically succeed in saving throw
+					any "half damage on save" become no damage
+
+level 6
+	potent cantrip
+		when casting spell
+			if spell->level == 0 AND spell->save = true
+				if foe makes save
+					foe still takes half damage, but suffers no extra effects
+
+level 10
+	empowered spell
+		when calculating spell damage
+			if spell->school == evocation
+				damage += int mod
+
+level 14
+	overchannel
+		overchannel damage = 0
+		long rest
+			overchannel damage = 0
+		when calculating spell damage
+			if spell->level > 0 AND spell->level < 6
+				offer to max out damage
+				if accept
+					overchannel damage += 1
+					if overchannel damage > 1
+						prompt player to take (overchannel damage)d12 necrotic damage, ignoring resistance or immunity

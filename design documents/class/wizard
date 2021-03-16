@@ -1,0 +1,73 @@
+multiclass requirement: int 13
+proficiencies:
+hit dice: 1d6
+
+every level up
+	add 2 spells to a spellbook
+
+1st character level only proficiencies:
+	daggers, darts, slings, quarterstaffs, light crossbows
+	int saves, wis saves
+	any two: arcana, history, insight, investigation, medicine, religion
+	starting equipment:
+		quarterstaff OR dagger
+		component pouch OR arcane focus
+		scholar's pack OR explorer's pack
+		spellbook
+			wizard spell lists can cast rituals
+
+level 1
+	wizard cantrips known = 3
+	add 6 wizard spells (lvl 1 or higher) to your spellbook
+	arcane recovery:
+		arcane recovery charge = 1
+		long rest
+			arcane recovery charge = 1
+		short rest
+			costs 1 arcane recovery charge
+			select spell slots (between 1 and 5)
+			if combined value <= divRoundUp(wiz_level, 2)
+				restore spell slots
+	copying a spell into spell book
+		new non-combat activity:
+				if spell is prepared OR spell is in one of YOUR spellbooks			//will need to know if the spell is personal property or just found
+					costs 10 gp (1 hour)
+				else
+					costs 50 gp (2 hours)
+
+level 2
+	subclass
+
+level 4
+	ability score improvement
+	wizard cantrips known += 1
+
+level 8
+	ability score improvement
+
+level 10
+	wizard cantrips known += 1
+
+level 12
+	ability score improvement
+
+level 16
+	ability score improvement
+
+level 18
+	spell mastery
+		select level 1 spell of spell book
+		select level 2 spell of spell book
+		add them as inate spells (infinite uses)
+		new non-combat activity
+			8 hours
+			swich what these spells are
+
+level 19
+	ability score improvement
+
+level 20
+	signature spells
+		select level 3 spell of spell book
+		select level 3 spell of spell book
+		add them as inate spells (1 charge each, recharge after short or long rest)

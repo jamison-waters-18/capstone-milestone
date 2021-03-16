@@ -1,0 +1,23 @@
+level 3
+	fast hands
+		new bonus action
+			make sleight of hand check
+			use thieves tools to disarm trap/open lock
+			use object
+	second-story worker
+		climing is free
+		running jump distance += dex mod
+
+level 9
+	supreme sneak
+		if only move half movment in turn
+			advantage on stealth check
+
+level 13
+	use magic device
+		ignore all class, race, level requirements to use magic items
+
+level 17
+	thief's reflexes
+		when starting combat AND not surprised
+			take two turns on the first round: one at normal initiative, one at init - 10		//now you cant assume 1 turn is 10 seconds

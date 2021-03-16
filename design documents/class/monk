@@ -1,0 +1,148 @@
+multiclass requirement: dex 13 AND wis 13
+proficiencies: simple weapons, shortswords
+hit dice: 1d8
+special counters:
+ki points
+
+
+1st character level only proficiencies:
+	any artisans tools OR any musical instrument
+	str saves, dex saves
+	any two: Acrobatics, athletics, history, insight, religion, stealth
+	starting equipment:
+		shortsword OR any simple weapon
+		dungeoneer's pack OR explorer's pack
+		10 darts
+
+level 1
+	unarmored defense
+		when not wearing armor AND not holding shield
+			ac = 10 + dex mod + wis mod
+	martial arts
+		martial arts die = 1d4
+		during attack
+			if (unarmed OR shortsword OR simple weapon AND NOT two-handed AND NOT heavy) AND unarmored AND no shield
+				can use dex instead of str for weapon attack and damage rolls
+				can use martial arts die instead of weapon damage die
+				new bonus action
+					unarmed strike
+
+level 2
+	ki save dc = 8 + prof + wis
+	short rest
+		ki points = monk level
+	long rest
+		ki points = monk level
+	flurry of blows
+		if the most recent thing in your turn was an attack action
+			cost 1 ki point
+			2 unarmed strikes
+	patient defense
+		costs 1 ki point
+		new bonus action
+			dodge
+	step of the wind
+		cost 1 ki point
+		new bonus action
+			disengage
+		new bonus action
+			dodge
+	unarmored movement
+		if unarmored AND no shield
+			movement speed += (monk level + 6) / 4 * 5
+
+level 3
+	subclass
+	deflect missiles
+		new reaction
+			if hit with ranged weapon attack
+				damage -= 1d10 + dex mod + monk level
+				if damage <= 0 AND one hand free AND projectile smallish
+					costs 1 ki point
+					make weird weapon attack??
+						make attack with proficiency, range 20/60
+
+level 4
+	ability score improvement
+	slow fall
+		new reaction
+			reduce fall damage by 5 * monk level
+
+level 5
+	extra attack
+	stunning strike
+		if hit foe with melee weapon attack
+			cost 1 ki point
+			foe must make con save
+			if fail
+				stunned
+
+level 6
+	unarmed strikes have magical flag
+
+level 7
+	evasion
+		if making dexterity save that gives full damage on fail and half on success
+			instead take half on fail and none on success
+	stillness of mind
+		new action
+			end frightened or charmed effect
+
+level 8
+	ability score improvement
+
+level 9
+	unarmored movement 2
+		if unarmored AND no shield
+			can move along vertical surfaces and across liquids during movement (note)
+
+level 10
+	purity of body
+		immune to disease
+		immune to poison
+
+level 12
+	ability score improvement
+
+level 13
+	tongue of sun and moon
+		understand all spoken language
+		all speech-capable creatures can understand you
+
+level 14
+	diamond soul
+		proficiency on all saving throws
+		if making saving throw
+			cost 1 ki point
+			reroll
+
+level 15
+	timeless body
+		cant be aged magically
+		no longer need food and water
+
+level 16
+	ability score improvement
+
+level 18
+	empty body
+		new action
+			cost 4 ki points
+			empty body timer = 10
+			empty body = true
+			end of turn:
+				empty body timer -= 1
+			if empty body
+				invisible
+				resistant to all damage but force
+		new non-combat ability
+			costs 8 ki points
+			free astral projection for 1
+
+level 19
+	ability score improvement
+
+level 20
+	start of combat
+		if ki points == 0
+			ki points = 4

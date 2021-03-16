@@ -1,0 +1,17 @@
+int + 2
+size small
+speed 25
+darkvision
+conditional saving throw advantage (int, wis, cha) (against magic) [note]
+language:common
+language:gnomish
+
+forest gnome:
+dex + 1
+minor illusion
+speak with small beasts [NOTE]
+
+rock gnome:
+con + 1
+Artificer's lore
+Tinker (basically a spell)

@@ -1,0 +1,24 @@
+level 3:
+	spirit seeker
+		new ritual only spell list
+			beast sense
+			speak with animals
+	totem spirit:
+		when raging:
+			friends have melee attack advantage on foes next to you
+
+level 6:
+	aspect of the beast
+		can track creatures when travelling at fast pace
+		can move stealthily when travelling at normal pace
+
+level 10:
+	new spell for ritual-only spell list
+		commune with nature
+
+level 14:
+	totemic attunement:
+		when raging:
+			if melee attack:
+				new bonus action: knock large or smaller enemy prone
+		

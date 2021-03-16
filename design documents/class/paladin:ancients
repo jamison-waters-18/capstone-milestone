@@ -1,0 +1,59 @@
+level 3
+	ensnaring strike as oath spell
+	speak with animals as oath spell
+	channel divinity: nature's wrath
+		new action
+			costs 1 channel divinity charge
+			creature must make dex or str save (its choice)
+			upon failure, becomes restrained
+				repeats its save end of every turn
+	channel divinity: turn in faithless
+		new action
+			costs 1 channel divinity charge
+			any fey or fiend within 30 ft makes wis save
+			if fail
+				turned for 1 minute
+
+level 5
+	misty step as oath spell
+	moonbeam as oath spell
+
+level 7
+	aura of warding
+		you and all friends in 10 ft have resistance to damage from spells
+		increases to 30 ft at level 18
+
+level 9
+	plant growthas oath spell
+	protection from energy as oath spell
+
+level 13
+	ice storm as oath spell
+	stoneskin as oath spell
+
+level 15
+	undying sentinel
+		undying sentinel charges = 1
+		long rest
+			undying sentinel charges = 1
+		when downed
+			costs 1 undying sentinel charge
+			instead go to 1 hp
+		can't be aged magically
+
+level 17
+	commune with nature as oath spell
+	tree stride as oath spell
+
+level 20
+	elder champion
+		elder champion charge = 1
+		long rest
+			elder champion charge = 1
+		new action
+			cost 1 elder champion charge
+			for 1 minute
+				beginning of turn
+					hp += 10
+				can cast action-time paladin spells as a bonus action
+				foes within 10 feet have disadvantage on save sfrom paladin spells and channel divinity

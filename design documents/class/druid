@@ -1,0 +1,80 @@
+multiclass requirement: wis 13
+proficiencies: shields, light armor, medium armor
+hit dice: 1d8
+special counters:
+
+
+1st character level only proficiencies:
+	clubs, daggers, darts, javelines, maces, quarterstaffs, scimitars, sickles, slings, spears
+	heralism kit
+	int save, wis save
+	two fo arcana, animal handling, insight, medicine, nature, perception, religion, survival
+	starting equipment
+		wooden shield OR any simple weapon
+		scimitar OR any simple melee weapon
+		leather armor
+		explorer's pack
+		druidic focus
+
+level 1
+	language: druidic
+	known druid cantrips = 2
+	druid prepared spells = wis mod + druid level (min 1)
+	can cast any prepared spell as ritual
+
+level 2
+	wild shape charges = 2
+	wild shape max = 2
+	wild shape req = "cr <= 1/4; fly_speed == 0; swim_speed == 0"
+	long rest:
+		wild shape charges = wild shape max
+	short rest:
+		wild shape charges = wild shape max
+	wild shape
+		new action
+			cost 1 wild shape charge
+			assume shape of beast (hours = druid level / 2)			//no timers for things over a couple minutes
+				decide whether equipment is dropped, merged, or worn
+				preserve int, wis, cha scores, inherit str, dex, con scores
+				merge saving throws and skill proficiencies
+				legendary/lair actions withheld
+				gain hp and hit dice
+				disable verbal, somatic, material spell components
+				keep any class/race features that are still usable in beast form
+			new bonus action:
+				end animal shape
+				restore verbal, somatic, material spell components
+	subclass
+	
+
+level 4
+	known druid cantrips += 1
+	wild shape req = "cr <= 1/2; fly_speed == 0"
+	ability score improvement
+
+level 8
+	wild shape req = "cr <= 1"
+	ability score improvement
+
+level 10
+	known druid cantrips += 1
+
+level 12
+	ability score improvement
+
+level 16
+	ability score improvement
+
+level 18
+	timeless body
+		for every 10 years that pass, you age 1 year (NOTE ON CHARACTER PAGE)
+	beast spells
+		can use verbal and somatic components as beast
+
+level 19
+	ability score improvement
+
+level 20
+	archdruid
+		wild shape max = unlimited
+		ignore verbal, somatic, basic material components

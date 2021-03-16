@@ -1,0 +1,63 @@
+level 2:
+	remove copying spell
+	copyng spells into book
+		new non-combat activity:
+			select spell
+			if spell has attribute "enchantment"
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 5 gp (1 hour)
+					else
+						costs 25 gp (2 hours)
+			else
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 10 gp (1 hour)
+					else
+						costs 50 gp (2 hours)
+	hypnotic gaze
+		hypnotic gaze charge = 1
+		long rest
+			hypnotic gaze charge = 1
+		new action
+			costs 1 hypnotic gaze charge
+			creature within 5 ft makes wis save
+			if fail
+				charmed and incapacitated
+				hypnotic gaze active
+				continue hypnotic gaze active
+				ends if
+					creature takes damage
+					creature can't see/hear you
+					you move beyond 5 feet
+		new action (if hypnotic gaze active)
+			continue hypnotic gaze active
+		end of turn
+			if hypnotic gaze active
+				if continue hypnotic gaze active
+					disable continue hypnotic gaze active
+				else
+					disable hypnotic gaze active	
+
+level 6
+	instinctive charm
+		new reaction (charmable foe you can see within 30 ft makes attack roll against you)
+			foe makes save (wis:int) (wis save against int-based DC)
+			if fail
+				creature must instead attack other creature closest to itself
+			if succeed
+				immune to effect until you take long rest
+
+level 10
+	split enchantment
+		when casting spell
+			if spell targets 1 creature
+				can target 2 instead
+
+level 14
+	alter memories
+		when casting spell
+			if this spell involves charming others, can make one creature remain unaware that it's been charmed (note)
+		new action
+			only workes once on foe, and only if you used "alter memories" on it
+			foe makes save (int:int)
+			if fail
+				foe forgets max(1, 1 + cha mod) hours of being charmed

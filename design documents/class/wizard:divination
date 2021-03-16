@@ -1,0 +1,54 @@
+level 2:
+	remove copying spell
+	copyng spells into book
+		new non-combat activity:
+			select spell
+			if spell has attribute "divination"
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 5 gp (1 hour)
+					else
+						costs 25 gp (2 hours)
+			else
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 10 gp (1 hour)
+					else
+						costs 50 gp (2 hours)
+	portent
+		long rest
+			roll 2d20, write them down
+			once per turn, before rolling an attack, a check, or a save
+				have opportunity to expend one of these dice instead
+
+level 6
+	expert divination
+		when casting spell
+			if spell->school == divination AND spell->level > 1
+				prompt "select a spell slot to recharge"
+				if selected spell slot level < 6 AND
+							selected spell slot level < spell->level AND
+							spell slot count[spell slot level] < spell slot max (spell slot level)
+					add(spell_slot_count[spell_slot_level], 1)
+
+level 10
+	third eye
+		third eye charge = 1
+		new action
+			get one of the following things
+				darkvision
+				etherial sight (see into etherial plane for 60 ft range)
+				greater comprehension (read any language)
+				see invisibility (see invisible stuff for 10 ft range)
+			long rest
+				remove third eye status
+				third eye charge = 1
+			short rest
+				remove third eye status
+				third eye charge = 1
+
+level 14
+	remove portent
+	greater portent
+		long rest
+			roll 3d20, write them down
+			once per turn, before rolling an attack, a check, or a save
+				have opportunity to expend one of these dice instead

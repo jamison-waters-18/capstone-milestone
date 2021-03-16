@@ -1,0 +1,8 @@
+level 6
+	elemental affinity
+		upon spellcast
+			if any damage has type LIGHTNING
+				can add cha mod to damage to one roll of that attack
+				prompt user
+					costs 1 sorcery point
+					gain resistance to LIGHTNING for 1 hour

@@ -1,0 +1,20 @@
+class plan
+
+multiclass requirement
+proficiencies
+	armor categories, weapon categories
+hit dice
+special counters
+1st character level only proficiencies
+	armor categories
+	ability saves
+	selection of skills
+	includes starting equipment
+
+remove previous abilities
+add abilities
+ability score improvement
+pick subclass
+modify mapped values: relative and absolute
+modify variables in spell list
+

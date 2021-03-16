@@ -1,0 +1,153 @@
+multiclass requirement: str 13
+proficiencies: shields, simple weapons, martial weapons
+hit dice: 1d12
+special counters:
+rage count (CAN BE INFINITE)
+rage count max
+rage damage
+
+
+1st character level only proficiencies:
+	light armor, medium armor
+	str saves, con saves
+	any two: Animal Handling, athletics, intimidation, nature, perception, survival
+	starting equipment:
+		greataxe OR any martial melee weapon
+		two handaxes OR any simple weapon
+		explorer's pack
+		four javelines
+
+level 1:
+	Rage
+		new bonus action: activate rage
+			if "raging" = false
+				costs 1 "rage count"
+				"raging" = true
+		if raging:
+			str check advantage
+			str save advantage
+			if melee attack AND str mod:
+				damage += "rage damage"
+			resistance to blugeoning, piercing, slashing damage
+			cannot cast spells
+			cannot concentrate
+			rage timer: 1 minute (10 turns)
+			rage ends when:
+				timer ends
+				knocked unconscious
+				no attack OR no take damage
+		end of turn:
+			rage timer -= 1
+			if rage timer == 0
+				"raging" = false
+		long rest:
+			rage count = rage count max
+
+	unarmored defense:
+		if not wearing armor (shields/magic rings are fine)
+			ac = 10 + dex mod + con mod
+
+level 2:
+	reckless attack:
+		on FIRST attack of turn, become reckless
+		if reckless:
+			if melee attack AND str mod:
+				advantage on attack
+			Tell the DM you're doing reckless attack, enemies have advantage on you
+		end of turn: remove reckless
+	danger sense:
+		if not blinded AND not deafened AND not incapacitated
+			conditional dex advantage on effects you can see
+
+level 3:
+	choose subclass
+	rage max = 3
+
+level 4:
+	ability score improvement
+
+level 5:
+	extra attack:
+		if take attack action
+			attack twice
+
+level 6:
+	"rage count max" = 4
+
+level 7:
+	feral instinct:
+		advantage on initiative rolls (NOTE)
+		if surprised AND not incapacitated, can take first turn anyway, MUST enter rage
+
+level 8:
+	ability score improvement
+
+level 9:
+	rage damage = 3
+	brutal critical:
+		crit melee damage die += 1
+
+level 11:
+	relentless rage:
+		"relentless rage dc" = 10
+		if downed:
+			if successful con save:
+				hp = 1
+				"relentless rage dc" += 5
+		after long rest:
+			"relentless rage dc" = 10
+
+level 12:
+	ability score improvement
+	rage count max = 5
+
+level 13:
+	brutal critical:
+		crit melee damage die += 1
+
+level 15:
+	remove rage
+	persistent rage
+		new bonus action: activate rage
+			if "raging" = false
+				costs 1 "rage count"
+				"raging" = true
+		while raging:
+			str check advantage
+			str save advantage
+			if melee attack AND str mod:
+				damage += "rage damage"
+			resistance to blugeoning, piercing, slashing damage
+			cannot cast spells
+			cannot concentrate
+			rage timer: 1 minute (10 turns)
+			rage ends when:
+				timer ends
+				knocked unconscious
+		end of turn:
+			rage timer - 1
+		long rest:
+			rage count = rage count max
+
+level 16:
+	ability score improvement
+	rage damage = 4
+
+level 17:
+	rage count max = 6
+	brutal critical:
+		crit melee damage die += 1
+
+level 18:
+	indomitable might:
+		can replace strength check roll with strength score (NOTE)
+
+level 19:
+	ability score improvement
+
+level 20:
+	rage count max = unlimited						//????
+	str max = 24
+	con max = 24
+	str += 4
+	con += 4

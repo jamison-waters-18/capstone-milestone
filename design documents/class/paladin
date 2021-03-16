@@ -1,0 +1,117 @@
+multiclass requirement: str 13 AND cha 13
+proficiencies: light armor, medium armor, shields, simple weapons, martial weapons
+hit dice: 1d10
+special counters:
+ki points
+
+
+1st character level only proficiencies:
+	heavy armor
+	wis saves, cha saves
+	any two: athletics, insight, intimidation, medicine, persuasion, religion
+	starting equipment:
+		martial weapon
+		martial weapon OR shield
+		5 javelines OR any simple melee weapon
+		priests pack OR explorer's pack
+		chain mail
+		holy symbol
+
+level 1
+	divine sense
+		divine sense charge = 1 + cha mod
+		long rest
+			divine sense charges = 1 + cha mod
+		new action
+			costs 1 divine sense charge
+			until the end of next turn
+				know location of any celestial, fiends, or undead within 60 feet (if not in total cover)
+					can identify which of those three a creature is
+				know location of any consecrated or desecrated object
+	lay on hands
+		lay on hands pool = paladin level * 5
+		long rest:
+			lay on hands pool = paladin level * 5
+		new action
+			give target x hp
+			cure target of y diseases or poisons
+			costs x + 5y lay on hands pool
+
+level 2
+	fighting style:
+		select one of the following:	//excludes archery and duel wielding
+			defense:
+				if wearing armor
+					ac += 1
+			dueling
+				if melee weapon in one hand and no other weapons
+					damage +2
+			great weapon fighting
+				if weapon two-handed or wielded versatile
+					reroll 1 or 2 on attack roll (note)
+			protection
+				if holding shield
+					new reaction:
+						give disadvantage on foe attacking another creature
+	paladin prepared spells = paladin level / 2 + cha mod
+	divine smite
+		during melee weapon damage
+			costs ANY spell slot
+			damage += 1d8 * max(5, 1 + spell slot level) radiant
+			add 1d8 if foe is undead or fiend (note)
+
+level 3
+	divine health
+		disease immunity
+	channel divinity
+		if no channel divinity max
+			channel divinity max = 1
+		channel divinity charges = channel divinity max
+		short rest
+			channel divinity charges = channel divinity max
+		long rest
+			channel divinity charges = channel divinity max
+	subclass
+
+level 4
+	ability score improvement
+
+level 5
+	extra attack
+
+level 6
+	aura of protection
+		if you or friend in 10 feet makes save
+			save += max(1, cha mod)
+		at level 18, this increases to 30 ft
+
+level 8
+	ability score improvement
+
+level 10
+	aura of courage
+		you and friends within 10 feet can't be frightened
+
+level 11
+	improved divine smite
+		during melee weapon damage
+			damage += 1d8 radiant
+
+level 12
+	ability score improvement
+
+level 14
+	cleansing touch
+		cleansing touch charge = max(1, cha mod)
+		long rest
+			cleansing touch charge = max(1, cha mod)
+		new action
+			costs 1 cleansing touch charge
+			end one spell on self or touched creather //???
+
+level 16
+	ability score improvement
+
+level 19
+	ability score improvement
+

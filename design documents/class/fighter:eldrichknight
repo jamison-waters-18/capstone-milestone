@@ -1,0 +1,77 @@
+each level
+	can swap out a spell
+		select a spell to get rid of
+		if spell->name == mandatory eldrich knight spell 1
+			select any abjuration or evocation wizard spell
+			mandatory eldrich knight spell 1 = spell->name
+		else if spell->name == mandatory eldrich knight spell 2
+			select any abjuration or evocation wizard spell
+			mandatory eldrich knight spell 2 = spell->name
+		else
+			select any wizard spell in level range
+
+level 3:
+	eldrich knight cantrips = 2
+	learn 1 spell from wizard 
+		must be abjuration or evocation
+		register name as mandatory eldrich knight spell 1
+	learn 1 spell from wizard 
+		must be abjuration or evocation
+		register name as mandatory eldrich knight spell 2
+	learn 1 spell from wizard 
+	eldrich knight known spells = 3
+	new eldrich knight spell list
+	weapon bond
+		bonded weapon 1 = "none"
+		bonded weapon 2 = "none"
+		new ritual
+			assign bonded weapon
+		new bonus action
+			summon bonded weapon
+
+level 4
+	eldrich knight known spells = 4
+
+level 7
+	eldrich knight known spells = 5
+	war magic
+		if action -> spellcast -> cantrip
+			new bonus action
+				weapon attack
+
+level 8
+	eldrich knight known spells = 6
+
+level 10
+	eldrich knight known spells = 7
+	eldrich strike
+		when successful weapon attack
+			foe has disadvantage on saves against your magic until end of next turn (note)
+
+level 11
+	eldrich knight known spells = 8
+
+level 13
+	eldrich knight known spells = 9
+
+level 14
+	eldrich knight known spells = 10
+
+level 15
+	arcane charge
+		you can teleport up to 30 feet when you use action surge
+
+level 16
+	eldrich knight known spells = 11
+
+level 18
+	improved war magic
+		if action -> spellcast
+			new bonus action
+				weapon attack
+
+level 19
+	eldrich knight known spells = 12
+
+level 20
+	eldrich knight known spells = 13

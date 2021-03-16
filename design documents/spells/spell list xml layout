@@ -1,0 +1,21 @@
+<spell-list
+	private-name=""
+	public-name=""
+	spell-list-type=""
+	spellcasting-ability=""
+	can-cast-non-ritual=""
+	can-cast-ritual=""
+	spellcasting-focus=""
+	owner="" />
+
+typedef struct {
+	String private_name;
+	String public_name;
+	String owner;
+	spellListType operates_as;			//includes inate, cantrips, known, preparable
+	abilityType spellcasting_ability;
+	gboolean can_cast_non_ritual;
+	gboolean can_cast_ritual;
+	String spellcasting-focus; //includes arcane focuses, druidic focuses, holy symbols, instruments. if blank, can only use component pouch
+} SpellList;
+//for inate spell lists, the number of charges will be stored at "(spell list name):(spell name) charges"

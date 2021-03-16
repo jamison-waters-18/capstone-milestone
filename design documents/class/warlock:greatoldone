@@ -1,0 +1,50 @@
+level 1
+	dissonant whispers as patron spell
+	tasha's hideous laughter as patron spell
+	awakened mind
+		can communicate telepathically with any creature within 30 ft
+		don't need to speek the same language, but target needs to know at least one
+
+level 2
+	detect thoughts as patron spell
+	phantasmal force as patron spell
+
+level 3
+	clairvoyance as patron spell
+	sending as patron spell
+
+level 4
+	dominate beast as patron spell
+	evard's black tentacles as patron spell
+
+level 5
+	dominate person as patron spell
+	telekinesis as patron spell
+
+level 6
+	entropic ward
+		entropic ward charge = 1
+		long rest
+			entropic ward charge = 1
+		short rest
+			entropic ward charge = 1
+		new reaction
+			when creature attacks you
+				impose disadvantage
+				if it misses
+					you get advantage on it for one attack next turn
+
+level 10
+	throught shield
+		nobody can read your mind
+		resistance to psychic damage
+		when you take psychic damage
+			attacker takes same amount
+
+level 14
+	create thrall
+		new action
+			touch an incapacitated humanoid
+			is now charmed
+				charm is removed using "remove curse," you enthralling another, or charmed condition is removed specifically
+				can communicate telepathically

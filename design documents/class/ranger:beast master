@@ -1,0 +1,26 @@
+level 3
+	choose beast with size medium or smaller, challenge rating max 1/4
+		its AC, attacks, damage, saves, and skill proficiencies gain your proficiency bonus
+		its hp = max(its normal hp, 4* your ranger level)
+	new non action
+		command beast to move
+	new action
+		command beast to attack, dash, disengage, dodge, help
+			if have extra attack, can do 1 weapon attack & 1 beast attack command
+	if beast dies
+		new non combat ability
+			spend 8 hours magically bonding with non-hostile beast that meets requirements
+
+level 7
+	exceptional training
+		if no beast attack
+			new bonus action
+				dash, disengage, dodge, help
+
+level 11
+	bestial fury
+		beast can now perform multiple attacks when commanded (normally 2)
+
+level 15
+	if cast spell on self & beast within 30 ft
+		beast gets benefit too

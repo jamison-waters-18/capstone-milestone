@@ -1,0 +1,46 @@
+str + 2
+cha + 1
+size medium
+speed 30
+language:common
+language:draconic
+
+black:
+breath weapon (5x30 line, dex save)
+damage resistance (acid)
+
+blue:
+breath weapon (5x30 line, dex save)
+damage resistance (lightning)
+
+brass:
+breath weapon (5x30 line, dex save)
+damage resistance (fire)
+
+bronze:
+breath weapon (5x30 line, dex save)
+damage resistance (lightning)
+
+copper:
+breath weapon (5x30 line, dex save)
+damage resistance (acid)
+
+gold:
+breath weapon (15 ft cone, dex save)
+damage resistance (fire)
+
+green:
+breath weapon (15 ft cone, con save)
+damage resistance (poison)
+
+red:
+breath weapon (15 ft cone, dex save)
+damage resistance (fire)
+
+silver:
+breath weapon (15 ft cone, con save)
+damage resistance (cold)
+
+white:
+breath weapon (15 ft cone, con save)
+damage resistance (cold)

@@ -1,0 +1,49 @@
+level 2:
+	remove copying spell
+	copyng spells into book
+		new non-combat activity:
+			select spell
+			if spell school == abjuration
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 5 gp (1 hour)
+					else
+						costs 25 gp (2 hours)
+			else
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 10 gp (1 hour)
+					else
+						costs 50 gp (2 hours)
+	arcane ward
+		when casting spell
+			if spell->level > 1 AND spell->school == abjuration
+				if has status "arcane ward"
+					new status: arcane ward
+					arcane ward hp max = add(mult(wizard_level, 2), int_mod)
+					arcane ward hp = arcane ward hp max
+					long rest
+						remove arcane ward status
+						remove arcane ward damage modifier
+					taking damage
+						if(gt(arcane-ward-hp, damage),set(arcane-ward-hp,sub(arcane-ward-hp,damage));set(damage, 0),set(damage,sub(damage,arcane-ward-hp));set(arcane-ward-hp, 0))
+				else
+					arcane ward hp += mult(spell->level, 2)
+			
+
+level 6
+	projected ward
+		new reaction
+			if arcane ward is active AND friend within 30 feet takes damage
+				can make your arcane ward absorb that damage
+				any overflow still affects the friend
+
+level 10
+	improved abjuration
+		when casting spell
+			if spell->school == abjuration AND spell->caster_ability_check != "none"
+				add proficiency bonus (can just be a note
+
+level 14
+	spell resistance
+		advantage on saves against spells (note)
+		on damage
+			if the damage source is a spell, apply resistance

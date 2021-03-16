@@ -1,0 +1,36 @@
+level 3: //maneuvers are a lot like spells. maybe add variant spell list????
+	pick 3 maneuvers
+	superiority die = d8
+	superiority die max = 4
+	superiority die count = superiority die max
+	short rest
+		superiority die count = superiority die max
+	long rest
+		superiority die count = superiority die max
+	maneuver save dc = 8 + prof + str OR 8 + prof + dex
+	proficiency with any artisan's tools
+
+
+level 7
+	pick 2 maneuvers
+	offer to swap out maneuver
+	know your enemy
+		note
+
+level 10
+	pick 2 maneuvers
+	offer to swap out maneuver
+	superiority die = d10
+
+level 15
+	pick 2 maneuvers
+	offer to swap out maneuver
+	improved combat superiority
+		at start combat
+			if superiority die count == 0
+				superiority die count = 1
+
+level 18
+	superiority die = d12
+
+

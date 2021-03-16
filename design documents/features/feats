@@ -1,0 +1,223 @@
+have prerequisite ability score/proficiency
+add to initiative bonus
+incapable of being surprised [NOTE]
+other creatues don't get andvantage for being unseen [NOTE]
+improve ability score (ONE_OF_X, specific) (max 20)
+changes movement cost to stand up
+decrease cost of climbing
+reduce running jump distance
+conditional skill advantage
+mimicry [NOTE]
+add bonus actions (dependent on action) (modifiable by context)
+ignore weapon property (dependent on weapon proficiency)
+add reaction (dependent on weapon property and proficiency)
+add to armor class (dependent on weapons wielded)
+change the way you can interact with weapon attributes ??????????
+add free action (draw two one-handed weapons)
+conditional save advantage
+conditional damage resistance
+modify how hit dice work
+conditional attack 
+
+Alert:
++5 to initiative
+can't be surprised while conscious
+other creatures don't gain advantage on attack rolls against you as a result of being unseen by you
+
+Athlete:
+str + 1 or dex + 1
+standing up from prone only costs 5 feet of movement
+climbing doesn't cost extra
+a "running long jump" requires running 5 feet instead of 10
+
+Actor:
+cha + 1
+advantage on deception and performance (when pretending to be a different person)
+mimic sound
+
+Charger:
+do melee attack as bonus action (if action is dash)
+add 5 to damage to melee attack (if charging and !have run 10 feet straight)
+shove creatuer as bonus action (if action is dash)
+shove creature up to 10 feet back (if charging and !have run 10 feet straight)
+
+Crossbow Expert:
+pretend to remove loading property (if proficient with used crossbow)
+no disadvantage on short-range attacks
+can shoot a 1-handed crossbow as a bonus action (if dual-wielding with melee weapon)
+
+Defensive Duelist:
+Prereq: dex 13
+AC + proficiency bonus (if holding proficient finesse weapon AND attact by melee weapon)
+
+Dual Wielder:
++1 AC (if duel-wielding)
+pretend to add light property
+can draw/stow 2 weapons as a free action
+
+Dungeon Delver:
+advangtage on perception and investigation (when searching for secret doors)
+advantage on saving throws (if against trap)
+resistance to all damage (if against trap)
+search for traps while travelling at normal pace
+
+Durable:
+con + 1
+minimum hit dice value = conmod * 2
+
+Elemental Adept:
+Prereq: 1 spell
+select element
+enemies cannot resist damage type
+any 1s rolled for damage can be treated as 2s
+
+Grappler:
+Prereq: str 13
+advantage on attack rolls (if attacking creature you're grappling)
+can grapple someone you're already grappling, giving you both restrained status effect
+
+Great Weapon Master:
+Can make melee weapona attack as bonus action (if you've already made a melee weapon attack that either critted or dropped an enemy)
+can subract 5 from attack roll to add 10 to damage roll (if weapon is melee and heavy and proficient)
+
+Healer:
+Using a medkit on dying brings person to 1hp
+can use medkit to heal a creature 1d6 + 4 + creature's level (can only do this once per creature per its short rest)
+
+Heavlity armored:
+prereq: proficient with medium armor
+str + 1
+profociency with heavy armor
+
+Heavy Armor Master:
+Prereq proficiency with heavy armor
+str + 1
+bludgeoning, piercing, slashing damage -3 (if wearying heavy armor)
+
+Inspiring Leader:
+Prereq: Cha 13
+can spend 10 minutes giving 6 people within 30 feet of you conmod + level temporary hit points
+
+Keen Mind:
+int + 1
+know where North is
+know hours to sunrise/sunset
+can accurately recall anything seen or heard in the past month
+
+
+Lightly armored:
+str + 1 OR dex + 1
+profociency with light armor
+
+Linguast:
+int + 1
+learn 3 languages
+can write in code
+
+Lucky:
+gain 3 luck points, reset after long rest
+spend luck point to reroll attack/check/save (but don't know outcome yet)
+spend luck point to reroll an attacker's attack
+
+Mage slayer:
+make melee attack as reaction (if creature 5 ft away casts spell)
+hostile creature has disadvantage on concentration
+save advantage (if spell cast 5 feet from you)
+
+Magic initiate: (consider adding a spell list)
+select class
+learn two cantrips and one 1st level spell
+
+Martiel adept:
+learn two fighter Battle Master maneuvers
+superiority die (1d6) (short rest recharge)
+
+Medium Armor Master:
+Prereq: proficiency with heavy armor
+override disadvantage on stealth checks
+
+Mobile:
+speed + 10
+when dashing, difficult terrain doesn't cost extra movement.
+disable attack of opportunity after attempting melee attack on creature
+
+Moderately armored:
+str + 1 or dex + 1
+medium armor proficiency
+shield proficiency
+
+mounted combatant:
+Advantage on melee attacks against (if mounted & enemy isn't)
+Force attack directed at your mount to hit you instead
+if mount subjected to effect with dex saving throu to half the damage, saving does no damage and failing does half
+
+Observant:
+int + 1 or wis + 1
+can read lips
++5 to passive perception
++5 to passive investigation
+
+Polearm Master:
+bonus action to deal 1d4 bludgeoning damage (if weilding glaive, halberd, quarterstaff)
+invoke attack of opportunity when foes enter your range (if weilding glaive, halberd, pike, quarterstaff)
+
+Resilient:
+any ability score +1
+save proficiency for same ability
+
+Ritual Caster:
+gain ritual book !!!!!!!!!ITEMS CAN CONTAIN A SPELL LIST!!!!!!!!!!!!
+select spellcasting class
+put 2 1st level spells in book
+add new spells (costs 50gp + 2 hours per level)
+
+Savage attacker:
+once per turn, you can reroll all damage dice for a melee attack
+
+Sentinel:
+When you make opportunity attack, a creature's speed drops to 0 for the rest of their turn
+foes can't Full Disengage from you
+reaction make melee attack (if next to foe attacking someone else w/o sentinel)
+
+Sharpshooter:
+no disadvantage on long range
+ignore half and 3/4-cover (if making ranged WEAPON attack)
+subtract 5 from ranged weapon attack, add 10 to attack damage
+
+Shield master:
+bonus action shove creature with shield (if attack action and holding shield)
+Add shield's AC to dex saving throw targeted at you (if wielding shield AND not incapacitated)
+add reaction to nullify dex-save half-damage (if wielding shield)
+
+Skilled:
+gain 3 skill/tool proficiencies
+
+Skulker:
+Prereq: dex 13
+can hind when lightly obscured
+you don't lose hidden status (if attacking with ranged weapon and miss)
+no disadvantage on sight percetpion checks in dim light
+
+spell sniper:
+prereq: 1 spell
+spell range is doubled (if spell is roll-to-hit)
+gain 1 new spell list (any class) with 1 roll-to-hit cantrip
+
+Tavern Brawler:
+str + 1 or con + 1
+proficiency w/ IMPROVISED weapon
+unarmed does 1d4
+can grapple as bonus action (if melee attack improvised or unarmed)
+
+tough:
+hp per level += 2
+
+war caster:
+prereq: 1 spell
+advantage on concentration saves
+somatic components allow holding weapons and shields
+can cast spell as opportunity attack (if spell targets 1 creature AND casting time is 1 action)
+
+weapon master:
+str + 1 or dex + 1
+gain proficiency in 4 weapons (if weapon is simple or martial (no unarmed or improvised i guess))

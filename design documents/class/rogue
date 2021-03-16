@@ -1,0 +1,96 @@
+multiclass requirement: dex 13
+proficiencies: light armor, thieves tools, any 1: acrobatics, athletics, deception, insight, intimidation, investigation, perception, performance, persuasion, sleight of hand, stealth
+hit dice: 1d10
+special counters:
+rage count (CAN BE INFINITE)
+rage count max
+rage damage
+
+
+1st character level only proficiencies:
+	simple weapons, hand crossbows, longswords, rapiers, shortswords
+	dex saves, int saves
+	any three: Acrobatics, athletics, deception, insight, intimidation, investigation, perception, performance, persuasion, sleight of hand, stealth
+	starting equipment:
+		rapier OR shortsowrd
+		shortbow AND qiver AND 20 arrows OR shortsword
+		burglar's pack OR dungeoneers pack OR explorer's pack
+		leather armor
+		2 daggers
+		thieves tools
+
+level 1
+	choose two expertise
+	sneak attack
+		sneak attack die = 1d6 * (rogue level + 1) / 2
+		once per turn
+			if advantage (or for adjacent to friend) on attack with finesse or ranged weapon
+				damage +== sneak attack die
+	know thieve's cant
+
+level 2
+	cunning action
+		new bonus action
+			dash, disengage, or hide
+
+level 3
+	subclass
+
+level 4
+	ability score improvement
+
+level 5
+	new reaction
+		when hit by foe you can see
+			half damage
+
+level 6
+	chose two expertise
+
+level 7
+	evasion
+		when subject to effect where you dex save to half damage
+			instead no damage on success, half on fail
+
+level 8
+	ability score improvement
+
+level 11
+	when making skill check with proficiency or expertise
+		the d20 roll has minimum of 10 (note)
+
+level 12
+	ability score improvement
+
+level 14
+	blindsense
+		if not deaf
+			know location of all hidden/invisible creatures within 10 feet
+
+level 15
+	slippermy mind
+		proficiency on wis saves
+
+level 16
+	ability score improvement
+
+level 18
+	if not incapacitated
+		no attack roll can have advantage on you
+
+level 19
+	ability score improvement
+
+level 20
+	stroke of luck
+		stroke of luck charge = 1
+		short rest
+			stroke of luck charge = 1
+		long rest
+			stroke of luck charge = 1
+		if miss attack
+			cost 1 stroke of luck charge
+			turn into hit
+		if fail ability check
+			cost 1 stroke of luck charge
+			turn failed roll into 20

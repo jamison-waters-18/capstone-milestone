@@ -1,0 +1,52 @@
+character creation
+	only display weapon/armor options a character is proficient in
+
+character screen
+	perform act
+	begin combat
+	clear concentration
+
+combat screen
+	import any requirements (ie bard's superior inspiration)
+	take turn
+	get inspired
+	get healed
+	take damage
+	reaction
+
+reaction
+	all context psecific
+	apparently a fighter can just GIVE other people a reaction.  I don't understand how I could ever accomodate that. should i just have a list of such reactions? that'd be dumb
+
+turn
+	action
+	bonus action
+	free action
+	non action
+
+attack
+	import requirements (ie some bonus action attacks require melee weapons)
+	select damage ability (if more than one available for weapon, like with finesse)
+	filter special mods by current state
+	select special mods
+	roll prompt
+		crit fail, miss, hit, crit, add modifier (i.e. war domain's guided strike)
+
+
+damage
+	imports any special mods from attack (ie great weapon master)
+	imports 
+	filter special mods by current state (ie inspiration)
+	select special mods
+	roll prompt
+	maybe do extra attack?
+
+cast spell
+	select spell
+	strip unnecessary 
+	check characters capability of spell components
+	effect (damage or heal)
+
+ability check
+	select special mods (ie lore bard's peerless skill)
+	

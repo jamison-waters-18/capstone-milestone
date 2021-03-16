@@ -1,0 +1,66 @@
+level 1:
+	fog cloud as domain
+	thunderwave as domain
+	proficiency with martial weapons
+	proficiency with heavy armor
+	wrath of storm:
+		wrath of storm charge = wis mod
+		new reaction: (if creature within 5 ft you can see makes attack)
+			cost 1 wrath of storm charge
+			select damage lightning, thunder
+			creature makes dex save
+			if fail
+				2d8 ^ damage
+			if success
+				half that
+		long rest
+			wrath of storm charg = wis mod
+
+level 2:
+	channel divinity: destructive wrath
+		when calculating damage
+			if any damage is thunder or lightning
+				cost 1 channel divinity charge
+				for all thunder and lightning damage
+					all dice auto-max
+
+level 3:
+	gust of wind as domain
+	shatter as domain
+
+level 5:
+	call lightning as domain
+	sleet storm as domain
+
+level 6:
+	tunderbold strike
+		if creature Large or smaller, can push creature up to 10 feet away from you (note on roll damage screen))
+
+level 7:
+	control water as domain
+	ice storm as domain
+	
+level 8:
+	divine strike:
+		start of turn:
+			divine strike point = 1
+		on damage calc:
+			cost 1 divine strike point
+			damage + 1d8 thunder damage
+
+level 9:
+	destructive wave as domain
+	insect plague as domain
+	
+level 14:
+	remove divine strike
+	divine strike:
+		start of turn:
+			divine strike point = 1
+		on damage calc:
+			cost 1 divine strike point
+			damage + 2d8 thunder damage
+
+level 17:
+	while not underground or indoors
+		flying speed = walking speed (note on character main screen)

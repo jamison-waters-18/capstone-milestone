@@ -1,0 +1,18 @@
+level 3:
+	+ 3 skill proficiencies
+	new reaction:
+		if creature can hear you AND can be charmed
+			cost 1 inspiration count
+			subtract 1 inspiration die from foe's attack, damage, or check
+
+level 6:
+	magical secrets
+		known bard spells += 2
+		add ANY two spells
+
+level 14:
+	peerless skill:
+		when making ability check	//??????????
+			cost 1 inspiration count
+			subtract 1 inspiration die from foe's attack, damage, or check
+			

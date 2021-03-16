@@ -1,0 +1,66 @@
+Ability attributes
+	type: passive, action, bonus action, free action, reaction, non action
+	scope: turn, state, permanent
+	disabled if
+	how many charges?
+	can it be reset by a short/long rest?
+	how it's activated/deactivated
+	what happens upon activation/deactivation
+
+disable conditions:
+	check inventory for specific item and quantity
+	parse turn stack
+	check map for arbitrary states
+	
+
+thing abilities can do
+	modify mapped values: relative and absolute
+	new downed process
+	new long rest processes
+	new short rest processes
+	new end of turn processes
+	new start of turn processes
+	new start of combat processes
+	new change of status effect processes
+	begin an arbitrary state
+	check for arbitrary state
+	add extra attack
+	give you more actions
+	provide a spell list
+	add spell to existing list (specific or any compatable or any at all)
+	change other abilities
+	obtain and reuse value for weapon's damage type
+	allow user to accept an arbitrary number of arbitrary abilities (ie. maneuvers)
+	place notes
+
+things arbitrary states can do
+	ability check advantage
+	ability save advantage
+	if melee attack AND str mod:\\\\\\\\\\\\\\\\\\\\\\\\
+		damage += "rage damage"
+	resistance to damages
+	deactivate turn options
+	activate turn options
+	end other arbitrary states
+	modify mapped values: relative and absolute
+	interrupt getting downed at 0 hp
+	immune to status effects
+	override status effects
+	immunity to statis effects
+	provide new abilities
+	place notes
+
+notes
+	place to show up
+	show condition
+	string contents
+
+places notes can show up:
+	ability saves
+	ability checks
+	skill checks
+	initiative
+	applying status effects
+	action menu
+	character screen
+

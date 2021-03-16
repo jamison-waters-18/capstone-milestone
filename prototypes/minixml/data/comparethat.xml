@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<character
+	name="shalta"
+	xp="45000" >
+	<class
+		name="bard"
+		level="4" >
+		<subclass
+			name="valor" >
+		</subclass>
+	</class>
+	<race
+		name="half-orc" >
+		<ability
+			name="relentless"
+			levelreq="1"
+			location="hpdroptozero"
+			rule="if,map(relentless_count),gt,0?map(hp),=,1;map(relentless_count),-=,1" >
+			<counter
+				name="relentless_count"
+				defaultval="1" />
+			<ability
+				name="relentlessrestore"
+				levelreq="1"
+				location="longrest"
+				rule="map(relentless_count),=,1" />
+		</ability>
+	</race>
+</character>

@@ -1,0 +1,26 @@
+level 3
+	shadow arts
+		gain following as iniate, costing 2 ki points
+			darkness, darkvision, pass without trace, silence
+		gain minor illusion as inate
+
+level 6
+	shadow step
+		new bonus action
+			if standing in dim light or darkness
+				teleport up to 60 feet to another spot with dim light or darkness
+				get advantage on first melee attack before end of next turn
+
+level 11
+	cloak of shadows
+		if in dim light or darkness
+			new action
+				cast invisibility on self
+				also ends when entering bright light
+
+level 17
+	new reaction
+		if adjacent foe is hit by someone else
+			make melee attack against creature
+
+

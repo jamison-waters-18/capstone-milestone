@@ -1,0 +1,19 @@
+augment ability score (specific, UNTOUCHED CHOICE)
+set base size
+set base speed
+give passive abilities (darkvision) [NOTE]
+saving throw advantage (damage type, status effect) [NOTE]
+weapon proficiency (specific weapons)
+proficiency with tools (ONE_OF_X)
+conditional proficiency with skill (stonecunning) [NOTE]
+known languages (specific languages, PLAYER_CHOICE)
+armor proficiency (by weightclass)
+bonus to hp maximum (per level)
+proficiency with skill (specific, ANY)
+duration of long rest
+inate spells (PLAYER_CHOICE (level 0), specific spells (advances with level), non-spells (breath weapon)) [inate spells have non-class-related spelcasting abilities & slots, upgrade with arbitrary leveling]
+conditional skill disadvantage [NOTE]
+conditional attack disadvantage [NOTE]
+reroll crit fails (attack, ability check, saving throw)
+relentless endurance ability
+savage attack ability

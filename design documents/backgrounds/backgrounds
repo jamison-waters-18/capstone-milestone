@@ -1,0 +1,79 @@
+skill proficiencies
+languages
+buncha equipment
+feat: 1 or 2 options. if 2, pick 1 as string
+optional specialty: string name and string description
+personality trait: string
+ideal: stirng
+bond: string
+flaw: string
+
+Acolyte:
+skill proficiencies: insight, religion
+languages: any 2
+equipment: holy symbol, prayer book OR prayer wheel, incense (5), vestments, common clothes, pouch, 15gp
+
+Charlitan:
+skill proficiencies: Deception, sleight of Hand
+tool proficiencies: disguise kit, forgery kit
+equipment: set of fine clothes, disguise kit, stopped bottles w/ liquid (10) OR weighted dice OR marked card deck OR fake signet ring), pouch, 15gp
+
+Criminal:
+skill proficiencies: Deception, stealth
+tool proficiencies: ANY game set, thieve's tools
+equipment: crowbar, dark common clothes with hood, pouch, 15gp
+
+Entertainer:
+Skill proficiencies: Acrobatics, Performance
+Tool Proficiencies: Disguise kit, ANY INSTRUMENT
+equipment: ANY musical instrument, favor of admirer, costume, pouch, 15gp
+
+Folk Hero:
+Skill Proficiencies: Animal Handling, Survival
+Tool Proficiencies: ANY artisan's, land vehicles
+equipment: ANY artisan's tools, shovel, iron pot, common clothes, pouch, 10gp
+
+Guild Artisan:
+Skill Proficiencies: Insight, Persuasion
+Tool Proficiencies: ANY artisan's
+language: ANY 1
+Equipment: ANY artisan's tools, guild letter, traveler's clothes, pouch, 15gp
+
+Hermit:
+Skill Proficiencies: Medicine, Religion
+Tool Proficiencies: Herbalism kit
+languages: any 1
+equipment: scroll case full of notes, winter blanket, common clothes, herbalism kit, 5gp
+
+Noble:
+SKill Proficiencies: History, Persuasion
+Tool Proficiencies: ANY game set
+Language: ANY 1
+Equipment: fine clothes, signet ring, "scroll of pedigree", purse, 25gp
+
+Outlander:
+Skill Proficiencies: Athletics, Survival
+Tool Proficiencies: ANY musical instrument
+languages: any 1
+equipment: staff, hunting trap, animal trophy, traveler's clothes, pouch, 10gp
+
+Sage:
+Skill proficiencies: arcana, history
+languages: any two
+equipment: ink bottle, quill, small knife, letter from deceased friend, common clothes, pouch, 10gp
+
+sailor:
+skill proficiencies: atheletics, perception
+tool proficiencies: navigator's tools, water vehicles
+equipment: belaying pin, 50 feet silk rope, lucky charm, common clothes, pouch, 10gp
+(!!! trinket selection !!!)
+
+Soldier:
+skill proficiencies: athletics, intimidation
+tool proficiencies: ANY gaming set, land vehicles
+equipment: an insignia of rank, dagger OR broken blade OR piece of banner, bone dice OR card deck, common clothes, pouch, 10gp
+
+Urchin:
+skill proficiencies: Sleight of Hand, Stealth
+tool proficiencies: Disguise kit, thieves' tools
+equipment: small knife, map of home town, pet mouse, parent memento, common clothes, pouch, 10gpk

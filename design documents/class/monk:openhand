@@ -1,0 +1,38 @@
+level 3:
+	remove flurry of blows
+	open hand technique
+		flurry of blows
+			if the most recent thing in your turn was an attack action
+				cost 1 ki point
+				2 unarmed strikes
+				if eitehr hit
+					impose one of follwoing effects
+						succeed on dex save or knocked prone
+						succeed on str save or get pushed 15 feet away
+						disable reactions until end of your  next turn
+
+level 6
+	wholeness of body
+		wholeness of body charg e = 1
+		long rest
+			wholeness of body charge = 1
+		new action
+			costs 1 wholeness of body charge
+			hp += monk level * 3
+
+level 11
+	tranquility
+		between long rests (not if long rest is interrupted)
+			effects of sanctuary spell
+				enemies must make wis save to target you with attack, otherwise must target someone else
+				state ends if you attack/cast spell on foe
+
+level 17
+	quivering palm
+		if weapon attack AND unarmed
+			cost 3 ki points
+			at any point within (monk level) days, make con save
+			if fail
+				drops to 0 hp 
+			if succeeds
+				10d10 necrodit damage

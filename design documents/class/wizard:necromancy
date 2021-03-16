@@ -1,0 +1,49 @@
+level 2:
+	remove copying spell
+	copyng spells into book
+		new non-combat activity:
+			select spell
+			if spell has attribute "necromancy"
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 5 gp (1 hour)
+					else
+						costs 25 gp (2 hours)
+			else
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 10 gp (1 hour)
+					else
+						costs 50 gp (2 hours)
+	grim harvest
+		after dealing spell damage
+			prompt if player killed anything (no undead or constructs)
+				if spell->school = necromancy
+					hp += 3 * spell->level
+				else
+					hp += 2 * spell->level
+
+level 6
+	undead thralls
+		if no spellbook of yours contains animate dead
+			add animate dead to it
+		when casting spell
+			if spell->name == animate dead
+				can target one more corpse or bone pile
+		on character screen
+			when raising undead wiht necromancy
+				creature's hp += wizard level
+				creature's damage rolls gain your proficiency
+
+level 10
+	inured to undeath
+		resistance to necrotic damage
+		hp maximum can't be lowered (note)
+
+level 14
+	command undead
+		new action
+			choose one undead within 60 ft
+			makes save (cha:int) (has advantage if int > 8) (if int > 12, it can try again every hour)
+			if fail
+				becomes friendly until you use this feature again
+			if succeeds
+				immune to this effect

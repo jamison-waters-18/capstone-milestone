@@ -1,0 +1,26 @@
+con + 2
+size medium
+speed 25
+darkvision [NOTE]
+saving throw advantage (poison) [NOTE]
+damage resistance (poison)
+proficiency with battleaxe
+proficiency with handaxe
+proficiency with light hammer
+proficiency with warhammer
+proficiency with tool ONE_OF_X:
+	smith's tools
+	brewer's tools
+	mason's tools
+stonecunning (DOUBLE PROFICIENCY BONUS) [NOTE]
+language:common [NOTE]
+language:dwarvish [NOTE]
+
+hill dwarf:
+wisdom + 1
+hp + player level
+
+mountain dwarf:
+strength + 2
+proficiency with light armor
+proficiency with medium armor

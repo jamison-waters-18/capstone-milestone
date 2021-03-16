@@ -1,0 +1,64 @@
+level 1
+	fairie fire as patron spell
+	sleep as patron spell
+	fey presence
+		fey presence charge = 1
+		long rest
+			fey presence charge = 1
+		short rest
+			fey presence charge = 1
+		new action
+			costs 1 fey presence charge
+			all creatures within 10 ft cube of you make wis save
+			if fail, charmed or frightened
+
+level 2
+	calm emotions as patron spell
+	phantasmal force as patron spell
+
+level 3
+	blink as patron spell
+	plant growth as patron spell
+
+level 4
+	dominate beast as patron spell
+	greater invisibility as patron spell
+
+level 5
+	dominate person as patron spell
+	seeming as patron spell
+
+level 6
+	misty escape
+		misty escape charge = 1
+		long rest
+			misty escape charge = 1
+		short rest
+			misty escape charge = 1
+		new reaction
+			upon taking damage
+				costs 1 misty escape charge
+				lesser invisibility until start of next turn (ends if attack or spellcast)
+				teleport 60 ft
+
+
+level 10
+	beguiling defense
+		immune to charm
+		new reaction
+			being charmed
+				reflect charm back at creature (wis save)
+
+level 14
+	dark delirium
+		dark delirium charge = 1
+		long rest
+			dark delirium charge = 1
+		short rest
+			dark delirium charge = 1
+		new action
+			target creature within 60 ft
+			force wis save
+			if fail
+				charmed or frightened for 1 minute
+				can only see and hear itself, you, and a misty illusion of your choice

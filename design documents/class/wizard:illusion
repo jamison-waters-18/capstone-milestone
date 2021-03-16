@@ -1,0 +1,48 @@
+level 2:
+	remove copying spell
+	copyng spells into book
+		new non-combat activity:
+			select spell
+			if spell has attribute "illusion"
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 5 gp (1 hour)
+					else
+						costs 25 gp (2 hours)
+			else
+					if spell is prepared OR spell is in one of YOUR spellbooks
+						costs 10 gp (1 hour)
+					else
+						costs 50 gp (2 hours)
+	improved minor illusion
+		if know minor illusion
+			learn any cantrip
+		else
+			learn minor illusion
+		when casting spell
+			if spell->name == minor illusion
+				can create sound and image in same cast (note)
+
+level 6
+	malleable illusions
+		new action
+			if you've casted an illusion spell which lasts at least 1 minute
+				change the nature of an illusion, granted you can see it (note)
+				
+
+level 10
+	illusory self
+		illusory self charges = 1
+		long rest
+			illusory self charges = 1
+		short rest
+			illusory self charges = 1
+		new reaction (foe makes attack roll against you)
+			costs 1 illusory self charge
+			the attack automatically misses
+
+level 14
+	illusory reality
+		new bonus action
+			if you've cast an illusion spell of 1st level or higher,
+				can make one illusory object physically real for 1 minute
+				it can't cause anyone any harm (note)

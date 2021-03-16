@@ -1,0 +1,123 @@
+some basic enums
+enum alignmentType { UNALIGNED, LAWFUL_GOOD, 	NEUTRAL_GOOD, CHAOTIC_GOOD,
+								LAWFUL_NEUTRAL,	TRUE_NEUTRAL, CHAOTIC_NEUTRAL
+								LAWFUL_EVIL, 	NEUTRAL_EVIL, CHAOTIC_EVIL };
+
+enum creatureType { ABERRATION, BEAST, CELESTIAL, CONSTRUCT, DRAGON, ELEMENTAL,
+					FEY, FIEND, GIANT, MONSTROSITY, OOZE, PLANT, UNDEAD };
+
+enum sizeType { TINY, SMALL, MEDIUM, LARGE, HUGE, GARGANTUAN };
+
+typedef struct { int die[8]; } Dice;
+
+typedef struct { int slots[9]; } SpellSlots;
+
+typedef struct { int score[6]; } AbilityScore;
+
+damage types: 
+
+status types: blinded, charmed, deafened, frightened, grappled, incapacitated, invisible, paralyzed, petrified, poisoned, prone, restrained, stunned, unconscious, exhausted
+
+enum abilityType {
+	STR, DEX, CON,
+	INT, CHA, WIS }
+
+class {
+	BARBARIAN, BARD, CLERIC, DRUID, PALADIN, RANGER, ROGUE, SORCERER, WIZARD
+}
+
+int index_to_dicenum(int index) {
+	const Dice d = { 1, 4, 6, 8, 10, 12, 20, 100 };
+	if (index < 0 || index > 7) {
+		return -1;
+	}
+	return d.die[index];
+}
+
+int xp_to_level(int xp) {
+	if (xp < 0) return -1;
+	if (xp < 300) return 1;
+	if (xp < 900) return 2;
+	if (xp < 2700) return 3;
+	if (xp < 6500) return 4;
+	if (xp < 14000) return 5;
+	if (xp < 23000) return 6;
+	if (xp < 34000) return 7;
+	if (xp < 48000) return 8;
+	if (xp < 64000) return 9;
+	if (xp < 85000) return 10;
+	if (xp < 100000) return 11;
+	if (xp < 120000) return 12;
+	if (xp < 140000) return 13;
+	if (xp < 165000) return 14;
+	if (xp < 195000) return 15;
+	if (xp < 225000) return 16;
+	if (xp < 265000) return 17;
+	if (xp < 305000) return 18;
+	if (xp < 355000) return 19;
+	return 20;
+}
+
+int level_to_proficiency(int level) {
+	if (level < 1 || level > 20) return -1;
+	return (level - 1) / 4 + 2;
+}
+
+int ability_score_to_mod(int score) {
+	if (score < 1 || score > 30) return -1;
+	return score / 2 - 5;
+}
+
+void max_out_dice(Dice* d) {
+	for(int i = 1; i < 8; i++) {
+		d->die[0] += d->die[i] * index_to_dicenum(i);
+		d->die[i] = 0;
+	}
+}
+
+void assign_spell_slots(SpellSlots* user_data, int spellcaster_tier, int class_level, int upgrade) {
+	const int[21][9] reference = 
+			{	{ 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 2, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 3, 0, 0, 0, 0, 0, 0, 0, 0 },
+				{ 4, 2, 0, 0, 0, 0, 0, 0, 0 },
+				{ 4, 3, 0, 0, 0, 0, 0, 0, 0 },
+				{ 4, 3, 2, 0, 0, 0, 0, 0, 0 },
+				{ 4, 3, 3, 0, 0, 0, 0, 0, 0 },
+				{ 4, 3, 3, 1, 0, 0, 0, 0, 0 },
+				{ 4, 3, 3, 2, 0, 0, 0, 0, 0 },
+				{ 4, 3, 3, 3, 1, 0, 0, 0, 0 },
+				{ 4, 3, 3, 3, 2, 0, 0, 0, 0 },
+				{ 4, 3, 3, 3, 2, 1, 0, 0, 0 },
+				{ 4, 3, 3, 3, 2, 1, 0, 0, 0 },
+				{ 4, 3, 3, 3, 2, 1, 1, 0, 0 },
+				{ 4, 3, 3, 3, 2, 1, 1, 0, 0 },
+				{ 4, 3, 3, 3, 2, 1, 1, 1, 0 },
+				{ 4, 3, 3, 3, 2, 1, 1, 1, 0 },
+				{ 4, 3, 3, 3, 2, 1, 1, 1, 1 },
+				{ 4, 3, 3, 3, 3, 1, 1, 1, 1 },
+				{ 4, 3, 3, 3, 3, 2, 1, 1, 1 },
+				{ 4, 3, 3, 3, 3, 2, 2, 1, 1 } };
+
+	int difference = 0;
+	if (upgrade) difference = class_level - 1;
+
+	switch (spellcaster_tier) {
+	case 0:	//not
+		class_level = 0;
+		difference = 0; break;
+	case 1: //mild, like arcane trickster
+		class_level = (class_level + 2) / 3;
+		difference = (difference + 2) / 3; break;
+	case 2: //moderate, like ranger
+		if (class_level = 1) { class_level = 0; }
+		else {
+			class_level = (class_level + 1) / 2;
+			difference = (difference + 1) / 2;
+		}
+	}
+
+	for (int i = 0; i < 9; i++) {
+		user_data->slots[i] += reference[class_level][i] - reference[difference][i];
+	}
+}

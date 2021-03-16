@@ -1,0 +1,96 @@
+multiclass requirement: cha 13
+proficiencies: 
+hit dice: 1d6
+special counters:
+sorcery points
+
+
+1st character level only proficiencies:
+	daggers, darts, slings, quarterstaffs, light crossbows
+	cha saves, con saves
+	any two: Arcana, deception, insight, intimidation, persuasion, religion
+	starting equipment:
+		light crossbow AND 20 bolts OR any simple weapon
+		component pouch OR arcane focus
+		dungeoneer's pack OR explorer's pack
+		2 daggers
+
+level 1
+	sorcerer spells known = 2
+	sorcerer cantrips known = 4
+	subclass
+
+level 2
+	sorcerer spells known += 1
+	font of magic
+		sorcery points = 2
+		long rest:
+			sorcery points = level
+		new bonus action:
+			select level between 1 and 5
+			costs dependent number of sorcery points			//???how would I implement this?
+			gain that level spell slot
+		new bonus action
+			costs 1 spell slot of any level
+			gain 1 sorcery point per spell slot level
+
+level 3
+	sorcerer spells known += 1
+	metamagic
+		select 2 metamagic abilities
+
+level 4
+	sorcerer spells known += 1
+	sorcerer cantrips known += 1
+	ability score improvement
+
+level 5
+	sorcerer spells known += 1
+
+level 6
+	sorcerer spells known += 1
+
+level 7
+	sorcerer spells known += 1
+
+level 8
+	sorcerer spells known += 1
+	ability score improvement
+
+level 9
+	sorcerer spells known += 1
+
+level 10
+	sorcerer spells known += 1
+	sorcerer cantrips known += 1
+	select 1 metamagic ability
+
+level 11
+	sorcerer spells known += 1
+
+level 12
+	ability score improvement
+
+level 13
+	sorcerer spells known += 1
+
+level 15
+	sorcerer spells known += 1
+
+level 16
+	ability score improvement
+
+level 17
+	sorcerer spells known += 1
+	select 1 metamagic ability
+
+level 19
+	ability score improvement
+
+level 20
+	sorcerous restoration
+		short rest
+			if sorcery points < 16
+				sorcery points += 4
+			else
+				sorcery points = 20

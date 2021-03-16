@@ -1,0 +1,175 @@
+<player-character
+	xp=""
+	race=""
+	subrace=""
+	hp=""
+	chosen-hp-max=""
+	algorithmic-hp-max=""
+	thp=""
+	hit-dice=""
+	inspiration-die=""
+	valor-inspiration=""
+	size=""
+	alignment=""
+	armor=""
+	main-hand=""
+	off-hand=""
+	ac_bonus=""
+	speed=""
+	swim-speed=""
+	fly-speed=""
+	climb-speed=""
+	long-jump-distance=""
+	long-jump-running-start=""
+	high-jump-height=""
+	str=""
+	dex=""
+	con=""
+	int=""
+	wis=""
+	cha=""
+	weak-to-silver=""
+	weak-to-magic=""
+	Ability list abilities;
+	int spell_slots_max[9];
+	int spell_slots[9];
+	SpellList cantrips;
+	SpellList list spell_lists;
+	statusEffectType status_effects[];
+	string list arbitrary_states;
+	strToIntMap arbitrary_counter >
+	<simple-creature
+		private-name=""
+		hp=""
+		thp=""
+		size=""
+		ac-bonus=""
+		alignment=""
+		walk-speed=""
+		swim-speed=""
+		fly-speed=""
+		climb-speed=""
+		long-jump-distance=""
+		long-jump-running-start=""
+		high-jump-height=""
+		str=""
+		dex=""
+		con=""
+		int=""
+		wis=""
+		cha=""
+		magic-overrides-reistances=""
+		silver-overrides-resistances=""
+		String list senses;
+		passive-perception-bonus="" >
+		<immunities>
+			<damage-type
+				name="" >
+			<condition
+				name="" >
+		</immunities>
+		<resistances>
+			<damage-type
+				name="" >
+		</resistances>
+		<vulnerabilities>
+			<damage-type
+				name="" >
+		</vulnerabilities>
+		<skill-bonus
+			skill-name=""
+			bonus="" />
+		<language
+			name="" />
+		<ability
+			name=""/>
+		<note
+			location=""
+			text="" />
+	</simple-creature>
+	<class
+		private-name=""
+		level=""
+		subclass="" />
+	<sublcass
+		private-name=""
+		sublcass="" />
+	<inventory>
+		<item
+			name="" >
+	</inventory>
+	<immunities>
+		<damage-type
+			name="" >
+		<condition
+			name="" >
+	</immunities>
+	<resistances>
+		<damage-type
+			name="" >
+	</resistances>
+	<vulnerabilities>
+		<damage-type
+			name="" >
+	</vulnerabilities>
+	<skill-expertise
+		name="" />
+	<skill-proficient
+		name="" />
+	<skill-competent
+		name="" />			<!--these are skills where you get half your proficiency bonus, such as with bards or rogues
+	<language
+		name="" />
+	<ability
+		name="" />
+<player-character>
+
+typedef struct {
+	simpleCreature* morph;
+	int xp;
+	string race;
+	string subrace;
+	Class list classes;
+	int hp;
+	int chosen_hp_max;
+	int level-based_hp_max;
+	int thp;
+	Dice hit_dice;
+	int inspiration_die;
+	boolean valor_inspiration;
+	sizeType size;
+	alignmentType alignment;
+	itemType armor;
+	itemType main_hand;
+	itemType off_hand;
+	itemType list inventory;
+	int ac_bonus;
+	int walk_speed;
+	int swim_speed;
+	int climb_speed;
+	int fly_speed;
+	int long_jump_distance;
+	int long_jump_running_start;
+	int high_jump_distance;
+	int abilities[6];
+	int immune_flags;
+	int resistance_flags;
+	int weak_to_silver;
+	int weak_to_magic;
+	int vulnerable_flags;
+	int condition_immunity_flags;
+	String list senses;
+	int passive_perception_bonus;
+	int skill_half-proficiencies[skill#];
+	int skill_proficiencies[skill#];
+	int skill_expertise[skill#];
+	String list languages;
+	Ability list abilities;
+	int spell_slots_max[9];
+	int spell_slots[9];
+	SpellList cantrips;
+	SpellList list spell_lists;
+	statusEffectType status_effects[];
+	string list arbitrary_states;
+	strToIntMap arbitrary_counter;
+} PlayerCharacter

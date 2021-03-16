@@ -1,0 +1,79 @@
+<creature
+	private-name=""
+	public-name=""
+	source-book=""
+	hp-max=""
+	size=""
+	alignment=""
+	walk-speed=""
+	swim-speed=""
+	fly-speed=""
+	climb-speed=""
+	long-jump-distance=""
+	long-jump-running-start=""
+	high-jump-height=""
+	str=""
+	dex=""
+	con=""
+	int=""
+	wis=""
+	cha=""
+	magic-overrides-reistances=""
+	silver-overrides-resistances="" >
+	<immunities>
+		<damage-type
+			name="" >
+		<condition
+			name="" >
+	</immunities>
+	<resistances>
+		<damage-type
+			name="" >
+	</resistances>
+	<vulnerabilities>
+		<damage-type
+			name="" >
+	</vulnerabilities>
+	<skill-bonus
+		skill-name=""
+		bonus="" />
+	<language
+		name="" />
+	<ability/>
+	<note
+		location=""
+		text="" />
+</creature>
+
+typedef struct {
+	String private_name;
+	String public_name;
+	String source_book;
+	int hp;
+	int hp_max;
+	sizeType size;
+	creatureType type;
+	alignmentType alignment;
+	itemType armor;
+	int ac_bonus;
+	int walk_speed;
+	int swim_speed;
+	int climb_speed;
+	int fly_speed;
+	int long_jump_distance;
+	int long_jump_running_start;
+	int high_jump_distance;
+	int abilities[6];
+	int immune_flags;
+	int resistance_flags;
+	int weak_to_silver;			//these two exist because some creatures are resistant to non-magical or non-silvered weapons
+	int weak_to_magic;
+	int vulnerable_flags;
+	int condition_immunity_flags;
+	String list senses;
+	int passive_perception_bonus;
+	int skill_bonuses[however many skills there are]
+	String list languages;
+	challengeRatingType CR
+	Ability list abilities;
+} simple-creature;

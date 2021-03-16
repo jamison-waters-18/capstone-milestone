@@ -1,0 +1,69 @@
+player attributes:
+current overlay
+xp
+race
+subrace
+speed
+ability points
+temp ability points
+ability point maxes (default 20)
+skill half-proficiencies
+skill proficiencies
+skill expertise						//rogues can have expertise in thieves tools??
+unproficient skill bonus			//?
+ability save proficiency
+item proficiency map
+known languages
+hp
+hp max
+thp
+inspiration dice
+rolls inspiration can be used for
+hit dice
+status effects
+abilities
+list of spell lists
+list of spell slots
+list of classes
+map of special counters
+worn armor
+equipped weapons (dominant, non-dominant)
+inventory
+
+when accepting inspiration, check bard college
+
+spell list attributes:
+	name
+	modifier
+	relevant ability
+	cast normally?
+	cast as ritual?
+	spellcasting focus?
+	owner (needed for spell books)
+	focus type
+	known cantrips
+	known spells
+
+class attributes:
+	provided level
+	hit die size
+
+additional statuses:
+	concentrating
+	hidden
+	transformed
+
+things to map:
+	rage count
+	rage count max
+	rage damage
+	crit melee damage
+	relentless rage dc
+	raging
+	frenzied
+	rage timer (turns)
+	unarmored defense
+	unarmed damage
+	rage resistances
+	carrying capacity multiplier
+	unskilled bonus

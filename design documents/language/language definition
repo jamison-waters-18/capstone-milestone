@@ -1,0 +1,195 @@
+sequence:
+	expr;sequence
+	expr;
+
+bool_sequence:
+	bool_expr;bool_sequence
+	bool_expr;
+
+expr:
+	bool_expr
+	int_expr
+	str_expr
+	null_func
+
+command:
+
+bool_expr:
+	bool_val
+	bool_func
+
+bool_val:
+	0
+	1
+
+int_expr:
+	int_val
+	int_func
+
+int_val:
+	integer pointer
+
+str_expr:
+	str_val
+	str_func
+
+str_val
+	string pointer
+
+null_func:							//return nothing
+	halt()
+	nop()
+	assign_int(str_expr,int_expr)
+	enter_arbitrary_state(str_expr,sequence)		//adds expr1 as plain text to list of arbitrary states, with expr2 being what happens upon exit
+	exit_arbitrary_state(str_expr)		//removes expr if found in plain text in list of arbitrary states
+	buff_ac(int_expr)
+	nerf_ac(int_expr)
+	buff_hp_max(int_expr)
+	nerf_hp_max(int_expr)
+	buff_speed(int_expr)
+	nerf_speed(int_expr)
+	buff_swim_speed(int_expr)
+	nerf_swim_speed(int_expr)
+	buff_climb_speed(int_expr)
+	nerf_climb_speed(int_expr)
+	set_temp_hp(int_expr)
+	add_process(menu_const,sequence)
+	update_unarmed_strike(str_expr)		//updated unarmed strike qualities should be featured in separate xml sheet
+	add_action(str_expr)				//new action should be featured in separate xml sheet
+	add_bonus_action(str_expr)			//new action should be featured in separate xml sheet
+	add_reaction(str_expr)				//new action should be featured in separate xml sheet
+	add_free_action(str_expr)			//new action should be featured in separate xml sheet
+	add_at_will(str_expr)				//new action should be featured in separate xml sheet
+	if(bool_expr,sequence,sequence)		//if expr1 is true, perform expr2. else, perform expr3
+	set_spell_concentration(bool_expr)
+	reenable_action(str_expr)
+	provide_spell_list(str_expr)
+	add_spell(str_expr,str_expr)		//add's spell with private name expr1 to spell list with private name expr2
+	remove_feature()
+	place_note(menu_const,str_expr)
+
+prompt_func:
+	prompt_damage_type(var_str_expr)
+	prompt_select_file(str_expr,str_expr,int_expr,bool_sequence)	//prompt_select_file("features",3,sequence) searches folder "features" for files, filters out selections based on bool_sequence
+	
+
+
+bool_func:							//return bool_val
+	bool_attr
+	eq(int_expr,int_expr)				//returns expr1 == expr2
+	gt(int_expr,int_expr)				//returns expr1 > expr2
+	and(bool_expr,bool_expr)			//returns expr1 && expr2
+	or(bool_expr,bool_expr)				//returns expr1 || expr2
+	not(bool_expr)						//returns !expr
+	has_any_flags(int_expr,int_expr)	//returns (expr1 & expr2) != 0
+	has_all_flags(int_expr,int_expr)	//returns (expr1 & expr2) == expr2)
+	name_contains(str_expr,str_expr)	//returns true if expr2 is a substring of expr1
+
+int_func:							//return int_val
+	int_attr
+	int_const
+	min(int_expr,int_expr)				//returns pointer to the lowest
+	max(int_expr,int_expr)				//returns pointer to the highest
+	add(int_expr,int_expr)				//returns pointer to the sum
+	sub(int_expr,int_expr)				//returns pointer to the difference OR zero, if difference is negative
+	mult(int_expr,int_expr)				//returns pointer to the product
+	div_round_down(int_expr,int_expr)	//returns pointer to expr1/expr2
+	div_round_up(int_expr,int_expr)		//returns pointer to (expr1+expr2-1)/expr2
+	prompt_select_damage(int_expr)
+
+str_func:
+	str_attr
+
+bool_attr:
+	spell_ritual()
+	char_can_verbal()
+	char_can_somatic()
+	char_can_materials(str_expr)
+	has_arbitrary_state(str_expr)		//returns if expr is found in list of arbitrary states
+	can_learn_spell(str_expr)			//returns true if you have a spell slot of at least that spell level, 
+	can_cast_spell(str_expr)			//
+
+int_attr:
+	char_level()
+	char_class_level(str_expr)
+	char_inv_count(str_expr, int_expr)	//expr2 is minimum value
+	char_valuable_count()				//
+	char_ability_score(ability_const)
+	char_ability_mod(ability_const)
+	spell_level()
+	spell_casting_time()
+	spell_num_targets()
+	spell_area_size()
+	spell_area_shape()
+	
+
+str_attr:
+	spell_private_name()
+	spell_public_name()
+	spell_school()
+
+int_const:
+	ability_const
+	time_const
+	range_const
+	shape_const
+	menu_const
+
+ability_const:
+	const_str()
+	const_dex()
+	const_con()
+	const_int()
+	const_wis()
+	const_cha()
+
+time_const:
+	action()
+	bonus_action()
+	free_action()
+	at_will()
+	reaction()
+	num_minutes(int_expr)
+
+range_const:
+	self()
+	touch()
+	num_feet(int_expr)
+
+menu_const:
+	const_weapon_attack()
+	const_weapon_damage()
+	const_spell_cast()
+	const_spell_damage()
+	const_long_rest()
+	const_short_rest()
+	const_equip()
+	menu_ability_check()
+	menu_ability_save()
+	menu_skill_check()
+	menu_initiative()
+	menu_apply_effect()
+	menu_default()
+	menu_action()
+
+processes_const:
+	pre_attack()
+	when_attack_roll_options()
+	pre_damage()
+	when_damage_roll_options()
+	when_taking_damage()
+	when_downed()
+	after_short_rest()
+	after_long_rest()
+	before_combat()
+	before_turn()
+	after_turn()
+	after_taking_status_effect()
+
+description of blob
+	current character
+	selected damage type
+	selected spell
+	selected spell slot
+	selected weapon
+	selected ability

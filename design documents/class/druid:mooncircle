@@ -1,0 +1,56 @@
+level 2:
+	remove wild shape
+	combat wild shape
+		new bonus action
+			cost 1 wild shape charge
+			assume shape of beast (hours = druid level / 2)			//no timers for things over a couple minutes
+				decide whether equipment is dropped, merged, or worn
+				preserve int, wis, cha scores, inherit str, dex, con scores
+				merge saving throws and skill proficiencies
+				legendary/lair actions withheld
+				gain hp and hit dice
+				disable verbal, somatic, material spell components
+				keep any class/race features that are still usable in beast form
+			new bonus action:
+				end animal shape
+				restore verbal, somatic, material spell components
+			new bonus action:
+				select spell slot
+				heal 1d8 for every spell slot level
+	wild shape req = "cr <= 1; fly_speed == 0; swim_speed = 0"
+
+
+level 4
+	wild shape req = "cr <= 1; fly_speed == 0"
+
+level 6
+	wild shape req = "cr <= 2; fly_speed = 0"
+	beast attacks count as magical						//????????? (if in beast mode, OR attack with magical flag)
+
+level 8
+	wild shape req = "cr <= 2"
+
+level 9
+	wild shape req = "cr <= 3"
+
+level 10
+	elemental wild shape
+		new bonus action
+			costs 2 wild shape charges
+			transform into air, earth, fire, or water elemental
+
+level 12
+	wild shape req = "cr <= 4"
+
+level 14
+	thousand forms
+		new non action
+			cast alter self at will at no cost
+
+level 15
+	wild shape req = "cr <= 5"
+
+level 18
+	wild shape req = "cr <= 6"
+
+

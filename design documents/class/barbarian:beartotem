@@ -1,0 +1,24 @@
+level 3:
+	spirit seeker
+		new ritual only spell list
+			beast sense
+			speak with animals
+	totem spirit:
+		when raging:
+			resistance to all damage but psychic
+
+level 6:
+	aspect of the beast
+		conditional str check advantage
+			pushing, pulling, lifting, breaking
+		carrying capacity * 2
+
+level 10:
+	new spell for ritual-only spell list
+		commune with nature
+
+level 14:
+	totemic attunement:
+		when raging:
+			if foe beside you AND can see and hear you AND isn't immune to being frightened
+				has disadvantage on attacks against other targets

@@ -1,0 +1,61 @@
+level 3
+	bane as oath spell
+	hunter's mark as oath spell
+	channel divinity: abjure enimy
+		new action
+			costs 1 channel divinity
+			select creature within 60 ft for wis save
+				doesn't work if immune to frighten
+				fiends and undead have disadvantage
+			on fail, until hit
+				frightened
+				speed 0
+			on success
+				speed halved
+	channel divinity: vow enmity
+		new bonus action
+			costs 1 channel divinity
+			select foe within 10 feet
+			for 1 minute
+				advantage on attack roles against foe
+
+level 5
+	hold personas oath spell
+	misty step as oath spell
+
+level 7
+	relentelss avenger
+		when making opportunity attack
+			can move half your speed during same reaction, without invoking opportunity attacks (note)
+
+level 9
+	haste as oath spell
+	protection from energy as oath spell
+
+level 13
+	banishment as oath spell
+	dimension dooras oath spell
+
+level 15
+	souls of vengance
+		new reaction
+			if foe subject to vow of enmity makes attack
+				make melee weapon attack against foe (if in range)
+
+level 17
+	hold monster as oath spell
+	scrying as oath spell
+
+level 20
+	avenging angel
+		avenging angel charge = 1
+		long rest
+			avenging angel charge = 1
+		new action
+			costs 1 avenging angel charge
+				for 1 hour
+					flying speed of 60 ft
+					foes entering 30 ft radius (or starts turn there) make wis save
+					if fail
+						frightened 1 minute or until damaged
+						advantage on attack roles against foe

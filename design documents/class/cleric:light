@@ -1,0 +1,65 @@
+level 1:
+	burning hands as domain spell
+	faerie fire as domain spell
+	gain light cantrip (if not known already)
+	warding flare:
+		"flare" = wis mod
+		new reaction (non-blind foe in 30 feet you see attacks you):
+			costs 1 flare
+			impose disadvantage on attack roll
+		long rest:
+			flare = wis mod
+
+level 2:
+	channel divinity: radiance of the dawn
+		new action:
+			costs 1 channel divinity charge
+			dispell any darkness within 30 feet
+			creatures in range make con save
+			if fail
+				2d10 + cleric level radiant damage
+			if succeed
+				half that
+
+level 3:
+	flaming pshere as domain spell
+	scorching ray as domain spell
+
+level 5:
+	daylight as domain spell
+	fireball as domain spell
+
+level 6:
+	remove warding flare
+	warding flare:
+		"flare" = wis mod
+		new reaction (non-blind foe in 30 feet you see attacks you OR FRIEND):
+			costs 1 flare
+			impose disadvantage on attack roll
+		long rest:
+			flare = wis mod
+
+level 7:
+	guardian of faith as domainspell
+	wall of fire as domain spell
+
+level 8:
+	potent spellcasting:
+		if casting cleric cantrip
+			damage += wis mod
+
+level 9:
+	flame strike as domain spell
+	scrying as domain spell
+
+level 17:
+	corona of light:
+		new action:
+			corona timer = 10
+			60 foot sphere of bright light
+			90 foot sphere of dim light
+			foes within 60 feet have disadvantage on saving throws against fire and radiant spells
+			end of turn:
+				corona timer -= 1
+			new action:
+				corona timer = 0

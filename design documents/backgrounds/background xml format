@@ -1,0 +1,44 @@
+<?xml?>
+<background
+	private-name=""
+	public-name="">
+	<specialty
+		public-name="" \>
+	<item-proficiency
+		private-name="" />
+	<item-proficiency-selection
+		item-criteria=""
+		needs-all-flags="" /> <!--item-type(x);item-flag(y);--> <!--(true or false)-->
+	<language
+		private-name="" /> <!--(can be "any")-->
+	<skill-proficiency
+		private-name="" />
+	<ability
+		private-name="" />
+	<ability-selection>
+		<ability
+			private-name="" />
+		<ability
+			private-name="" />
+	</ability-selection>
+	<starting-equipment>
+		<item
+			private-name="" />
+		<item
+			private-name="" />
+		<item-choice>
+			<item
+				private-name="" />
+			<item
+				private-name="" />
+		</item-choice>
+	</starting-equipment>
+	<suggested-characteristics>
+		<bond desc="" />
+		<bond desc="" />
+		<flaw desc="" />
+		<ideal desc="" />
+		<trait desc="" />
+	</suggested-characteristics>
+</background>
+

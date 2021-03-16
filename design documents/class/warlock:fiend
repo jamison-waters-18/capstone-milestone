@@ -1,0 +1,50 @@
+level 1
+	burning hands as patron spell
+	command as patron spell
+	dark one's blessing
+		new non-action
+			if reduce creature to 0 hp
+				temp hp += max(1, cha mod + warlock level)
+
+level 2
+	blindness/deafness as patron spell
+	scorching ray as patron spell
+
+level 3
+	fireball as patron spell
+	stinking cloud as patron spell
+
+level 4
+	fire shield as patron spell
+	wall of fire as patron spell
+
+level 5
+	flame strike as patron spell
+	hallow as patron spell
+
+level 6
+	dark one's own luck
+		dark luck charge = 1
+		short rest
+			dark luck charge = 1
+		long rest
+			dark luck charge = 1
+		when making check or save
+			costs 1 dark luck charge
+			add 1d10 to roll
+
+level 10
+	fiendish resilience
+		after short or long rest
+			choose damage type
+			temporarily resistant to this damage type
+
+level 14
+	hurl through hell
+		hurl through hell charge = 1
+		long rest
+			hurl through hell charge = 1
+		when hit creature
+			costs 1 hurl through hell charge
+			creature goes to hell until the end of your next turn
+			if not fiend, takes 10d10 psychic damage

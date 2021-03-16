@@ -1,0 +1,52 @@
+level 3
+	protection from evil and good as oath spell
+	sanctuary as oath spell
+	channel divinity: sacred weapon
+		new action
+			costs 1 channel divinity
+			for 1 minute
+			if weapon has condition "sacred"
+				weapon counts as magical
+				attack rolls += cha mod
+				weapon emits light
+				ends if fall unconscoius or drop weapon
+	channel divinity: turn the unholy
+		new action
+			costs 1 channel divinity
+			turn any undead or fiends within 30 feet if they fail wis save
+
+level 5
+	lesser restoration as oath spell
+	zone of truthas oath spell
+
+level 7
+	aura of devotion
+		you and friends within 10 feet can't be charmed
+		at level 18, boosted to 30 feet
+
+level 9
+	beacon of hope as oath spell
+	dispel magic as oath spell
+
+level 13
+	freedom of movement as oath spell
+	guardian of faith as oath spell
+
+level 15
+	purity of spirit
+		always have protection from evil and good spell effects
+
+level 17
+	commune as oath spell
+	flame strike as oath spell
+
+level 20
+	holy numbus
+		holy nimbus charges = 1
+		long rest
+			holy nimbus charges = 1
+		new action
+			for 1 minute
+				30 ft radius of bright light, 60 ft radius of dim light
+				if creature starts turn in bright light, takes 10 radiant damage
+				advantage on saves against fiends and undead

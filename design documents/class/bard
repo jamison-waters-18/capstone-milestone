@@ -1,0 +1,122 @@
+multiclass requirement: cha 13
+proficiencies: light armor, any skill, any item with instrument flag
+hit dice: 1d8
+special counters:
+inspiration count
+inspiration count max	// based on cha mod, how do?
+inspiration die
+song of rest die
+
+1st character level only proficiencies:
+	simple weapons, hand crossbows, longswords, rapiers, shortswords
+	two more items with instrument flag
+	dex save, cha save
+	any 3 skills
+	rapier or longsword or any simple weapon
+	diplomats pack or entertainers pack
+	any item with instrument flag
+	leather armor
+	dagger
+
+every level:
+	remove 1 spell
+	add 1 spell
+
+level 1:
+	known bard cantrips = 2
+	known bard spells = 4
+	can cast any known spell as ritual
+	bardic inspiration:
+		inspiration die = 1d6
+		long rest:
+			inspiration count = inspiration count max
+
+level 2:
+	known bard spells += 1
+	jack of all trades:
+		NOT proficient += prof / 2
+	song of rest:
+		song of rest die = 1d6
+		note
+
+level 3:
+	known bard spells += 1
+	subclass
+	select 2 expertise
+
+level 4:
+	known bard cantrips = 3
+	known bard spells += 1
+	ability score improvement
+
+level 5:
+	known bard spells += 1
+	inspiration die = 1d8
+	font of inspiration
+		short rest
+			inspiration count = inspiration count max
+
+level 6:
+	known bard spells += 1
+	countercharm
+		new action:
+			give all friends advantage on saving throws against being frightened or charmed
+
+level 7:
+	known bard spells += 1
+
+level 8:
+	known bard spells += 1
+	ability score improvement
+
+level 9:
+	known bard spells += 1
+	song of rest die = 1d8
+
+level 10:
+	known bard cantrips = 4
+	inspiration die = 1d10
+	select 2 expertise
+	magical secrets
+		known bard spells += 2
+		add ANY two spells
+
+level 11:
+	known bard spells += 1
+
+level 12:
+	ability score improvement
+
+level 13:
+	known bard spells += 1
+	song of rest die = 1d10
+
+level 14:
+	magical secrets
+		known bard spells += 2
+		add ANY two spells
+
+level 15:
+	known bard spells += 1
+	inspiration die = 1d12
+
+level 16:
+	ability score improvement
+
+level 17:
+	known bard spells += 1
+	song of rest die = 1d12
+
+level 18:
+	magical secrets
+		known bard spells += 2
+		add ANY two spells
+
+level 19:
+	ability score improvement
+
+level 20:
+	superior inspiration:
+		at start of combat
+			if inspiration count == 0
+				inspiration count = 1

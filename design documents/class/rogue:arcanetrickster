@@ -1,0 +1,65 @@
+level 3
+	wizard spells known += 3
+	learn mage hand
+	wizard cantrips known += 3
+	mage hand legerdemain
+		mage hand is invisible
+		can an object can be stowed in/retrieved from a container carried by another creature
+		can use thieves tool to pick locks or disarm traps
+		to go unnoticed, your sleight of hand must beat their perception
+		new bonus action
+			if mage hand active
+				control mage hand
+
+level 4
+	wizard spells known += 1
+
+level 7
+	wizard spells known += 1
+
+level 8
+	wizard spells known += 1
+
+level 9
+	if hidden from foe AND casting spell on same foe
+		foe has disadvantage on any saves
+
+level 10
+	wizard spells known += 1
+	wizard cantrips known += 1
+
+level 11
+	wizard spells known += 1
+
+level 13
+	wizard spells known += 1
+	versatile trickster
+		new bonus action
+			if mage hand active
+				get advantage on attack rolls against one creature adjacent to it
+
+level 14
+	wizard spells known += 1
+
+level 16
+	wizard spells known += 1
+
+level 17
+	spell thief
+		spell thief charge = 1
+		logn rest
+			spell thief charge = 1
+		new reaction
+			if youre targeted/in effect area of a spell
+				costs 1 spell thief charge
+				force it to make a save with its spellcasting ability modifier
+				if fail
+					spell fails
+					if not cantrip AND have spell slot for that level
+						you can now cast this spell for 8 hours, enemy can't
+
+level 19
+	wizard spells known += 1
+
+level 20
+	wizard spells known += 1

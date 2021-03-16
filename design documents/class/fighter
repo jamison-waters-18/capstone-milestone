@@ -1,0 +1,114 @@
+multiclass requirement: str 13 OR dex 13
+proficiencies: light armor, medium armor, shields, simple weapons, martial weapons
+hit dice: 1d10
+special counters:
+rage count (CAN BE INFINITE)
+rage count max
+rage damage
+
+
+1st character level only proficiencies:
+	heavy armor
+	str saves, con saves
+	any two: Acrobatics, Animal Handling, athletics, history, insight, intimidation, perception, survival
+	starting equipment:
+		chain mail OR leather armor AND longbow AND 20 arrows
+		any martial weapon AND shield OR any martial weapon AND any martial weapon
+		light crossbow AND 20 bolts OR 2 handaxes
+		dungeoneer's pack OR explorer's pack
+
+level 1:
+	fighting style:
+		select one of the following:	//?????????? maybe save a value and have the effect depend on that value?
+			archery:
+				if making RANGED weapon attack
+					+2
+			defense:
+				if wearing armor
+					ac += 1
+			dueling
+				if melee weapon in one hand and no other weapons
+					damage +2
+			great weapon fighting
+				if weapon two-handed or wielded versatile
+					reroll 1 or 2 on attack roll (note)
+			protection
+				if holding shield
+					new reaction:
+						give disadvantage on foe attacking another creature
+			two weapon fighting
+				if duel wielding
+					second attack += ability mod
+	second wind
+		second wind charge = 1
+		second wind max = 1
+		long rest
+			second wind charge = second wind max
+		short rest
+			second wind charge = second wind max
+		new bonus action:
+			costs 1 second wind charge
+			hp += 1d10 + fighter level
+
+level 2
+	action surge
+		action surge charge = 1
+		action surge max = 1
+		long rest
+			action surge charge = action surge max
+		short rest
+			action surge charge = action surge max
+		new non-action
+			re-allow use of action
+
+level 3
+	subclass
+
+level 4
+	ability score improvement
+
+level 5
+	extra attack
+
+level 6
+	ability score improvement
+
+level 8
+	ability score improvement
+
+level 9
+	indominable:
+		indomitable charges = 1
+		indomitable max = 1
+		long rest:
+			indomitable charges = indomitable max
+		makign saving throw
+			cost 1 indomitable chage
+			reroll saving throw
+
+level 11
+	extra attack 2
+
+level 12
+	ability score improvement
+
+level 13
+	indomitable max = 2
+
+level 14
+	ability score improvement
+
+level 16
+	ability score improvement
+
+level 17
+	action surge max = 2
+	indomitable max = 3
+
+level 19
+	ability score improvement
+
+level 20
+	extra attack 3
+	
+			

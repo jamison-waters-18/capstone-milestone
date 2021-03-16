@@ -1,0 +1,49 @@
+level 3
+	hunter's prey
+		choose one of the following
+			colossus slayer
+				once per turn, deal an extra 1d8 damage to foe beneath half health
+			giant killer
+				new reaction
+					when large or larger creature you can see attacks you (hitting OR missing)
+						make attack on creature
+			horde breaker
+				after finishing attack on foe
+					once per turn, make another attack with the same weapon on a different foe
+
+level 7
+	defensive tactics
+		choose one of the following
+			escape the horde
+				opportunity attacks on you get disadvantage
+			multiattack defense
+				if foe hits you
+					gain +4 ac against all attacks from same foe
+			steel will
+				advantage against being frightened
+
+level 11
+	multiattack
+		choose one of the following
+			volley
+				new action
+					make ranged attack against any number of creatures within 10 ft radius of a point you can see in weapon's range
+						each foe requires separate attack rolls & ammunition
+			whirlwind attack
+				new action
+					melee attack against all foes within 5 feet, rolling separately for each
+
+level 15
+	superior hunter's defense
+		choose one of the following
+			evasion
+				if subjected to effect requireing dex save to half damage
+					now no damage upon success, half damage upon fail
+			stand against the tide
+				new reaction
+					when foe misses attack on you
+						force it to repeat attack on different creature
+			uncanny dodge
+				new reaction
+					when hit by foe you can see
+						half damage
