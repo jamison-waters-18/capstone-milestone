@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="studded-leather"
+	public-name="Studded Leather"
+	category="armor"
+	flags="light"
+	ac="12"
+	value="45"
+	weight="13" />

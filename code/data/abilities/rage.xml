@@ -1,0 +1,48 @@
+<ability
+	private-name="rage"
+	public-name="Rage"
+	sequence="add_bonus_action(`begin-rage`,`Begin Rage`,
+				and(not(has_arbitrary_state(`raging`)),gt(val_of_arbitrary_counter('rage counter'),0));,
+				set_note(menu_ability_check(),`rage-ability-check`,`When raging, you have advantage on STR checks and STR saves.`);
+					add_process(pre_weapon_damage(),
+						`rage-weapon-damage`,
+						enter_arbitrary_state(`successfully-hit`,nop(););
+						if(and(has_all_flags(weapon-flags(),weapon-flag-melee()),
+								eq(selected_ability(),str())
+							),
+							add_to_damage(weapon_damage_type(),val_of_arbitrary_counter(`rage-damage`),1),\=
+							nop();
+						);
+					);
+					add_process(when_taking_damage(),`rage-taking-damage`,enter_arbitrary_state(`been_hit`,nop();););
+					add_resistance(blugeoning(),piercing(),slashing());
+					disable_spellcasting();
+					disable_concentration();
+					set_arbitrary_counter(`rage-timer`,10);
+					add_process(after_turn(),
+						`rage-after-turn',
+						set_arbitrary_counter(`rage-timer`,sub(val_of_arbitrary_counter(`rage-timer`),1));
+						if(eq(0,val_of_arbitrary_counter(`rage-timer`)),
+							exit_arbitrary_state(`raging`);,
+							nop();
+						);
+						exit_arbitrary_state(`successfully-hit`);
+						exit_arbitrary_state(`been-hit`);
+					);
+					add_bonus_action(`end-rage`,`End Rage`,
+						true,
+						exit_arbitrary_state(`raging`););
+					enter_arbitrary_state(`raging`,
+						remove_process(pre_weapon_damage(),`rage-weapon-damage`);
+						remove_process(after_turn(),`rage-after-turn`);
+						remove_process(when_taking_damage(),`rage-taking-damage`);
+						enable_spellcasting();
+						enable_spellcasting();
+						remove_resistance(blugeoning(),piercing(),slashing());
+						exit_arbitrary_state(`successfully-hit`);
+						exit_arbitrary_state(`been-hit`);
+						remove_note(menu_ability_check(),`rage-ability-check`);
+						remove_bonus_action(`end-rage`);
+					);
+				);"
+/>

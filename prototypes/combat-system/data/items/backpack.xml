@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="backpack"
+	public-name="Backpack"
+	category="container"
+	max-weight="30"
+	max-dry-volume="1"
+	value="2"
+	weight="5" />

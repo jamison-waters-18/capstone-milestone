@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF8"?>
+<race-def
+	private-name="human:standard"
+	public-name="Standard Human"
+	note="Gains +1 to all abilities" >
+	<ability-bonus
+		ability="str"
+		bonus="1" />
+	<ability-bonus
+		ability="dex"
+		bonus="1" />
+	<ability-bonus
+		ability="con"
+		bonus="1" />
+	<ability-bonus
+		ability="int"
+		bonus="1" />
+	<ability-bonus
+		ability="wis"
+		bonus="1" />
+	<ability-bonus
+		ability="cha"
+		bonus="1" />
+</race-def>

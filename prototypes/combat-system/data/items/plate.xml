@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="plate"
+	public-name="Plate"
+	category="armor"
+	flags="heavy, stealth disadvantage"
+	ac="18"
+	str-req="15"
+	value="1500"
+	weight="65" />

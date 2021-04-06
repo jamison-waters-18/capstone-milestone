@@ -1,4 +1,6 @@
 <player-character
+	private-name=""
+	public-name=""
 	xp=""
 	race=""
 	subrace=""
@@ -15,6 +17,8 @@
 	main-hand=""
 	off-hand=""
 	ac_bonus=""
+	can-cast-spells=""
+	can-concentrate=""
 	speed=""
 	swim-speed=""
 	fly-speed=""
@@ -96,7 +100,27 @@
 		sublcass="" />
 	<inventory>
 		<item
+			name="" />
+		<item
 			name="" >
+			<spell-list
+				private-name=""
+				public-name=""
+				spell-list-type=""
+				spellcasting-ability=""
+				spell-slot-type=""
+				can-cast-non-ritual=""
+				can-cast-ritual=""
+				spellcasting-focus=""
+				owner="" >
+				<spell
+					name="">
+				<spell
+					name="">
+				<spell
+					name="">
+			<spell-list/>
+		</item>
 	</inventory>
 	<immunities>
 		<damage-type
@@ -122,10 +146,55 @@
 		name="" />
 	<ability
 		name="" />
-<player-character>
+	<spell-list
+		private-name=""
+		public-name=""
+		spell-list-type=""
+		spellcasting-ability=""
+		spell-slot-type=""
+		can-cast-non-ritual=""
+		can-cast-ritual=""
+		spellcasting-focus=""
+		owner="" >
+		<spell
+			name="">
+		<spell
+			name="">
+		<spell
+			name="">
+	<spell-list/>
+	<arbitrary-counter
+		name=""
+		value="" />
+	<arbitrary-state
+		name=""
+		upon-end="" />
+	<sequences>
+		<short-rest
+			name=""
+			sequence="" />
+		<long-rest
+			name=""
+			sequence="" />
+	</sequences>
+</player-character>
+
+typedef struct {
+	String private_name;
+	String public_name;
+	String owner;
+	spellListType operates_as;			//includes inate, known, preparable
+	abilityType spellcasting_ability;
+	gboolean can_cast_non_ritual;
+	gboolean can_cast_ritual;
+	String spellcasting-focus; //includes arcane focuses, druidic focuses, holy symbols, instruments. if blank, can only use component pouch
+	Spell list spells;
+} SpellList;
+//for inate spell lists, the number of charges will be stored at "(spell list name):(spell name) charges"
 
 typedef struct {
 	simpleCreature* morph;
+	String name;
 	int xp;
 	string race;
 	string subrace;
@@ -144,6 +213,8 @@ typedef struct {
 	itemType off_hand;
 	itemType list inventory;
 	int ac_bonus;
+	int can_cast_spells;
+	int can_concentrate;
 	int walk_speed;
 	int swim_speed;
 	int climb_speed;
@@ -152,11 +223,11 @@ typedef struct {
 	int long_jump_running_start;
 	int high_jump_distance;
 	int abilities[6];
-	int immune_flags;
-	int resistance_flags;
+	int immunities[number of damages];
+	int resistances[number of damages];
 	int weak_to_silver;
 	int weak_to_magic;
-	int vulnerable_flags;
+	int vulnerables[number of damages];
 	int condition_immunity_flags;
 	String list senses;
 	int passive_perception_bonus;
@@ -172,4 +243,4 @@ typedef struct {
 	statusEffectType status_effects[];
 	string list arbitrary_states;
 	strToIntMap arbitrary_counter;
-} PlayerCharacter
+} PlayerCharacter;

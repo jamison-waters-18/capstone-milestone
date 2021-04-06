@@ -1,0 +1,48 @@
+<spell
+	private-name="fancy-spell"
+	public-name="Fancy Spell"
+	level="0-9"
+	school="abjuraition"
+	ritual="true"
+	casting-time="action, reaction, bonus action, x minutes"
+	range="self, touch, x feet"
+	verbal="false"
+	somatic="false"
+	concentration="false"
+	duration="instantaneous, x minutes"
+	number-of-targets="0, x, any number"
+	area-of-effect="false"
+	description="select one or more things. if they fail their dex check, they get hurt. otherwise, eh" >
+	<material
+		name="" >
+	<valued-material
+		name=""
+		value="" >
+	<consumed-material
+		name=""
+		value="optional" >
+</spell>
+
+typedef struct {
+	String private-name;
+	String public-name;
+	int level;
+	spellSchoolType school;
+	bool ritual;
+	timeType casting-time;
+	int time-in-rounds;
+	rangeType range;
+	int range-in-feet;
+	bool verbal;
+	bool somatic;
+	bool concentration;
+	int duration-in-rounds;
+	int number-of-targets; (-1 == any)
+	bool area-of-effect;
+	String description;
+	Item list materials;
+	Item list valued-materials;
+	Item list consumed-materials;
+} spell;
+
+//need to implement the actual spell happenings

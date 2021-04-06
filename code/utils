@@ -18,13 +18,18 @@ damage types:
 
 status types: blinded, charmed, deafened, frightened, grappled, incapacitated, invisible, paralyzed, petrified, poisoned, prone, restrained, stunned, unconscious, exhausted
 
-enum abilityType {
+typedef enum {
 	STR, DEX, CON,
-	INT, CHA, WIS }
+	INT, CHA, WIS } abilityType;
 
-class {
-	BARBARIAN, BARD, CLERIC, DRUID, PALADIN, RANGER, ROGUE, SORCERER, WIZARD
-}
+typedef enum {
+	ABJURATION, CONJURATION, DIVINATION, EVOCATION,
+	ENCHANTMENT, ILLUSION, NECROMANCY, TRANSMUTATION
+} spellSchoolType;
+
+typedef enum {
+	NONE, MINOR, MEDIUM, MAJOR, CUSTOM;
+} spellSlotType;
 
 int index_to_dicenum(int index) {
 	const Dice d = { 1, 4, 6, 8, 10, 12, 20, 100 };

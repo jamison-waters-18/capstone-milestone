@@ -2,10 +2,6 @@ sequence:
 	expr;sequence
 	expr;
 
-bool_sequence:
-	bool_expr;bool_sequence
-	bool_expr;
-
 expr:
 	bool_expr
 	int_expr
@@ -40,37 +36,39 @@ null_func:							//return nothing
 	halt()
 	nop()
 	assign_int(str_expr,int_expr)
+	set_arbitrary_counter(str_expr,int_expr)
 	enter_arbitrary_state(str_expr,sequence)		//adds expr1 as plain text to list of arbitrary states, with expr2 being what happens upon exit
 	exit_arbitrary_state(str_expr)		//removes expr if found in plain text in list of arbitrary states
 	buff_ac(int_expr)
 	nerf_ac(int_expr)
 	buff_hp_max(int_expr)
 	nerf_hp_max(int_expr)
-	buff_speed(int_expr)
-	nerf_speed(int_expr)
-	buff_swim_speed(int_expr)
-	nerf_swim_speed(int_expr)
-	buff_climb_speed(int_expr)
-	nerf_climb_speed(int_expr)
 	set_temp_hp(int_expr)
-	add_process(menu_const,sequence)
-	update_unarmed_strike(str_expr)		//updated unarmed strike qualities should be featured in separate xml sheet
-	add_action(str_expr)				//new action should be featured in separate xml sheet
-	add_bonus_action(str_expr)			//new action should be featured in separate xml sheet
-	add_reaction(str_expr)				//new action should be featured in separate xml sheet
-	add_free_action(str_expr)			//new action should be featured in separate xml sheet
-	add_at_will(str_expr)				//new action should be featured in separate xml sheet
-	if(bool_expr,sequence,sequence)		//if expr1 is true, perform expr2. else, perform expr3
+	add_process(menu_const,str_expr,sequence)
+	update_unarmed_strike(str_expr)									//updated unarmed strike qualities should be featured in separate xml sheet
+	add_action(str_expr,str_expr,bool_expr,sequence)				//new action should be featured in separate xml sheet
+	add_bonus_action(str_expr,str_expr,bool_expr,sequence)			//new action should be featured in separate xml sheet
+	add_reaction(str_expr,str_expr,bool_expr,sequence)				//new action should be featured in separate xml sheet
+	add_free_action(str_expr,str_expr,bool_expr,sequence)			//new action should be featured in separate xml sheet
+	add_at_will(str_expr,str_expr,bool_expr,sequence)				//new action should be featured in separate xml sheet
+	if(bool_expr,sequence,sequence)
 	set_spell_concentration(bool_expr)
 	reenable_action(str_expr)
 	provide_spell_list(str_expr)
 	add_spell(str_expr,str_expr)		//add's spell with private name expr1 to spell list with private name expr2
-	remove_feature()
-	place_note(menu_const,str_expr)
+	remove_action(str_expr)
+	remove_reaction(str_expr)
+	remove_bonus_action(str_expr)
+	remove_free_action(str_expr)
+	remove_at_will(str_expr)
+	place_note(menu_const,str_expr,str_expr)
+	add_damage(damage_type,int_expr,int_expr) //damage type, value, die
+	add_resistance(damage_type...)
+	remove_resistance(damage_type...)
 
 prompt_func:
 	prompt_damage_type(var_str_expr)
-	prompt_select_file(str_expr,str_expr,int_expr,bool_sequence)	//prompt_select_file("features",3,sequence) searches folder "features" for files, filters out selections based on bool_sequence
+	prompt_select_file(str_expr,str_expr,int_expr,bool_expr)	//prompt_select_file("features",3,sequence) searches folder "features" for files, filters out selections based on bool_expr
 	
 
 
@@ -78,8 +76,8 @@ bool_func:							//return bool_val
 	bool_attr
 	eq(int_expr,int_expr)				//returns expr1 == expr2
 	gt(int_expr,int_expr)				//returns expr1 > expr2
-	and(bool_expr,bool_expr)			//returns expr1 && expr2
-	or(bool_expr,bool_expr)				//returns expr1 || expr2
+	and(bool_expr...)					//returns expr1 && expr2 &&...
+	or(bool_expr...)					//returns expr1 || expr2 ||...
 	not(bool_expr)						//returns !expr
 	has_any_flags(int_expr,int_expr)	//returns (expr1 & expr2) != 0
 	has_all_flags(int_expr,int_expr)	//returns (expr1 & expr2) == expr2)
@@ -96,6 +94,7 @@ int_func:							//return int_val
 	div_round_down(int_expr,int_expr)	//returns pointer to expr1/expr2
 	div_round_up(int_expr,int_expr)		//returns pointer to (expr1+expr2-1)/expr2
 	prompt_select_damage(int_expr)
+	combine_flags(flags)
 
 str_func:
 	str_attr
@@ -110,6 +109,7 @@ bool_attr:
 	can_cast_spell(str_expr)			//
 
 int_attr:
+	val_of_arbitrary_counter(str_expr)
 	char_level()
 	char_class_level(str_expr)
 	char_inv_count(str_expr, int_expr)	//expr2 is minimum value
@@ -119,8 +119,7 @@ int_attr:
 	spell_level()
 	spell_casting_time()
 	spell_num_targets()
-	spell_area_size()
-	spell_area_shape()
+	weapon_flags()
 	
 
 str_attr:
@@ -134,14 +133,16 @@ int_const:
 	range_const
 	shape_const
 	menu_const
+	damage_type_const
+	flag
 
 ability_const:
-	const_str()
-	const_dex()
-	const_con()
-	const_int()
-	const_wis()
-	const_cha()
+	str()
+	dex()
+	con()
+	int()
+	wis()
+	cha()
 
 time_const:
 	action()
@@ -157,13 +158,13 @@ range_const:
 	num_feet(int_expr)
 
 menu_const:
-	const_weapon_attack()
-	const_weapon_damage()
-	const_spell_cast()
-	const_spell_damage()
-	const_long_rest()
-	const_short_rest()
-	const_equip()
+	menu_weapon_attack()
+	menu_weapon_damage()
+	menu_spell_cast()
+	menu_spell_damage()
+	menu_long_rest()
+	menu_short_rest()
+	menu_equip()
 	menu_ability_check()
 	menu_ability_save()
 	menu_skill_check()
@@ -173,10 +174,10 @@ menu_const:
 	menu_action()
 
 processes_const:
-	pre_attack()
-	when_attack_roll_options()
-	pre_damage()
-	when_damage_roll_options()
+	pre_weapon_attack()
+	when_weapon_attack_roll_options()
+	pre_weapon_damage()
+	when_weapon_damage_roll_options()
 	when_taking_damage()
 	when_downed()
 	after_short_rest()
@@ -186,6 +187,13 @@ processes_const:
 	after_turn()
 	after_taking_status_effect()
 
+damage_type:
+	acid()
+
+flag:
+	weapon_flag_melee()
+	weapon_flag_...
+
 description of blob
 	current character
 	selected damage type
@@ -193,3 +201,4 @@ description of blob
 	selected spell slot
 	selected weapon
 	selected ability
+	the turn stack

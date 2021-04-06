@@ -1,0 +1,85 @@
+<class
+	private-name="barbarian"
+	public-name="Barbarian"
+	multiclass-req="str 13"
+	hit-die="12" >
+	<level
+		val="first" />
+		<item-class-proficiency
+			item-type="armor"
+			item-flag="light" />
+		<item-class-proficiency
+			item-type="armor"
+			item-flag="medium" />
+		<save-proficiency
+			ability="str" />
+		<save-proficiency
+			ability="con" />
+		<skill-proficiency-selection
+			num-selectable="2" >
+			<skill
+				private-name="animal handling" />
+			<skill
+				private-name="athletics" />
+			<skill
+				private-name="intimidation" />
+			<skill
+				private-name="nature" />
+			<skill
+				private-name="perception" />
+			<skill
+				private-name="survival" />
+		</skill-proficiency-selection>
+		<item-selection>
+			<item
+				private-name="greataxe" />
+			<item-category
+				label="any martial melee weapon"
+				item-type="weapon"
+				item-flag="martial, melee" />
+		</item-selection>
+		<item-selection>
+			<item
+				private-name="handaxe"
+				number="2" />
+			<item-category
+				label="any simple melee weapon"
+				item-type="weapon"
+				item-flag="simple, melee" />
+		</item-selection>
+		<item
+			private-name="explorers-pack" />
+		<item
+			private-name="javeline"
+			number="4" />
+	</level>
+	<level
+		val="1" />
+		<item-class-proficiency
+			item-type="weapon"
+			item-flag="martial" />
+		<item-class-proficiency
+			item-type="weapon"
+			item-flag="simple" />
+		<item-class-proficiency
+			item-type="armor"
+			item-flag="shield" />
+		<arbitrary-counter
+			name="rage-damage"
+			val="2" />
+		<arbitrary-counter
+			name="rage-count"
+			val="2" />
+		<arbitrary-counter
+			name="rage-count-max"
+			val="2" />
+		<ability
+			private-name="rage" />
+		<long-rest
+			name="rage_long_rest_reset"
+			sequence="set_arbitrary_counter(`rage-count`,val_of_arbitrary_counter(`rage-count-max`));" />
+		<ability
+			private-name="unarmored-defense" />
+		
+	</level>
+</class>

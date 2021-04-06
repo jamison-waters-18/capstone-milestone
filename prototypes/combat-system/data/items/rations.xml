@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="rations"
+	public-name="Rations (1 day)"
+	category="food"
+	value=".5"
+	weight="2" />

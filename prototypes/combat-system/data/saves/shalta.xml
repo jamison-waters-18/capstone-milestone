@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF8"?>
+<player-character
+	private-name="shalta"
+	public-name="Shalta"
+	xp="8000"
+	race="human"
+	subrace="standard"
+	hp="22"
+	chosen-hp-max="28"
+	thp="0"
+	hit-dice="5d8"
+	inspiration-die=""
+	valor-inspiration="false"
+	size="medium"
+	alignment="CN"
+	ac-bonus="0"
+	verbal-limits="0"
+	somatic-limits="0"
+	concentration-limits="0"
+	speed="30"
+	str="16"
+	dex="10"
+	con="15"
+	int="8"
+	wis="10"
+	cha="15"
+	exhaustion="0">
+	<class
+		private-name="barbarian"
+		level="1"
+		hp-per-level="con_mod"
+		subclass="" />
+	<armor>
+		<item-ref
+			private-name="studded-leather" />
+	</armor>
+	<main-hand>
+		<item-ref
+			private-name="greataxe" />
+	</main-hand>
+	<off-hand>
+	</off-hand>
+	<inventory>
+		<item-ref
+			private-name="gold"
+			number="145" > <!--
+			<spell-list
+				private-name=""
+				public-name=""
+				spell-list-type=""
+				spellcasting-ability=""
+				spell-slot-type=""
+				can-cast-non-ritual=""
+				can-cast-ritual=""
+				spellcasting-focus=""
+				owner="" >
+				<spell
+					name="">
+				<spell
+					name="">
+				<spell
+					name="">
+			<spell-list/> -->
+		</item-ref>
+	</inventory> <!--
+	<immunities>
+		<damage-type
+			name="" >
+		<condition
+			name="" >
+	</immunities>
+	<resistances>
+		<damage-type
+			name="" >
+	</resistances>
+	<vulnerabilities>
+		<damage-type
+			name="" >
+	</vulnerabilities> -->
+	<skill-proficiency
+		private-name="athletics" /> <!--
+	<skill-expertise
+		name="" />
+	<skill-competence
+		name="" />			--><!--these are skills where you get half your proficiency bonus, such as with bards or rogues-->
+	<language
+		private-name="common" />
+	<ability
+		private-name="rage" />
+</player-character>

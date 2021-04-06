@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="gold"
+	public-name="Gold"
+	category="valuable"
+	flags="currency"
+	value="1"
+	weight=".02" />

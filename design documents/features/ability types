@@ -1,5 +1,5 @@
 Ability attributes
-	type: passive, action, bonus action, free action, reaction, non action
+	type: passive, action, bonus action, free action, reaction, at will
 	scope: turn, state, permanent
 	disabled if
 	how many charges?

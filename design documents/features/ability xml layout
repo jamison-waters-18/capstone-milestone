@@ -1,0 +1,19 @@
+<ability
+	private-name=""
+	public-name=""
+	activation-time="passive, action, bonus action, free action, reaction, at will, x minutes" >
+	<upon-learning>
+	</upon-learning>
+	<requirement>
+	</requirement>
+	<on-use> <!--if activation-time isn't passive, what happens when it's activated?-->
+	</on-use>
+	<sequences>
+		<short-rest
+			name=""
+			sequence="" />
+		<long-rest
+			name=""
+			sequence="" />
+	</sequences>
+</ability>

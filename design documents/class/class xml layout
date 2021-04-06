@@ -1,0 +1,15 @@
+<class
+	private-name=""
+	public-name=""
+	multiclass-req="" >
+	<starting-inventory
+		<item
+			name="" />
+	</starting-inventory>
+	
+	<level
+		prereq="1" >
+		<ability
+			name="" />
+	</level>
+</class>
