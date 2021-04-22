@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF8"?>
+<race-def
+	private-name="human:standard"
+	public-name="Standard Human"
+	note="Gains +1 to all abilities" >
+	<choose-ability-bonus
+		number-of-picks="2"/>
+	<choose-feat/>
+	<choose-any-skill-proficiency/>
+</race-def>

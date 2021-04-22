@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="handaxe"
+	public-name="Handaxe"
+	category="weapon"
+	flags="light, thrown, melee, simple, ranged"
+	damage="1d6 bludgeoning"
+	range="20/60"
+	value="5"
+	weight="2" />

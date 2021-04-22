@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF8"?>
+<ability-def
+	private-name="rage"
+	public-name="Rage"
+	prereqs="true"
+	sequence="
+			set_arbitrary_counter(`rage-damage`,2);
+			set_arbitrary_counter(`rage-count`,2);
+			set_arbitrary_counter(`rage-count-max`,2);
+			add_process(long_rest(),
+				`rage-count-long-rest-reset`,
+				`You recover expended rage uses after a long rest.`,
+				true,
+				set_arbitrary_counter(`rage-count`,val_of_arbitrary_counter(`rage-count-max`));
+			);
+			add_action(bonus_action(),`begin-rage`,`Begin Rage`,
+				and(not(has_arbitrary_state(`raging`)),gt(val_of_arbitrary_counter(`rage-count`),0));,
+				add_note(menu_ability_check(),`rage-ability-check`,true,
+					`When raging, you have advantage on STR checks and STR saves.`);
+				add_process(pre_weapon_damage(),
+					`rage-weapon-damage`,
+					`When raging, melee attacks deal extra damage, depending on level.`,
+					true,
+					enter_arbitrary_state(`successfully-hit`,nop(););
+					if(and(has_all_flags(weapon_flags(),weapon_flag_melee()),
+							eq(selected_ability(),ability_str())
+						),
+						add_to_damage(weapon_damage_type(),val_of_arbitrary_counter(`rage-damage`),1),
+						nop();
+					);
+				);
+				add_process(when_taking_damage(),`rage-taking-damage`,
+					`Being hit can prevent your rage from ending.`,
+					true,
+					enter_arbitrary_state(`been_hit`,nop();););
+				add_resistance(bludgeoning(),piercing(),slashing());
+				disable_spellcasting();
+				disable_concentration();
+				set_arbitrary_counter(`rage-count`,sub(val_of_arbitrary_counter(`rage-count`),1));
+				set_arbitrary_counter(`rage-timer`,10);
+				add_process(before_turn(),
+					`rage-pre-turn`,
+					`Reduces rage time, resets hit trackers.`,
+					true,
+					set_arbitrary_counter(`rage-timer`,sub(val_of_arbitrary_counter(`rage-timer`),1));
+					if(or(eq(0,val_of_arbitrary_counter(`rage-timer`)),
+							not(or(has_arbitrary_state(`successfully-hit`),
+									has_arbitrary_state(`been-hit`)))),
+						exit_arbitrary_state(`raging`);,
+						nop();
+					);
+					exit_arbitrary_state(`successfully-hit`);
+					exit_arbitrary_state(`been-hit`);
+				);
+				enter_arbitrary_state(`raging`,
+					remove_process(`rage-weapon-damage`);
+					remove_process(`rage-pre-turn`);
+					remove_process(`rage-taking-damage`);
+					enable_spellcasting();
+					enable_spellcasting();
+					remove_resistance(bludgeoning(),piercing(),slashing());
+					exit_arbitrary_state(`successfully-hit`);
+					exit_arbitrary_state(`been-hit`);
+					remove_note(`rage-ability-check`);
+					remove_arbitrary_counter(`rage-timer`);
+				);
+			);
+			add_action(bonus_action(),`end-rage`,`End Rage`,
+				has_arbitrary_state(`raging`);,
+				exit_arbitrary_state(`raging`););"
+/>

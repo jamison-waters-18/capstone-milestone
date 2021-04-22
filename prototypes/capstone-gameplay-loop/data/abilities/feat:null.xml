@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF8"?>
+<ability-def
+	private-name="feat:null"
+	public-name="null-feat"
+	prereqs=""
+	sequence="" />

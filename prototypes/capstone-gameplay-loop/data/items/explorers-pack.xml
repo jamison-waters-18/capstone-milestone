@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-bundle
+	private-name="explorers-pack"
+	public-name="Explorer's Pack"
+	value="10" >
+	<item
+		private-name="50-ft-hempen-rope" />
+	<item
+		private-name="rations"
+		number="10" />
+	<item
+		private-name="backpack" />
+</item-bundle>

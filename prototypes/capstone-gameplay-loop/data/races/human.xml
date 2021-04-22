@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF8"?>
+<race-def
+	private-name="human"
+	public-name="Human"
+	speed="30"
+	size="medium"
+	subrace="true" >
+	<language
+		name="common" />
+	<select-language/>
+</race-def>

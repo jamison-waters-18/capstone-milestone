@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF8"?>
+<background-def
+	private-name="urchin"
+	public-name="Urchin" >
+	<skill-proficiency
+		private-name="sleight-of-hand" />
+	<skill-proficiency
+		private-name="stealth" />
+	<item-proficiency
+		private-name="thieves-tools" />
+	<item-proficiency
+		private-name="disguise-kit" />
+	<item-ref
+		private-name="gold"
+		number="10" />
+	<item-ref
+		private-name="pouch" />
+	<item-ref
+		private-name="common-clothes" />
+	<ability-ref
+		private-name="feat:null" />
+</background-def>

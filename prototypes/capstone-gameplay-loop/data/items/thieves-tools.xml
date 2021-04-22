@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="thieves-tools"
+	public-name="Thieve's Tools"
+	category="tool"
+	value="25"
+	weight="1" />

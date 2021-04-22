@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF8"?>
+<class-def
+	private-name="barbarian"
+	public-name="Barbarian"
+	multiclass-req="str 13"
+	hit-die="12" >
+	<level
+		val="first" />
+		<item-class-proficiency
+			item-type="armor"
+			item-flag="light" />
+		<item-class-proficiency
+			item-type="armor"
+			item-flag="medium" />
+		<save-proficiency
+			ability="str" />
+		<save-proficiency
+			ability="con" />
+		<skill-proficiency-selection
+			num-selectable="2" >
+			<skill
+				private-name="animal handling" />
+			<skill
+				private-name="athletics" />
+			<skill
+				private-name="intimidation" />
+			<skill
+				private-name="nature" />
+			<skill
+				private-name="perception" />
+			<skill
+				private-name="survival" />
+		</skill-proficiency-selection>
+		<item-selection>
+			<item
+				private-name="handaxe"
+				number="2" />
+			<item-category
+				label="any simple melee weapon"
+				item-type="weapon"
+				item-flag="simple, melee" />
+		</item-selection>
+		<item
+			private-name="explorers-pack" />
+	</level>
+	<level
+		val="1" />
+		<item-class-proficiency
+			item-type="weapon"
+			item-flag="martial" />
+		<item-class-proficiency
+			item-type="weapon"
+			item-flag="simple" />
+		<item-class-proficiency
+			item-type="armor"
+			item-flag="shield" />
+		<ability
+			private-name="rage" />
+		<ability
+			private-name="unarmored-defense" />
+		
+	</level>
+	<level
+		val="3" />
+		<subclass/>
+	</level>
+</class-def>
