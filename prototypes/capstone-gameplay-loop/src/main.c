@@ -25,35 +25,13 @@ void display_characters() {
 	}
 }
 
-char* read_file(FILE* in) {
-	char* result = NULL;
-	int c;
-	int string_length = 0;
-	size_t memsize = 0;
-
-	if (in == stdin) {
-		getline(&result, &memsize, stdin);
-		result[strlen(result) - 1] = '\0';
-	}
-	else {
-		while( (c = fgetc(in)) != EOF ) {
-			if (string_length + 1 >= memsize) {
-				memsize = (string_length + 1) * 2;
-				result = realloc(result, sizeof(char) * memsize);
-			}
-			if (!result) return NULL;
-			result[string_length++] = c;
-		}
-
-		if (result) { result[string_length] = '\0'; }
-	}
-	return result;
-}
-
 void turn() {
 	TurnState* ts = &(get_blob()->turn_state);
-	turn_state_clear(ts);
-	turn_state_init(ts);
+	if (!ts->turn_began) {
+		turn_state_init(ts);
+		ts->turn_began = 1;
+		execute_player_processes(&(get_blob()->player), BEFORE_TURN);
+	}
 	char* input = NULL;
 	while(1) {
 		if (ts->act_history.size) {
@@ -106,6 +84,8 @@ void turn() {
 			return;
 		} else if (selection == '6') {
 			ActRecordDyna_clear(&(ts->act_history), act_record_clear);
+			execute_player_processes(&(get_blob()->player), AFTER_TURN);
+			turn_state_clear(ts);
 			return;
 		} else {
 			printf("Error: Unexpected Symbol '%c'\n", selection);\
@@ -154,6 +134,7 @@ void turn() {
 				act_record_init(&ar);
 				ar.private_name = acts->array[i].private_name;
 				ar.public_name = acts->array[i].public_name;
+				ar.act_type = act_type;
 				ActRecordDyna_add(&(ts->act_history), ar);
 				parse_sequence(acts->array[i].sequence);
 
@@ -161,7 +142,10 @@ void turn() {
 				else if (act_type == BONUS_ACTION) ts->bonus_action_complete += 1;
 				else if (act_type == FREE_ACTION) ts->free_action_complete += 1;
 
-				execute_player_processes(&(get_blob()->player), AFTER_TURN);
+				if (ts->act_aborted) {
+					act_record_undo();
+					ts->act_aborted = 0;
+				}
 
 				break;
 			}
@@ -391,7 +375,10 @@ int main(int argc, char** argv) {
 		free(name);
 		name = read_file(stdin);
 		if (name) {
-			if (!strcmp(name, "quit")) return 0;
+			if (!strcmp(name, "quit")) {
+				free(name);
+				return 0;
+			}
 			import_character(name);
 			if (b->player.private_name) break;
 			printf("Character \"%s\" not found.\n", name);

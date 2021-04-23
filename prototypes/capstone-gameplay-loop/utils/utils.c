@@ -246,6 +246,25 @@ DamageDyna* parse_damage(DamageDyna* allDamage, const char* leftToRead) {
 	return allDamage;
 }
 
+
+char* dice_to_string(Dice* d) {
+	char* result = NULL;
+
+	for (int i = 7; i >= 0; i++) {
+		if (d->die[i]) {
+			if (result) {
+				char* add = set_string_f(add, " + %dd%d", d->die[i], index_to_dicenum[i]);
+				result = append_string(result, add);
+			} else {
+				result = set_string_f(NULL, "%dd%d", d->die[i], index_to_dicenum[i]);
+			}
+		}
+	}
+
+	if (!result) set_string(NULL, "0");
+	return result;
+}
+
 char* set_string(char* destination, const char* source) {
 	destination = realloc(destination, strlen(source) + 1);
 	if (destination) {
@@ -284,4 +303,29 @@ void lower_string(char* input) {
 		         *input < 'Z' + 1));
 		input++;
 	}
+}
+
+char* read_file(FILE* in) {
+	char* result = NULL;
+	int c;
+	int string_length = 0;
+	size_t memsize = 0;
+
+	if (in == stdin) {
+		getline(&result, &memsize, stdin);
+		result[strlen(result) - 1] = '\0';
+	}
+	else {
+		while( (c = fgetc(in)) != EOF ) {
+			if (string_length + 1 >= memsize) {
+				memsize = (string_length + 1) * 2;
+				result = realloc(result, sizeof(char) * memsize);
+			}
+			if (!result) return NULL;
+			result[string_length++] = c;
+		}
+
+		if (result) { result[string_length] = '\0'; }
+	}
+	return result;
 }

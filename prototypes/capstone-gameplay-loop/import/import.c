@@ -627,6 +627,7 @@ void read_character_xml_children(PlayerCharacter* player, mxml_node_t* node) {
 		ItemCategory ic;
 		ic.category = itm.category;
 		ic.flags = itm.flags;
+		item_def_clear(&itm);
 		ItemCategoryDyna_add(&(player->item_category_proficiencies), ic);
 	} else if (!strcmp(element_name, "language")) {
 		for (int i = 0; i < num_attrs; i++) {

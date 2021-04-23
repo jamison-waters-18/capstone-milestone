@@ -59,6 +59,7 @@ int TYPE##Dyna_clear(TYPE##Dyna* dyna, int (*clearElm) (TYPE*)) { \
 		dyna->array = NULL; \
 		dyna->space = 0; \
 	} \
+	dyna->size = 0; \
 	return 0; \
 }	
 

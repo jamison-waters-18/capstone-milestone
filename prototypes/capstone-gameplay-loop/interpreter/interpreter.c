@@ -1,12 +1,19 @@
 #include <stdio.h>
 #include <glib.h>
 #include "../includes/interpreter.h"
-#include "../includes/basic_bool_interpreter.h"
-#include "../includes/constant_interpreter.h"
-#include "../includes/data_manip_interpreter.h"
-#include "../includes/math_interpreter.h"
 #include "../includes/parser.h"
 #include "../includes/blob.h"
+
+funcType find_bool_func(char* func_name, returnType* return_type);
+
+funcType find_data_manip_func(char* func_name, returnType* return_type);
+
+funcType find_const_func(char* func_name, returnType* return_type);
+
+funcType find_math_func(char* func_name, returnType* return_type);
+
+funcType find_ui_func(char* func_name, returnType* return_type);
+
 
 void* exec_nop(GPtrArray* args, returnType* return_type) {
 	if (args->len) {
@@ -60,6 +67,9 @@ funcType find_func(char* func_name, returnType* return_type) {
 	if (f) return f;
 
 	f = find_data_manip_func(func_name, return_type);
+	if (f) return f;
+
+	f = find_ui_func(func_name, return_type);
 	if (f) return f;
 
 	*return_type = RTRN_FAIL;

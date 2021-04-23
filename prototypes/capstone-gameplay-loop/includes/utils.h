@@ -113,6 +113,8 @@ damageType str_to_damage_type(char* str);
 
 DamageDyna* parse_damage(DamageDyna*, const char*);
 
+char* dice_to_string(Dice*);
+
 char* set_string(char* destination, const char* source);
 
 char* set_string_f(char* destination, const char* source, ...);
@@ -120,4 +122,7 @@ char* set_string_f(char* destination, const char* source, ...);
 char* append_string(char* destination, const char* source);
 
 void lower_string(char* input);
+
+char* read_file(FILE* in);
+
 #endif

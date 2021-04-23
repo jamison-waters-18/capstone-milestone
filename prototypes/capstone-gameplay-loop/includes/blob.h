@@ -24,6 +24,8 @@ generate_dyna_headers_M(ActRecord);
 typedef struct {
 	ActRecordDyna act_history;
 	int undo_mode;
+	int turn_began;
+	int act_aborted;
 	int action_complete;
 	int bonus_action_complete;
 	int free_action_complete;

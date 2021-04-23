@@ -15,6 +15,9 @@ int act_record_clear(ActRecord* ar) {
 	if (!ar) return -1;
 	//private and public names should be duplicate pointers
 	free(ar->undo_sequence);
+	ar->private_name = NULL;
+	ar->public_name = NULL;
+	ar->undo_sequence = NULL;
 	act_record_init(ar);
 	return 0;
 }
@@ -66,6 +69,8 @@ generate_dyna_functions_M(ActRecord);
 TurnState* turn_state_init(TurnState* ts) {
 	if (!ts) return NULL;
 	ts->undo_mode = 0;
+	ts->turn_began = 0;
+	ts->act_aborted = 0;
 	ts->action_complete = 0;
 	ts->bonus_action_complete = 0;
 	ts->free_action_complete = 0;
@@ -76,6 +81,13 @@ TurnState* turn_state_init(TurnState* ts) {
 
 int turn_state_clear(TurnState* ts) {
 	if (!ts) return -1;
+	ts->undo_mode = 0;
+	ts->turn_began = 0;
+	ts->act_aborted = 0;
+	ts->action_complete = 0;
+	ts->bonus_action_complete = 0;
+	ts->free_action_complete = 0;
+	ts->reaction_complete = 0;
 	ActRecordDyna_clear(&(ts->act_history), act_record_clear);
 	return 0;
 }

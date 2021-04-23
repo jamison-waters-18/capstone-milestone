@@ -313,9 +313,9 @@ void* exec_exit_arbitrary_state(GPtrArray* args, returnType* return_type) {
 	if (i == asd->size) {
 		return SUCCESSFUL_EMPTY_FUNC_EXEC;
 	}
-	parse_sequence(asd->array[i].sequence);
 
 	if (!get_blob()->turn_state.undo_mode) {
+		parse_sequence(asd->array[i].sequence);
 		char* command = set_string_f(NULL,
 				"enter_arbitrary_state(`%s`, %s);", asd->array[i].private_name, asd->array[i].sequence); 
 		act_record_add_undo_command(command);
@@ -343,11 +343,11 @@ void* exec_has_arbitrary_state(GPtrArray* args, returnType* return_type) {
 	*results = FALSE;
 	for (int i = 0; i < a->size; i++) {
 		if (!strcmp(state_name, a->array[i].private_name)) {
-			free(state_name);
 			*results = TRUE;
 			break;
 		}
 	}
+	free(state_name);
 	return results;
 }
 
@@ -407,6 +407,7 @@ void* exec_remove_arbitrary_counter(GPtrArray* args, returnType* return_type) {
 	int* prior_val = g_str_int_hash_table_lookup(
 			get_blob()->player.arbitrary_counter, key);
 	if (!prior_val) {
+		free(key);
 		return SUCCESSFUL_EMPTY_FUNC_EXEC;
 	}
 
@@ -419,6 +420,7 @@ void* exec_remove_arbitrary_counter(GPtrArray* args, returnType* return_type) {
 	g_str_int_hash_table_remove(
 			get_blob()->player.arbitrary_counter,
 			key);
+	free(key);
 	return SUCCESSFUL_EMPTY_FUNC_EXEC;
 }
 
@@ -441,6 +443,9 @@ void* exec_val_of_arbitrary_counter(GPtrArray* args, returnType* return_type) {
 	if (val) {
 		result = malloc(sizeof(int));
 		*result = *val;
+	}
+	else {
+		*return_type = RTRN_FAIL;
 	}
 	return result;
 }
@@ -588,22 +593,9 @@ void* exec_add_resistance(GPtrArray* args, returnType* return_type) {
 			return FAILED_FUNC_EXEC;
 		}
 		damageType dmg_type = *((damageType*) holder);
+		free(holder);
 
-		switch (dmg_type) {
-		case ACID:        resistances[0]  += 1; break;
-		case BLUDGEONING: resistances[1]  += 1; break;
-		case COLD:        resistances[2]  += 1; break;
-		case FIRE:        resistances[3]  += 1; break;
-		case FORCE:       resistances[4]  += 1; break;
-		case LIGHTNING:   resistances[5]  += 1; break;
-		case NECROTIC:    resistances[6]  += 1; break;
-		case PIERCING:    resistances[7]  += 1; break;
-		case POISON:      resistances[8]  += 1; break;
-		case PSYCHIC:     resistances[9]  += 1; break;
-		case RADIANT:     resistances[10] += 1; break;
-		case SLASHING:    resistances[11] += 1; break;
-		case THUNDER:     resistances[12] += 1; break;
-		}
+		resistances[(int) dmg_type] += 1;
 	}
 
 	if (!get_blob()->turn_state.undo_mode) {
@@ -636,22 +628,9 @@ void* exec_remove_resistance(GPtrArray* args, returnType* return_type) {
 			return FAILED_FUNC_EXEC;
 		}
 		damageType dmg_type = *((damageType*) holder);
+		free(holder);
 
-		switch (dmg_type) {
-		case ACID:        resistances[0]  -= 1; break;
-		case BLUDGEONING: resistances[1]  -= 1; break;
-		case COLD:        resistances[2]  -= 1; break;
-		case FIRE:        resistances[3]  -= 1; break;
-		case FORCE:       resistances[4]  -= 1; break;
-		case LIGHTNING:   resistances[5]  -= 1; break;
-		case NECROTIC:    resistances[6]  -= 1; break;
-		case PIERCING:    resistances[7]  -= 1; break;
-		case POISON:      resistances[8]  -= 1; break;
-		case PSYCHIC:     resistances[9]  -= 1; break;
-		case RADIANT:     resistances[10] -= 1; break;
-		case SLASHING:    resistances[11] -= 1; break;
-		case THUNDER:     resistances[12] -= 1; break;
-		}
+		resistances[(int) dmg_type] += 1;
 	}
 
 	if (!get_blob()->turn_state.undo_mode) {
