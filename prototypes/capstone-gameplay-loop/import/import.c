@@ -12,19 +12,19 @@ void read_armor_xml(mxml_node_t* node, ItemDef* item) {
 	for (int i = 0; i < num_attrs; i++) {
 		const char* attr_name;
 		const char* attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-		if (!strcmp(attr_name, "ac")) {
+		if (string_eq(attr_name, "ac")) {
 			a->ac = atoi(attr_val);
 		}
-		else if (!strcmp(attr_name, "str-req")) {
+		else if (string_eq(attr_name, "str-req")) {
 			a->str_req = atoi(attr_val);
 		}
-		else if (!strcmp(attr_name, "don-sequence")) {
+		else if (string_eq(attr_name, "don-sequence")) {
 			a->don_sequence = set_string(a->don_sequence, attr_val);
 		}
-		else if (!strcmp(attr_name, "doff-sequence")) {
+		else if (string_eq(attr_name, "doff-sequence")) {
 			a->doff_sequence = set_string(a->doff_sequence, attr_val);
 		}
-		else if (!strcmp(attr_name, "flags")) {
+		else if (string_eq(attr_name, "flags")) {
 			if (strstr(attr_val, "light")) {
 				item->flags |= ARMOR_FLAG_LIGHT;
 			}
@@ -55,28 +55,22 @@ void read_weapon_xml(mxml_node_t* node, ItemDef* item) {
 	for (int i = 0; i < num_attrs; i++) {
 		const char* attr_name;
 		const char* attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-		if (!strcmp(attr_name, "range")) {
-			w->range = atoi(attr_val);
+		if (string_eq(attr_name, "range")) {
+			sscanf(attr_val, "%d/%d", &(w->range), &(w->long_range));
 		}
-		else if (!strcmp(attr_name, "long-range")) {
-			w->long_range = atoi(attr_val);
-		}
-		else if (!strcmp(attr_name, "long-range")) {
-			w->long_range = atoi(attr_val);
-		}
-		else if (!strcmp(attr_name, "damage")) {
+		else if (string_eq(attr_name, "damage")) {
 			parse_damage(&(w->damage), attr_val);
 		}
-		else if (!strcmp(attr_name, "versatile-damage")) {
+		else if (string_eq(attr_name, "versatile-damage")) {
 			parse_damage(&(w->versatile_damage), attr_val);
 		}
-		else if (!strcmp(attr_name, "equip-sequence")) {
+		else if (string_eq(attr_name, "equip-sequence")) {
 			w->equip_sequence = set_string(w->equip_sequence, attr_val);
 		}
-		else if (!strcmp(attr_name, "unequip-sequence")) {
+		else if (string_eq(attr_name, "unequip-sequence")) {
 			w->unequip_sequence = set_string(w->unequip_sequence, attr_val);
 		}
-		else if (!strcmp(attr_name, "flags")) {
+		else if (string_eq(attr_name, "flags")) {
 			if (strstr(attr_val, "ammunition")) {
 				item->flags |= WEAPON_FLAG_AMMUNITION;
 			}
@@ -138,7 +132,7 @@ void read_weapon_xml(mxml_node_t* node, ItemDef* item) {
 				item->flags |= WEAPON_FLAG_SILVERED;
 			}
 		}
-		else if (!strcmp(attr_name, "ammo-type")) {
+		else if (string_eq(attr_name, "ammo-type")) {
 			if (strstr(attr_val, "arrow")) {
 				item->flags |= AMMO_FLAG_ARROW;
 			}
@@ -163,19 +157,19 @@ void read_container_xml(mxml_node_t* node, ItemDef* item) {
 	for (int i = 0; i < num_attrs; i++) {
 		const char* attr_name;
 		const char* attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-		if (!strcmp(attr_name, "max-weight")) {
+		if (string_eq(attr_name, "max-weight")) {
 			c->max_weight = atof(attr_val);
 		}
-		else if (!strcmp(attr_name, "max-dry-volume")) {
+		else if (string_eq(attr_name, "max-dry-volume")) {
 			c->max_dry_volume = atof(attr_val);
 		}
-		else if (!strcmp(attr_name, "max-wet-volume")) {
+		else if (string_eq(attr_name, "max-wet-volume")) {
 			c->max_wet_volume = atof(attr_val);
 		}
-		else if (!strcmp(attr_name, "quantity")) {
+		else if (string_eq(attr_name, "quantity")) {
 			printf("(importing %s) I can't import quantity yet.", item->private_name);
 		}
-		else if (!strcmp(attr_name, "flags")) {
+		else if (string_eq(attr_name, "flags")) {
 			if (strstr(attr_val, "light")) {
 				item->flags |= ARMOR_FLAG_LIGHT;
 			}
@@ -204,7 +198,7 @@ void read_tool_xml(mxml_node_t* node, ItemDef* item) {
 	for (int i = 0; i < num_attrs; i++) {
 		const char* attr_name;
 		const char* attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-		if (!strcmp(attr_name, "flags")) {
+		if (string_eq(attr_name, "flags")) {
 			if (strstr(attr_val, "artisan's tools")) {
 				item->flags |= TOOL_FLAG_ARTISANS_TOOLS;
 			}
@@ -229,7 +223,7 @@ void read_valuable_xml(mxml_node_t* node, ItemDef* item) {
 	for (int i = 0; i < num_attrs; i++) {
 		const char* attr_name;
 		const char* attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-		if (!strcmp(attr_name, "flags")) {
+		if (string_eq(attr_name, "flags")) {
 			if (strstr(attr_val, "currency")) {
 				item->flags |= VALUABLE_FLAG_CURRENCY;
 			}
@@ -251,42 +245,42 @@ ItemDef* read_item_def_xml(ItemDef* itm, mxml_node_t* node) {
 	for (int i = 0; i < num_attrs; i++) {
 		const char* attr_name;
 		const char* attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-		if (!strcmp(attr_name, "private-name")) {
+		if (string_eq(attr_name, "private-name")) {
 			itm->private_name = set_string(itm->private_name, attr_val);
 		}
-		else if (!strcmp(attr_name, "public-name")) {
+		else if (string_eq(attr_name, "public-name")) {
 			itm->public_name = set_string(itm->public_name, attr_val);
 		}
-		else if (!strcmp(attr_name, "source-book")) {
+		else if (string_eq(attr_name, "source-book")) {
 			itm->source_book = set_string(itm->source_book, attr_val);
 		}
-		else if (!strcmp(attr_name, "value")) {
+		else if (string_eq(attr_name, "value")) {
 			itm->value = atof(attr_val);
 		}
-		else if (!strcmp(attr_name, "weight")) {
+		else if (string_eq(attr_name, "weight")) {
 			itm->weight = atof(attr_val);
 		}
-		else if (!strcmp(attr_name, "category")) {
-			if (!strcmp(attr_val, "armor")) {
+		else if (string_eq(attr_name, "category")) {
+			if (string_eq(attr_val, "armor")) {
 				itm->category = ITEM_CATEGORY_ARMOR;
 				read_armor_xml(node, itm);
 			}
-			else if (!strcmp(attr_val, "weapon")) {
+			else if (string_eq(attr_val, "weapon")) {
 				itm->category = ITEM_CATEGORY_WEAPON;
 				read_weapon_xml(node, itm);
 			}
-			else if (!strcmp(attr_val, "tool")) {
+			else if (string_eq(attr_val, "tool")) {
 				itm->category = ITEM_CATEGORY_TOOL;
 				read_tool_xml(node, itm);
 			}
-			else if (!strcmp(attr_val, "valuable")) {
+			else if (string_eq(attr_val, "valuable")) {
 				itm->category = ITEM_CATEGORY_VALUABLE;
 				read_valuable_xml(node, itm);
 			}
-			else if (!strcmp(attr_val, "food")) {
+			else if (string_eq(attr_val, "food")) {
 				itm->category = ITEM_CATEGORY_FOOD;
 			}
-			else if (!strcmp(attr_val, "container")) {
+			else if (string_eq(attr_val, "container")) {
 				itm->category = ITEM_CATEGORY_CONTAINER;
 				read_container_xml(node, itm);
 			}
@@ -309,13 +303,13 @@ void read_item_xml(mxml_node_t* node) {
 			kid = mxmlGetNextSibling(kid);
 		}
 	}
-	else if (!strcmp(element_name, "item-def")) {
+	else if (string_eq(element_name, "item-def")) {
 		ItemDef itm;
 		item_def_init(&itm);
 		ItemDefDyna_add(&(get_blob()->item_db), *(read_item_def_xml(&itm, node)));
 	}
-	else if (!strcmp(element_name, "item-bundle")) {
-		printf("I can't handle 'item-bundle' yet \n");
+	else if (string_eq(element_name, "item-bundle")) {
+		//printf("I can't handle 'item-bundle' yet \n");
 	}
 	else {
 		printf("I don't know what %s is\n", element_name);
@@ -383,26 +377,26 @@ void read_ability_xml(mxml_node_t* node) {
 			kid = mxmlGetNextSibling(kid);
 		}
 	}
-	else if (!strcmp(element_name, "ability-def")) {
+	else if (string_eq(element_name, "ability-def")) {
 		AbilityDef ablt;
 		ability_def_init(&ablt);
 		int num_attrs = mxmlElementGetAttrCount(node);
 		for (int i = 0; i < num_attrs; i++) {
 			const char* attr_name;
 			const char* attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-			if (!strcmp(attr_name, "private-name")) {
+			if (string_eq(attr_name, "private-name")) {
 				ablt.private_name = set_string(ablt.private_name, attr_val);
 			}
-			else if (!strcmp(attr_name, "public-name")) {
+			else if (string_eq(attr_name, "public-name")) {
 				ablt.public_name = set_string(ablt.public_name, attr_val);
 			}
-			else if (!strcmp(attr_name, "source-book")) {
+			else if (string_eq(attr_name, "source-book")) {
 				ablt.source_book = set_string(ablt.source_book, attr_val);
 			}
-			else if (!strcmp(attr_name, "prereqs")) {
+			else if (string_eq(attr_name, "prereqs")) {
 				ablt.prereqs = set_string(ablt.prereqs, attr_val);
 			}
-			else if (!strcmp(attr_name, "sequence")) {
+			else if (string_eq(attr_name, "sequence")) {
 				ablt.sequence = set_string(ablt.sequence, attr_val);
 			}
 		}
@@ -464,17 +458,33 @@ ItemRef read_item_ref_xml(mxml_node_t* node) {
 	const char* attr_val;
 	for (int i = 0; i < num_attrs; i++) {
 		attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-		if (!strcmp(attr_name, "private-name")) {
+		if (string_eq(attr_name, "private-name")) {
 			itm.private_name = set_string(itm.private_name, attr_val);
-		} else if (!strcmp(attr_name, "number")) {
+		} else if (string_eq(attr_name, "public-name")) {
+			itm.public_name = set_string(itm.public_name, attr_val);
+		} else if (string_eq(attr_name, "number")) {
 			itm.quantity = atof(attr_val);
-		} else if (!strcmp(attr_name, "spell-list")) {
+			if (!itm.quantity) {
+				printf("Items shouldn't have 0 quantity\n");
+			}
+		} else if (string_eq(attr_name, "spell-list")) {
 			//TODO: let items contain spells
 			printf("Items can carry spells once spells have been invented\n");
 		} else {
 			printf("Items shouldn't have property %s\n", attr_name);
 		}
 	}
+
+	if (!itm.public_name && itm.private_name) {
+		ItemDefDyna* defs = &(get_blob()->item_db);
+		for (int i = 0; i < defs->size; i++) {
+			if (string_eq(itm.private_name, defs->array[i].private_name)) {
+				itm.public_name = set_string(NULL, defs->array[i].public_name);
+				break;
+			}
+		}
+	}
+
 	return itm;
 }
 
@@ -486,29 +496,29 @@ void read_character_xml_children(PlayerCharacter* player, mxml_node_t* node) {
 	int num_attrs = mxmlElementGetAttrCount(node);
 	const char* attr_name;
 	const char* attr_val;
-	if (!strcmp(element_name, "class")) {
+	if (string_eq(element_name, "class")) {
 		ClassRole c;
 		class_role_init(&c);
 		for (int i = 0; i < num_attrs; i++) {
 			attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-			if (!strcmp(attr_name, "private-name")) {
+			if (string_eq(attr_name, "private-name")) {
 				c.private_name = set_string(c.private_name, attr_val);
-			} else if (!strcmp(attr_name, "public-name")) {
+			} else if (string_eq(attr_name, "public-name")) {
 				c.public_name = set_string(c.public_name, attr_val);
-			} else if (!strcmp(attr_name, "level")) {
+			} else if (string_eq(attr_name, "level")) {
 				c.level = atoi(attr_val);
-			} else if (!strcmp(attr_name, "hit-die-size")) {
+			} else if (string_eq(attr_name, "hit-die-size")) {
 				c.hit_die_size = atoi(attr_val);
-			} else if (!strcmp(attr_name, "hp-per-level")) {
+			} else if (string_eq(attr_name, "hp-per-level")) {
 				c.given_hp_per_level = set_string(c.given_hp_per_level, attr_val);
-			} else if (!strcmp(attr_name, "subclass")) {
+			} else if (string_eq(attr_name, "subclass")) {
 				c.subclass = set_string(c.subclass, attr_val);
 			} else {
 				printf("Items shouldn't have property %s\n", attr_name);
 			}
 		}
 		ClassRoleDyna_add(&(player->classes), c);
-	} else if (!strcmp(element_name, "armor")) {
+	} else if (string_eq(element_name, "armor")) {
 		mxml_node_t* kid = mxmlGetFirstChild(node);
 		while(kid) {
 			ItemRef itm = read_item_ref_xml(kid);
@@ -518,7 +528,7 @@ void read_character_xml_children(PlayerCharacter* player, mxml_node_t* node) {
 			}
 			kid = mxmlGetNextSibling(kid);
 		}
-	} else if (!strcmp(element_name, "main-hand")) {
+	} else if (string_eq(element_name, "main-hand")) {
 		mxml_node_t* kid = mxmlGetFirstChild(node);
 		while(kid) {
 			ItemRef itm = read_item_ref_xml(kid);
@@ -528,7 +538,7 @@ void read_character_xml_children(PlayerCharacter* player, mxml_node_t* node) {
 			}
 			kid = mxmlGetNextSibling(kid);
 		}
-	} else if (!strcmp(element_name, "off-hand")) {
+	} else if (string_eq(element_name, "off-hand")) {
 		mxml_node_t* kid = mxmlGetFirstChild(node);
 		while(kid) {
 			ItemRef itm = read_item_ref_xml(kid);
@@ -538,7 +548,7 @@ void read_character_xml_children(PlayerCharacter* player, mxml_node_t* node) {
 			}
 			kid = mxmlGetNextSibling(kid);
 		}
-	} else if (!strcmp(element_name, "inventory")) {
+	} else if (string_eq(element_name, "inventory")) {
 		mxml_node_t* kid = mxmlGetFirstChild(node);
 		while(kid) {
 			ItemRef itm = read_item_ref_xml(kid);
@@ -547,62 +557,62 @@ void read_character_xml_children(PlayerCharacter* player, mxml_node_t* node) {
 			}
 			kid = mxmlGetNextSibling(kid);
 		}
-	} else if (!strcmp(element_name, "skill-proficiency")) {
+	} else if (string_eq(element_name, "skill-proficiency")) {
 		for (int i = 0; i < num_attrs; i++) {
 			attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-			if (!strcmp(attr_name, "private-name")) {
-				if (!strcmp(attr_val, "athletics")) {
+			if (string_eq(attr_name, "private-name")) {
+				if (string_eq(attr_val, "athletics")) {
 					player->skill_proficiencies[(int) ATHLETICS] += 1;
 				}
-				else if (!strcmp(attr_val, "acrobatics")) {
+				else if (string_eq(attr_val, "acrobatics")) {
 					player->skill_proficiencies[(int) ACROBATICS] += 1;
 				}
-				else if (!strcmp(attr_val, "sleight-of-hand")) {
+				else if (string_eq(attr_val, "sleight-of-hand")) {
 					player->skill_proficiencies[(int) SLEIGHT_OF_HAND] += 1;
 				}
-				else if (!strcmp(attr_val, "stealth")) {
+				else if (string_eq(attr_val, "stealth")) {
 					player->skill_proficiencies[(int) STEALTH] += 1;
 				}
-				else if (!strcmp(attr_val, "arcana")) {
+				else if (string_eq(attr_val, "arcana")) {
 					player->skill_proficiencies[(int) ARCANA] += 1;
 				}
-				else if (!strcmp(attr_val, "history")) {
+				else if (string_eq(attr_val, "history")) {
 					player->skill_proficiencies[(int) HISTORY] += 1;
 				}
-				else if (!strcmp(attr_val, "investigation")) {
+				else if (string_eq(attr_val, "investigation")) {
 					player->skill_proficiencies[(int) INVESTIGATION] += 1;
 				}
-				else if (!strcmp(attr_val, "nature")) {
+				else if (string_eq(attr_val, "nature")) {
 					player->skill_proficiencies[(int) NATURE] += 1;
 				}
-				else if (!strcmp(attr_val, "religion")) {
+				else if (string_eq(attr_val, "religion")) {
 					player->skill_proficiencies[(int) RELIGION] += 1;
 				}
-				else if (!strcmp(attr_val, "animal-handling")) {
+				else if (string_eq(attr_val, "animal-handling")) {
 					player->skill_proficiencies[(int) ANIMAL_HANDLING] += 1;
 				}
-				else if (!strcmp(attr_val, "insight")) {
+				else if (string_eq(attr_val, "insight")) {
 					player->skill_proficiencies[(int) INSIGHT] += 1;
 				}
-				else if (!strcmp(attr_val, "medicine")) {
+				else if (string_eq(attr_val, "medicine")) {
 					player->skill_proficiencies[(int) MEDICINE] += 1;
 				}
-				else if (!strcmp(attr_val, "perception")) {
+				else if (string_eq(attr_val, "perception")) {
 					player->skill_proficiencies[(int) PERCEPTION] += 1;
 				}
-				else if (!strcmp(attr_val, "survival")) {
+				else if (string_eq(attr_val, "survival")) {
 					player->skill_proficiencies[(int) SURVIVAL] += 1;
 				}
-				else if (!strcmp(attr_val, "deception")) {
+				else if (string_eq(attr_val, "deception")) {
 					player->skill_proficiencies[(int) DECEPTION] += 1;
 				}
-				else if (!strcmp(attr_val, "intimidation")) {
+				else if (string_eq(attr_val, "intimidation")) {
 					player->skill_proficiencies[(int) INTIMIDATION] += 1;
 				}
-				else if (!strcmp(attr_val, "performance")) {
+				else if (string_eq(attr_val, "performance")) {
 					player->skill_proficiencies[(int) PERFORMANCE] += 1;
 				}
-				else if (!strcmp(attr_val, "persuasion")) {
+				else if (string_eq(attr_val, "persuasion")) {
 					player->skill_proficiencies[(int) PERSUASION] += 1;
 				}
 				else {
@@ -610,17 +620,17 @@ void read_character_xml_children(PlayerCharacter* player, mxml_node_t* node) {
 				}
 			}
 		}
-	} else if (!strcmp(element_name, "item-proficiency")) {
+	} else if (string_eq(element_name, "item-proficiency")) {
 		for (int i = 0; i < num_attrs; i++) {
 			attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-			if (!strcmp(attr_name, "private-name")) {
+			if (string_eq(attr_name, "private-name")) {
 				g_ptr_array_insert(player->item_proficiencies, -1, 
 						set_string(NULL, attr_val));
 			} else {
 				printf("Item proficiency shouldn't have property %s\n", attr_name);
 			}
 		}
-	} else if (!strcmp(element_name, "item-category-proficiency")) {
+	} else if (string_eq(element_name, "item-category-proficiency")) {
 		ItemDef itm;
 		item_def_init(&itm);
 		read_item_def_xml(&itm, node);
@@ -629,34 +639,34 @@ void read_character_xml_children(PlayerCharacter* player, mxml_node_t* node) {
 		ic.flags = itm.flags;
 		item_def_clear(&itm);
 		ItemCategoryDyna_add(&(player->item_category_proficiencies), ic);
-	} else if (!strcmp(element_name, "language")) {
+	} else if (string_eq(element_name, "language")) {
 		for (int i = 0; i < num_attrs; i++) {
 			attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-			if (!strcmp(attr_name, "private-name")) {
+			if (string_eq(attr_name, "private-name")) {
 				g_ptr_array_insert(player->languages, -1, 
 						set_string(NULL, attr_val));
 			} else {
 				printf("Languages shouldn't have property %s\n", attr_name);
 			}
 		}
-	} else if (!strcmp(element_name, "dormant-ability")) {
+	} else if (string_eq(element_name, "dormant-ability")) {
 		AbilityRef abr;
 		ability_ref_init(&abr);
 		for (int i = 0; i < num_attrs; i++) {
 			attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-			if (!strcmp(attr_name, "private-name")) {
+			if (string_eq(attr_name, "private-name")) {
 				abr.private_name = set_string(abr.private_name, attr_val);
 			} else {
 				printf("Ability references shouldn't have property %s\n", attr_name);
 			}
 		}
 		AbilityRefDyna_add(&(player->dormant_abilities), abr);
-	} else if (!strcmp(element_name, "active-ability")) {
+	} else if (string_eq(element_name, "active-ability")) {
 		AbilityRef abr;
 		ability_ref_init(&abr);
 		for (int i = 0; i < num_attrs; i++) {
 			attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-			if (!strcmp(attr_name, "private-name")) {
+			if (string_eq(attr_name, "private-name")) {
 				abr.private_name = set_string(abr.private_name, attr_val);
 			} else {
 				printf("Ability references shouldn't have property %s\n", attr_name);
@@ -679,94 +689,94 @@ void read_character_xml(PlayerCharacter* player, mxml_node_t* node) {
 			kid = mxmlGetNextSibling(kid);
 		}
 	}
-	else if (!strcmp(element_name, "player-character")) {
+	else if (string_eq(element_name, "player-character")) {
 		int num_attrs = mxmlElementGetAttrCount(node);
 		for (int i = 0; i < num_attrs; i++) {
 			const char* attr_name;
 			const char* attr_val = mxmlElementGetAttrByIndex(node, i, &attr_name);
-			if (!strcmp(attr_name, "private-name")) {
+			if (string_eq(attr_name, "private-name")) {
 				player->private_name = set_string(player->private_name, attr_val);
 			}
-			else if (!strcmp(attr_name, "public-name")) {
+			else if (string_eq(attr_name, "public-name")) {
 				player->public_name = set_string(player->public_name, attr_val);
 			}
-			else if (!strcmp(attr_name, "race")) {
+			else if (string_eq(attr_name, "race")) {
 				player->race = set_string(player->race, attr_val);
 			}
-			else if (!strcmp(attr_name, "subrace")) {
+			else if (string_eq(attr_name, "subrace")) {
 				player->subrace = set_string(player->subrace, attr_val);
 			}
-			else if (!strcmp(attr_name, "xp")) {
+			else if (string_eq(attr_name, "xp")) {
 				player->xp = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "hp")) {
+			else if (string_eq(attr_name, "hp")) {
 				player->hp = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "chosen-hp-max")) {
+			else if (string_eq(attr_name, "chosen-hp-max")) {
 				player->chosen_hp_max = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "thp")) {
+			else if (string_eq(attr_name, "thp")) {
 				player->thp = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "hit-dice")) {
+			else if (string_eq(attr_name, "hit-dice")) {
 				int num = 0; int die = 0;
 				int count = sscanf(attr_val, "%dd%d", &num, &die);
 				if (count == 2) {
 					player->hit_dice.die[dicenum_to_index(die)] = num;
 				}
 			}
-			else if (!strcmp(attr_name, "inspiration-dice")) {
+			else if (string_eq(attr_name, "inspiration-dice")) {
 				int num = 0; int die = 0;
 				int count = sscanf(attr_val, "%dd%d", &num, &die);
 				if (count == 2) {
 					player->inspiration_die = die;
 				}
 			}
-			else if (!strcmp(attr_name, "valor-inspiration")) {
-				if (!strcmp(attr_val, "true")) {
+			else if (string_eq(attr_name, "valor-inspiration")) {
+				if (string_eq(attr_val, "true")) {
 					player->valor_inspiration = 1;
 				}
 			}
-			else if (!strcmp(attr_name, "verbal-limits")) {
+			else if (string_eq(attr_name, "verbal-limits")) {
 				player->verbal_limits = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "somatic-limits")) {
+			else if (string_eq(attr_name, "somatic-limits")) {
 				player->somatic_limits = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "concentration-limits")) {
+			else if (string_eq(attr_name, "concentration-limits")) {
 				player->concentration_limits = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "ac-bonus")) {
+			else if (string_eq(attr_name, "ac-bonus")) {
 				player->ac_bonus = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "exhaustion")) {
+			else if (string_eq(attr_name, "exhaustion")) {
 				player->exhaustion = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "speed")) {
+			else if (string_eq(attr_name, "speed")) {
 				player->walk_speed = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "str")) {
+			else if (string_eq(attr_name, "str")) {
 				player->ability_scores[0] = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "dex")) {
+			else if (string_eq(attr_name, "dex")) {
 				player->ability_scores[1] = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "con")) {
+			else if (string_eq(attr_name, "con")) {
 				player->ability_scores[2] = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "int")) {
+			else if (string_eq(attr_name, "int")) {
 				player->ability_scores[3] = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "wis")) {
+			else if (string_eq(attr_name, "wis")) {
 				player->ability_scores[4] = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "cha")) {
+			else if (string_eq(attr_name, "cha")) {
 				player->ability_scores[5] = atoi(attr_val);
 			}
-			else if (!strcmp(attr_name, "size")) {
+			else if (string_eq(attr_name, "size")) {
 				player->size = str_to_size(attr_val);
 			}
-			else if (!strcmp(attr_name, "alignment")) {
+			else if (string_eq(attr_name, "alignment")) {
 				player->alignment = str_to_alignment(attr_val);
 			}
 		}

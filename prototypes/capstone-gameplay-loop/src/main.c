@@ -15,7 +15,7 @@ void display_characters() {
 		while ((ent = readdir(folder)) != NULL) {
 			if ( strlen(ent->d_name) > 4 ) {
 				char* tag = &(ent->d_name[strlen(ent->d_name) - 4]);
-				if (!strcmp(tag, ".xml")) {
+				if (string_eq(tag, ".xml")) {
 					*tag = '\0';
 					printf("    %s\n", ent->d_name);
 				}
@@ -114,12 +114,13 @@ void turn() {
 				printf("Mem Alloc Error\n");
 				continue;
 			}
-			if (!strcmp(inner_input, "cancel")) {
+			if (string_eq(inner_input, "cancel")) {
 				break;
 			}
+			title_string(inner_input);
 			int i = 0;
 			for (i = 0; i < acts->size; i++) {
-				if (!strcmp(inner_input, acts->array[i].public_name)) {
+				if (string_eq(inner_input, acts->array[i].public_name)) {
 					returnType rt;
 					int* can_run_ptr = (int*) eval_expr(acts->array[i].prereqs, &rt);
 					int can_run = *can_run_ptr;
@@ -185,7 +186,7 @@ void damage() {
 			}
 			lower_string(damage_type);
 			type = str_to_damage_type(damage_type);
-			if (type != FORCE || !strcmp(damage_type, "force")) {
+			if (type != FORCE || string_eq(damage_type, "force")) {
 				input_valid = 1;
 				free(input);
 			}
@@ -224,33 +225,82 @@ void damage() {
 }
 
 void equip() {
-	//list main hand, off hand, and armor, pick one
-	//offer to equip weapon, hold something, put on armor
-	//
-	//list of items that can be used for purpose
-	//	you can hold about anything
-	//	
-	//if equipping weapon
-	//	if two-handed, main hand and off hand must be free
-	//		can only be equipped to main hand
-	//		should probably hold some fake object for that purpose
-	//	can only equip weapon to offhand if
-	//		weapon is in main hand
-	//		offhand is free
-	//		neither are two handed
-	//	run equip process
-	//if unequipping weapon
-	//	run unequip process
-	//	if offhand has weapon, switch it to main hand
-	//if holding miscellaneous object
-	//if putting on armor
-	//	if not proficient, disable verbal and somatic
-	//	notify user of don time
-	//	if doesnt meet str req, speed reduced by 10
-	//	run don process
-	//if taking off armor
-	//	notify usr of doff time
-	//	run doff process
+	PlayerCharacter* p = &(get_blob()->player);
+	//ItemDefDyna* idd = &(get_blob()->item_db);
+	while (1) {
+		printf("\nPlease select the desired slot (by number):\n");
+		char empty_slot_name[] = "empty";
+		char* armor_name = p->armor.public_name;
+		char* main_hand_name = p->main_hand.public_name;
+		char* off_hand_name = p->off_hand.public_name;
+
+		if (!armor_name) armor_name = empty_slot_name;
+		if (!main_hand_name) main_hand_name = empty_slot_name;
+		if (!off_hand_name) off_hand_name = empty_slot_name;
+		printf("1) Armor (%s)\n", armor_name);
+		printf("2) Main Hand (%s)\n", main_hand_name);
+		printf("3) Off Hand (%s)\n", off_hand_name);
+		printf("4) Quit\n");
+		printf("> ");
+		char* input = read_file(stdin);
+		if (!input) {
+			printf("Mem Alloc Failure\n");
+			continue;
+		}
+		char selection = input[0];
+		free(input);
+
+		ItemRef* selected_item = NULL;
+		switch (selection) {
+		case '1':
+			selected_item = &(p->armor);
+			break;
+		case '2':
+			selected_item = &(p->main_hand);
+			break;
+		case '3':
+			selected_item = &(p->off_hand);
+			break;
+		case '4':
+			return;
+		default:
+			printf("Error: Unexpected Symbol '%c'\n", selection);
+		}
+
+		if (!selected_item) continue;
+
+		if (selected_item->private_name) {
+			ItemRefDyna_add(&(p->inventory), *selected_item);
+			item_ref_init(selected_item);
+			printf("Item successfully stowed.\n");
+			continue;
+		}
+
+		printf("These are your items.\n");
+		int i;
+		for(i = 0; i < p->inventory.size; i++) {
+			printf("    %s\n", p->inventory.array[i].public_name);
+		}
+		while(1) {
+			printf("What would you like to use? > ");
+			input = title_string(strip_string(read_file(stdin)));
+
+			if(string_eq(input, "quit")) {
+				break;
+			}
+
+			for(i = 0; i < p->inventory.size; i++) {
+				if(string_eq(input, p->inventory.array[i].public_name)) {
+					*selected_item = p->inventory.array[i];
+					ItemRefDyna_remove(&(p->inventory), &(p->inventory.array[i]), NULL);
+					goto INV_ITEM_SELECTION_BREAK_OUT;
+				}
+			}
+			printf("Unrecognized item name.\n");
+			free(input);
+		}
+		INV_ITEM_SELECTION_BREAK_OUT: free(input);
+	}
 }
 
 void long_rest() {
@@ -293,7 +343,62 @@ void game_loop() {
 	PlayerCharacter* p = &(get_blob()->player);
 	while (1) {
 		printf("\nStats:\n");
-		printf("hp: %d\n", p->hp);
+		printf("hp: %d/%d\n", p->hp, player_max_hp(p));
+		printf("ac: %d\n", player_ac(p));
+		//TODO
+		printf("proficiency bonus: %d\n", level_to_proficiency(xp_to_level(p->xp)));
+		printf("STR: %d (%d)\n", p->ability_scores[0], ability_score_to_mod(p->ability_scores[0]));
+		printf("DEX: %d (%d)\n", p->ability_scores[1], ability_score_to_mod(p->ability_scores[1]));
+		printf("CON: %d (%d)\n", p->ability_scores[2], ability_score_to_mod(p->ability_scores[2]));
+		printf("INT: %d (%d)\n", p->ability_scores[3], ability_score_to_mod(p->ability_scores[3]));
+		printf("WIS: %d (%d)\n", p->ability_scores[4], ability_score_to_mod(p->ability_scores[4]));
+		printf("CHA: %d (%d)\n", p->ability_scores[5], ability_score_to_mod(p->ability_scores[5]));
+		ItemDef* ref;
+		if (p->armor.private_name) {
+			ref = NULL;
+			for (int i = 0; i < get_blob()->item_db.size; i++) {
+				if (string_eq(p->armor.private_name, get_blob()->item_db.array[i].private_name)) {
+					ref = &(get_blob()->item_db.array[i]);
+					break;
+				}
+			}
+			if (!ref) {
+				printf("Unknown armor %s\n", p->armor.private_name);
+			}
+			else {
+				printf("armor: %s\n", ref->public_name);
+			}
+		}
+		if (p->main_hand.private_name) {
+			ref = NULL;
+			for (int i = 0; i < get_blob()->item_db.size; i++) {
+				if (string_eq(p->main_hand.private_name, get_blob()->item_db.array[i].private_name)) {
+					ref = &(get_blob()->item_db.array[i]);
+					break;
+				}
+			}
+			if (!ref) {
+				printf("Unknown main hand %s\n", p->armor.private_name);
+			}
+			else {
+				printf("main hand: %s\n", ref->public_name);
+			}
+		}
+		if (p->off_hand.private_name) {
+			ref = NULL;
+			for (int i = 0; i < get_blob()->item_db.size; i++) {
+				if (string_eq(p->off_hand.private_name, get_blob()->item_db.array[i].private_name)) {
+					ref = &(get_blob()->item_db.array[i]);
+					break;
+				}
+			}
+			if (!ref) {
+				printf("Unknown off hand %s\n", p->armor.private_name);
+			}
+			else {
+				printf("off hand: %s\n", ref->public_name);
+			}
+		}
 		printf("States:\n");
 		print_player_states(p);
 		printf("Counters:\n");
@@ -337,18 +442,17 @@ void game_loop() {
 			AbilityDefDyna* abltdd = &(get_blob()->ability_db);
 			for (int i = 0; i < p->dormant_abilities.size; i++) {
 				for (int j = 0; j < abltdd->size; j++) {
-					if (!strcmp(p->dormant_abilities.array[i].private_name,
+					if (string_eq(p->dormant_abilities.array[i].private_name,
 								abltdd->array[j].private_name)) {
 						returnType rt;
 						int* can_run = (int*) eval_expr(abltdd->array[j].prereqs, &rt);
 						if (rt == RTRN_BOOL && *can_run) {
+							printf("\nYou've learned %s\n", abltdd->array[j].public_name);
 							parse_sequence(abltdd->array[j].sequence);
 							AbilityRefDyna_add(&(p->active_abilities),
 										p->dormant_abilities.array[i]);
-							ability_ref_init(&(p->dormant_abilities.array[i]));
 							AbilityRefDyna_remove(&(p->dormant_abilities),
-										&(p->dormant_abilities.array[i]),
-										ability_ref_clear);
+										&(p->dormant_abilities.array[i]), NULL);
 						}
 						free(can_run);
 					}
@@ -375,7 +479,7 @@ int main(int argc, char** argv) {
 		free(name);
 		name = read_file(stdin);
 		if (name) {
-			if (!strcmp(name, "quit")) {
+			if (string_eq(name, "quit")) {
 				free(name);
 				return 0;
 			}

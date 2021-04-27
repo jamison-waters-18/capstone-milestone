@@ -67,9 +67,8 @@ obj/data_manip_interpreter.o: interpreter/data_manip_interpreter.c \
  /usr/include/glib-2.0/glib/deprecated/grel.h \
  /usr/include/glib-2.0/glib/deprecated/gthread.h \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
- interpreter/../includes/data_manip_interpreter.h \
+ interpreter/../includes/interpreter.h interpreter/../includes/parser.h \
  interpreter/../includes/utils.h interpreter/../includes/Dyna.h \
- interpreter/../includes/parser.h interpreter/../includes/glib-facade.h \
- interpreter/../includes/blob.h interpreter/../includes/item.h \
- interpreter/../includes/character.h interpreter/../includes/ability.h \
- interpreter/../includes/glib-facade.h
+ interpreter/../includes/glib-facade.h interpreter/../includes/blob.h \
+ interpreter/../includes/item.h interpreter/../includes/character.h \
+ interpreter/../includes/ability.h interpreter/../includes/glib-facade.h

@@ -1,5 +1,5 @@
 #include <glib.h>
-#include "../includes/basic_bool_interpreter.h"
+#include "../includes/interpreter.h"
 
 void* exec_not(GPtrArray* args, returnType* return_type) {
 	if (args->len != 1) {
@@ -142,10 +142,15 @@ void* exec_eq(GPtrArray* args, returnType* return_type) {
 		double* dbl2 = (double*) first_param;
 		*dbl2 -= *dbl1;
 		*result = (-FLOAT_EQ_TOLERANCE < *dbl2 && *dbl2 < FLOAT_EQ_TOLERANCE);
+	} else if (first_param_return_type == RTRN_STR &&
+		second_param_return_type == RTRN_STR) {
+		char* str1 = (char*) first_param;
+		char* str2 = (char*) second_param;
+		*result = string_eq(str1, str2);
 	} else if (first_param_return_type == second_param_return_type){
 		int* int1 = (int*) first_param;
 		int* int2 = (int*) second_param;
-		*result = (int1 == int2);
+		*result = (*int1 == *int2);
 	} else {
 		*result = FALSE;
 	}
@@ -170,7 +175,7 @@ void* exec_has_all_flags(GPtrArray* args, returnType* return_type) {
 	gboolean* result = malloc(sizeof(gboolean));
 	*result = FALSE;
 
-	for(int i = i; i < args->len; i++) {
+	for(int i = 1; i < args->len; i++) {
 		int* flag_ptr = eval_expr(args->pdata[i], &sub_return_type);
 		if (sub_return_type != RTRN_FLAG) {
 			free(result);

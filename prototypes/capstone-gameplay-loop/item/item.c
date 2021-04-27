@@ -104,6 +104,7 @@ generate_dyna_functions_M(ItemRef);
 ItemRef* item_ref_init(ItemRef* itm) {
 	if (!itm) { return NULL; }
 	itm->private_name = NULL;
+	itm->public_name = NULL;
 	itm->quantity = 1.0;
 	itm->spells = NULL;
 	return itm;
@@ -112,6 +113,7 @@ ItemRef* item_ref_init(ItemRef* itm) {
 int item_ref_clear(ItemRef* itm) {
 	if (!itm) { return -1; }
 	free(itm->private_name);
+	free(itm->public_name);
 	free(itm->spells);
 	return 0;
 }

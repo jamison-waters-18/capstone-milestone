@@ -39,12 +39,11 @@ typedef struct {
 	ItemDefDyna item_db;
 	AbilityDefDyna ability_db;
 	PlayerCharacter player;
-	int is_ranged;
 	ItemDef* selected_weapon;
 	abilityType* selected_ability;
+	int wield_mode;
 	//spell
 	//int spell_slot;
-	ActDyna act_stack;
 	DamageDyna damages;
 	TurnState turn_state;
 } Blob;

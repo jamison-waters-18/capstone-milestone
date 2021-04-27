@@ -8,6 +8,8 @@ funcType find_bool_func(char* func_name, returnType* return_type);
 
 funcType find_data_manip_func(char* func_name, returnType* return_type);
 
+funcType find_data_lookup_func(char* func_name, returnType* return_type);
+
 funcType find_const_func(char* func_name, returnType* return_type);
 
 funcType find_math_func(char* func_name, returnType* return_type);
@@ -64,6 +66,9 @@ funcType find_func(char* func_name, returnType* return_type) {
 	if (f) return f;
 	
 	f = find_const_func(func_name, return_type);
+	if (f) return f;
+
+	f = find_data_lookup_func(func_name, return_type);
 	if (f) return f;
 
 	f = find_data_manip_func(func_name, return_type);

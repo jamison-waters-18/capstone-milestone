@@ -67,6 +67,5 @@ obj/math_interpreter.o: interpreter/math_interpreter.c \
  /usr/include/glib-2.0/glib/deprecated/grel.h \
  /usr/include/glib-2.0/glib/deprecated/gthread.h \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
- interpreter/../includes/math_interpreter.h \
- interpreter/../includes/utils.h interpreter/../includes/Dyna.h \
- interpreter/../includes/parser.h
+ interpreter/../includes/interpreter.h interpreter/../includes/parser.h \
+ interpreter/../includes/utils.h interpreter/../includes/Dyna.h

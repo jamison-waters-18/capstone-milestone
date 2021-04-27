@@ -1,5 +1,5 @@
 #include <glib.h>
-#include "../includes/data_manip_interpreter.h"
+#include "../includes/interpreter.h"
 #include "../includes/glib-facade.h"
 #include "../includes/blob.h"
 
@@ -326,31 +326,6 @@ void* exec_exit_arbitrary_state(GPtrArray* args, returnType* return_type) {
 	return SUCCESSFUL_EMPTY_FUNC_EXEC;
 }
 
-void* exec_has_arbitrary_state(GPtrArray* args, returnType* return_type) {
-	if (args->len != 1) {
-		*return_type = RTRN_FAIL;
-		return FAILED_FUNC_EXEC;
-	}
-	returnType sub_return_type;
-	char* state_name = eval_expr(args->pdata[0], &sub_return_type);
-	if (sub_return_type != RTRN_STR) {
-		safe_free(state_name);
-		*return_type = RTRN_FAIL;
-		return FAILED_FUNC_EXEC;
-	}
-	ArbitraryStateDyna* a = &(get_blob()->player.arbitrary_states);
-	gboolean* results = malloc(sizeof(gboolean));
-	*results = FALSE;
-	for (int i = 0; i < a->size; i++) {
-		if (!strcmp(state_name, a->array[i].private_name)) {
-			*results = TRUE;
-			break;
-		}
-	}
-	free(state_name);
-	return results;
-}
-
 void* exec_set_arbitrary_counter(GPtrArray* args, returnType* return_type) {
 	if (args->len != 2) {
 		*return_type = RTRN_FAIL;
@@ -424,32 +399,6 @@ void* exec_remove_arbitrary_counter(GPtrArray* args, returnType* return_type) {
 	return SUCCESSFUL_EMPTY_FUNC_EXEC;
 }
 
-void* exec_val_of_arbitrary_counter(GPtrArray* args, returnType* return_type) {
-	if (args->len != 1) {
-		*return_type = RTRN_FAIL;
-		return FAILED_FUNC_EXEC;
-	}
-	returnType sub_return_type;
-	char* key = eval_expr(args->pdata[0], &sub_return_type);
-	if (sub_return_type != RTRN_STR) {
-		safe_free(key);
-		*return_type = RTRN_FAIL;
-		return FAILED_FUNC_EXEC;
-	}
-	int* result = FAILED_FUNC_EXEC;
-	int* val = g_str_int_hash_table_lookup(
-			get_blob()->player.arbitrary_counter, key);
-	free(key);
-	if (val) {
-		result = malloc(sizeof(int));
-		*result = *val;
-	}
-	else {
-		*return_type = RTRN_FAIL;
-	}
-	return result;
-}
-
 void* exec_add_action(GPtrArray* args, returnType* return_type) {
 	if (args->len != 5) {
 		*return_type = RTRN_FAIL;
@@ -488,20 +437,6 @@ void* exec_add_action(GPtrArray* args, returnType* return_type) {
 	return SUCCESSFUL_EMPTY_FUNC_EXEC;
 }
 
-void* exec_selected_ability(GPtrArray* args, returnType* return_type) {
-	if (args->len) {
-		*return_type = RTRN_FAIL;
-		return FAILED_FUNC_EXEC;
-	}
-	abilityType* results = NULL;
-	abilityType* a = get_blob()->selected_ability;
-	if (a) {
-		results = malloc(sizeof(abilityType));
-		*results = *a;
-	}
-	return results;
-}
-
 void* exec_add_to_damage(GPtrArray* args, returnType* return_type) {
 	if (args->len != 3) {
 		*return_type = RTRN_FAIL;
@@ -538,7 +473,7 @@ void* exec_add_to_damage(GPtrArray* args, returnType* return_type) {
 		return FAILED_FUNC_EXEC;
 	}
 	DamageDyna* d = &(get_blob()->damages);
-	for (int i = 1; i < d->size; i++) {
+	for (int i = 0; i < d->size; i++) {
 		if (d->array[i].type == dmg_type) {
 			d->array[i].dice.die[dmg_die] += dmg_val;
 			return SUCCESSFUL_EMPTY_FUNC_EXEC;
@@ -551,30 +486,11 @@ void* exec_add_to_damage(GPtrArray* args, returnType* return_type) {
 	DamageDyna_add(d, new_dmg);
 	if (!get_blob()->turn_state.undo_mode) {
 		char* command = set_string_f(NULL,
-				"add_damage(%s, %s, %d);", args->pdata[0], args->pdata[1], dmg_val * -1); 
+				"add_to_damage(%s, %s, %d);", args->pdata[0], args->pdata[1], dmg_val * -1); 
 		act_record_add_undo_command(command);
 		free(command);
 	}
 	return SUCCESSFUL_EMPTY_FUNC_EXEC;
-}
-
-void* exec_weapon_damage_type(GPtrArray* args, returnType* return_type) {
-	if (args->len) {
-		*return_type = RTRN_FAIL;
-		return FAILED_FUNC_EXEC;
-	}
-	DamageDyna* d = &(get_blob()->damages);
-	for (int i = 0; i < d->size; i++) {
-		if	(	d->array[i].type == BLUDGEONING ||
-				d->array[i].type == PIERCING ||
-				d->array[i].type == SLASHING) {
-			damageType* result = malloc(sizeof(damageType));
-			*result = d->array[i].type;
-			return result;
-		}
-	}
-	*return_type = RTRN_FAIL;
-	return FAILED_FUNC_EXEC;
 }
 
 void* exec_add_resistance(GPtrArray* args, returnType* return_type) {
@@ -586,7 +502,7 @@ void* exec_add_resistance(GPtrArray* args, returnType* return_type) {
 	int* resistances = &(get_blob()->player.resistances[0]);
 	for (int i = 0; i < args->len; i++) {
 		returnType sub_return_type;
-		void* holder = eval_expr(args->pdata[0], &sub_return_type);
+		void* holder = eval_expr(args->pdata[i], &sub_return_type);
 		if (sub_return_type != RTRN_DAMAGE) {
 			safe_free(holder);
 			*return_type = RTRN_FAIL;
@@ -647,17 +563,6 @@ void* exec_remove_resistance(GPtrArray* args, returnType* return_type) {
 	return SUCCESSFUL_EMPTY_FUNC_EXEC;
 }
 
-void* exec_weapon_flags(GPtrArray* args, returnType* return_type) {
-	if (args->len) {
-		*return_type = RTRN_FAIL;
-		return FAILED_FUNC_EXEC;
-	}
-
-	int* flags = malloc(sizeof(int));
-	*flags = get_blob()->selected_weapon->flags;
-	return flags;
-}
-
 funcType find_data_manip_func(char* func_name, returnType* return_type) {
 	//simple data manipulation functions
 	if (!strcmp(func_name, "enable_spellcasting")) {
@@ -701,10 +606,6 @@ funcType find_data_manip_func(char* func_name, returnType* return_type) {
 		*return_type = RTRN_EMPTY;
 		return exec_exit_arbitrary_state;
 	}
-	if (!strcmp(func_name, "has_arbitrary_state")) {
-		*return_type = RTRN_BOOL;
-		return exec_has_arbitrary_state;
-	}
 	if (!strcmp(func_name, "set_arbitrary_counter")) {
 		*return_type = RTRN_EMPTY;
 		return exec_set_arbitrary_counter;
@@ -713,25 +614,13 @@ funcType find_data_manip_func(char* func_name, returnType* return_type) {
 		*return_type = RTRN_EMPTY;
 		return exec_remove_arbitrary_counter;
 	}
-	if (!strcmp(func_name, "val_of_arbitrary_counter")) {
-		*return_type = RTRN_INT;
-		return exec_val_of_arbitrary_counter;
-	}
 	if (!strcmp(func_name, "add_action")) {
 		*return_type = RTRN_EMPTY;
 		return exec_add_action;
 	}
-	if (!strcmp(func_name, "selected_ability")) {
-		*return_type = RTRN_ABLT;
-		return exec_selected_ability;
-	}
 	if (!strcmp(func_name, "add_to_damage")) {
 		*return_type = RTRN_EMPTY;
 		return exec_add_to_damage;
-	}
-	if (!strcmp(func_name, "weapon_damage_type")) {
-		*return_type = RTRN_DAMAGE;
-		return exec_weapon_damage_type;
 	}
 	if (!strcmp(func_name, "add_resistance")) {
 		*return_type = RTRN_EMPTY;
@@ -740,10 +629,6 @@ funcType find_data_manip_func(char* func_name, returnType* return_type) {
 	if (!strcmp(func_name, "remove_resistance")) {
 		*return_type = RTRN_EMPTY;
 		return exec_remove_resistance;
-	}
-	if (!strcmp(func_name, "weapon_flags")) {
-		*return_type = RTRN_FLAG;
-		return exec_weapon_flags;
 	}
 	*return_type = RTRN_FAIL;
 	return FAILED_FUNC_EXEC;

@@ -17,7 +17,8 @@ char* find_end_of_str(char* start_of_str) {
 			fprintf(stderr, "malformed str\n");
 			return NULL;
 		case '/':
-			end++;
+			if (*(end + 1) != '\0')
+				end++;
 			break;
 		}
 		if (!end) return NULL;
@@ -34,7 +35,8 @@ char* find_end_of_bracket(char* start_of_bracket) {
 			fprintf(stderr, "malformed brackets\n");
 			return NULL;
 		case '/':
-			end++;
+			if (*(end + 1) != '\0')
+				end++;
 			break;
 		case '`':
 			end = find_end_of_str(end);
@@ -58,7 +60,8 @@ char* find_end_of_arg(char* start_of_var) {
 			fprintf(stderr, "malformed args\n");
 			return NULL;
 		case '/':
-			end++;
+			if (*(end + 1) != '\0')
+				end++;
 			break;
 		case '`':
 			end = find_end_of_str(end);
@@ -81,7 +84,8 @@ char* find_end_of_expr(char* start_of_expr) {
 			fprintf(stderr, "malformed expr\n");
 			return NULL;
 		case '/':
-			end++;
+			if (*(end + 1) != '\0')
+				end++;
 			break;
 		case '`':
 			end = find_end_of_str(end);
@@ -105,10 +109,8 @@ exprType find_expr_type(char* expr) {
 		switch (*expr) {
 		case '`':
 			return STR_EXPR;
-			break;
 		case '(':
 			return FUNC_EXPR;
-			//break;
 		}
 		expr++;
 	}

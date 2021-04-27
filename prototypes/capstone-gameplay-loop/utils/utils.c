@@ -3,6 +3,11 @@
 #include "../includes/utils.h"
 #include "../includes/DynaImp.h"
 
+const char damage_type_to_string[][12] = {
+	"Acid", "Bludgeoning", "Cold", "Fire", "Force",
+	"Lightning", "Necrotic", "Piercing", "Poison",
+	"Psychic", "Radiant", "Slashing", "Thunder" };
+
 void safe_free(void* p) {
 	if (p > (void*) 5) {
 		free(p);
@@ -77,7 +82,7 @@ int index_to_dicenum(int index) {
 
 int dicenum_to_index(int die) {
 	switch (die) {
-	case 0:   return 0;
+	case 1:   return 0;
 	case 4:   return 1;
 	case 6:   return 2;
 	case 8:   return 3;
@@ -86,9 +91,9 @@ int dicenum_to_index(int die) {
 	case 20:  return 6;
 	case 100: return 7;
 	default:
-		printf("DieToIndex Warning: %i not found.\n", die);
+		printf("dicenum_to_index Warning: %i not found.\n", die);
 	}
-	return 0;
+	return -1;
 }
 
 int xp_to_level(int xp) {
@@ -235,7 +240,7 @@ DamageDyna* parse_damage(DamageDyna* allDamage, const char* leftToRead) {
 		int remainingDice;
 		do {
 			int thisNum = 0;
-			int thisDie = 0;
+			int thisDie = 1;
 			remainingDice = sscanf(theseDice, "%id%i+%s", &thisNum, &thisDie, theseDice);
 			thisDamage.dice.die[dicenum_to_index(thisDie)] = thisNum;
 		} while(remainingDice > 2);
@@ -249,16 +254,56 @@ DamageDyna* parse_damage(DamageDyna* allDamage, const char* leftToRead) {
 
 char* dice_to_string(Dice* d) {
 	char* result = NULL;
+	if (!d) return result;
 
-	for (int i = 7; i >= 0; i++) {
+	for (int i = 7; i >= 0; i--) {
 		if (d->die[i]) {
+			int dicenum = index_to_dicenum(i);
+			if (dicenum == 1) {
+				if (result) {
+					char* add = set_string_f(NULL, " + %d", d->die[i]);
+					result = append_string(result, add);
+					free(add);
+				} else {
+					result = set_string_f(NULL, "%d", d->die[i]);
+				}
+				continue;
+			}
 			if (result) {
-				char* add = set_string_f(add, " + %dd%d", d->die[i], index_to_dicenum[i]);
+				char* add = set_string_f(NULL, " + %dd%d", d->die[i], index_to_dicenum(i));
 				result = append_string(result, add);
+				free(add);
 			} else {
-				result = set_string_f(NULL, "%dd%d", d->die[i], index_to_dicenum[i]);
+				result = set_string_f(NULL, "%dd%d", d->die[i], index_to_dicenum(i));
 			}
 		}
+	}
+
+	if (!result) set_string(NULL, "0");
+	return result;
+}
+
+char* damage_dyna_to_string(DamageDyna* damages) {
+	char* result = NULL;
+	if (!damages) return result;
+
+	for (int i = 0; i < damages->size; i++) {
+		char* dice = dice_to_string(&(damages->array[i].dice));
+		if (!dice) {
+			continue;
+		}
+		if (!strcmp(dice, "0")) {
+			free(dice);
+			continue;
+		}
+		if (result) {
+			char* add = set_string_f(NULL, " + %s %s", dice, damage_type_to_string[damages->array[i].type]);
+			result = append_string(result, add);
+			free(add);
+		} else {
+			result = set_string_f(NULL, "%s %s", dice, damage_type_to_string[damages->array[i].type]);
+		}
+		free(dice);
 	}
 
 	if (!result) set_string(NULL, "0");
@@ -295,14 +340,65 @@ char* append_string(char* destination, const char* source) {
 	return destination;
 }
 
-void lower_string(char* input) {
-	if (!input) return;
+char* upper_string(char* input) {
+	if (!input) return NULL;
+	while (*input) {
+		*input = (*input * (*input < 'a' || 'z' < *input)) +
+		         ((*input - 32) * ('a' - 1 < *input &&
+		         *input < 'z' + 1));
+		input++;
+	}
+	return input;
+}
+
+char* lower_string(char* input) {
+	if (!input) return NULL;
 	while (*input) {
 		*input = (*input * (*input < 'A' || 'Z' < *input)) +
 		         ((*input + 32) * ('A' - 1 < *input &&
 		         *input < 'Z' + 1));
 		input++;
 	}
+	return input;
+}
+
+char* title_string(char* input) {
+	if (!input) return NULL;
+	char* str_begin = input;
+	int title_next = 1;
+	while (*input) {
+		if (*input == ' ' || *input == '\r' || *input == '\n') {
+			title_next = 1;
+		} else if (title_next) {
+			*input = (*input * (*input < 'a' || 'z' < *input)) +
+				     ((*input - 32) * ('a' - 1 < *input &&
+				     *input < 'z' + 1));
+			title_next = 0;
+		}
+		input++;
+	}
+	return str_begin;
+}
+
+char* strip_string(char* input) {
+	if (!input) return NULL;
+	char* str_begin = input;
+	while (*input == ' ' || *input == '\r' || *input == '\n') input++;
+	char* content_begin = input;
+	char* content_end = input;
+	while (*input) {
+		if (!(*input == ' ' || *input == '\r' || *input == '\n')) {
+			content_end = input + 1;
+		}
+		input++;
+	}
+	*content_end = '\0';
+	if (str_begin != content_begin) {
+		while(*content_begin) {
+			*(str_begin++) = *(content_begin++);
+		}
+	}
+	return str_begin;
 }
 
 char* read_file(FILE* in) {

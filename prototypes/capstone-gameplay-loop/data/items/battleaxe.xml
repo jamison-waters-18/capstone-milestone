@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="battleaxe"
+	public-name="Battleaxe"
+	category="weapon"
+	flags="martial, melee, versatile"
+	damage="1d8 slashing"
+	versatile-damage="1d10 slashing"
+	value="10"
+	weight="4" />

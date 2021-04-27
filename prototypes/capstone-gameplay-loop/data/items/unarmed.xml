@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="unarmed"
+	public-name="Unarmed Strike"
+	category="weapon"
+	flags="melee, simple"
+	damage="1 bludgeoning"
+	value="0"
+	weight="0" />

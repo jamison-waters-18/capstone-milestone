@@ -4,7 +4,7 @@
 	public-name="Handaxe"
 	category="weapon"
 	flags="light, thrown, melee, simple, ranged"
-	damage="1d6 bludgeoning"
+	damage="1d6 slashing"
 	range="20/60"
 	value="5"
 	weight="2" />

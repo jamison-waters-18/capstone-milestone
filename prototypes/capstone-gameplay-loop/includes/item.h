@@ -125,6 +125,7 @@ generate_dyna_headers_M(ItemRef);
 
 struct __ItemRef {
 	char* private_name;
+	char* public_name;
 	SpellList* spells;
 	double quantity;
 };

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="shield"
+	public-name="Shield"
+	category="armor"
+	flags="shield"
+	ac="2"
+	value="10"
+	weight="6" />

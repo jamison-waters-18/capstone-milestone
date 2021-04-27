@@ -1,12 +1,12 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <glib.h>
+#include <stdio.h>
+#include <string.h>
 #include "Dyna.h"
 
-#define SUCCESSFUL_EMPTY_FUNC_EXEC (void*) 1
-#define FAILED_FUNC_EXEC 0
 #define FLOAT_EQ_TOLERANCE .000001
+#define string_eq !strcmp
 
 typedef enum {
 	UNALIGNED, LAWFUL_GOOD,    NEUTRAL_GOOD, CHAOTIC_GOOD,
@@ -89,7 +89,7 @@ generate_dyna_headers_M(Damage);
 
 typedef void* SpellList;
 
-typedef void* (*funcType)(GPtrArray*, returnType*);
+extern const char damage_type_to_string[][12];
 
 void safe_free(void* p);
 
@@ -115,13 +115,21 @@ DamageDyna* parse_damage(DamageDyna*, const char*);
 
 char* dice_to_string(Dice*);
 
+char* damage_dyna_to_string(DamageDyna*);
+
 char* set_string(char* destination, const char* source);
 
 char* set_string_f(char* destination, const char* source, ...);
 
 char* append_string(char* destination, const char* source);
 
-void lower_string(char* input);
+char* upper_string(char* input);
+
+char* lower_string(char* input);
+
+char* title_string(char* input);
+
+char* strip_string(char* input);
 
 char* read_file(FILE* in);
 

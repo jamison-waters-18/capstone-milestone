@@ -1,0 +1,229 @@
+true types:
+	data that a user can create directly, and their corresponding regex match
+int: any integer
+	-?\d+
+bool: true or false
+	[(true)(false)]
+float: floating point number
+	-?\d*.\d+
+string: any sequence of ascii characters, surrounded by tick marks (`)
+	`.*`
+sequence: a series containing at least one function
+	([\w_]+\(.*\);)+
+
+abstract types:
+	data that cannot be created directly, but can be returned from a function
+value: can be either an int or a float
+ability: one of the primary 6 ability types (i.e. strength, charisma, etc.)
+menu: A specific dialog that appears on screen (i.e. main screen, change equipment, etc.)
+process-timing: A specific point in execution where script can be run (i.e. pre weapon damage, before turn, etc.)
+phase: Part of a standard turn (i.e. action, bonus action, reaction, etc)
+damage: Returns a damage type (i.e. piercing, lightning, psychic, etc)
+flag: Returns a bit field, with meaning being contingent on source
+any: can be any of the aforementioned types
+empty: Doesn't return information, cannot be used as an argument (except in a sequence)
+fail: Never returned by default, but always returned when execution fails (i.e. invalid arguments)
+
+Function Descriptions
+
+
+Misc.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+empty nop()
+	used when a function uses a sequence as an argument, but no specific action is desired
+
+empty if(bool, sequence, sequence)
+	arg2 executes if arg1 is true
+	arg3 executes if arg1 is false
+
+
+Math~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+value add(value, value)
+	returns the sum of arg1 and arg2
+	TYPE COERCION: returns float unless both arguments are ints
+
+value sub(value, value)
+	returns the difference of arg1 and arg2
+	TYPE COERCION: returns float unless both arguments are ints
+
+
+Boolean~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bool and(bool+)
+	returns true if all args+ are true
+	returns false if any args+ are false
+	SHORT CIRCUIT: As soon as an evaluated argument is false, further arguments aren't evaluated
+
+bool or(bool+)
+	returns false if all args+ are false
+	returns true if any args+ are true
+	SHORT CIRCUIT: As soon as an evaluated argument is true, further arguments aren't evaluated
+
+bool not(bool)
+	returns false if arg1 is true
+	returns true if arg1 is false
+
+bool gt(val, val)
+	returns true if arg1 > arg2
+	returns false if arg1 <= arg2
+
+bool eq(any, any)
+	returns true if both args are values and are equal
+	returns false if both args are values and are unequal
+	returns true if both args are strings and their contents match
+	returns false if both args are strings and their contents differ
+	returns true if both args have same type and are equal
+	returns false if both args have same type and are unequal
+	returns false if args are of different types (ints and floats are treated as the same type by this rule)
+	FLOAT APPROXIMATION: If one or both args are floats, equivalence is measured within a +/-.000001 margin of error
+
+bool has_all_flags(flag, flag+)
+	returns true if all bitflags set in all args+ are also found in arg1
+
+
+Constants~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ability ability_str()
+	returns the strength ability
+
+ability ability_dex()
+	returns the dexterity ability
+
+ability ability_con()
+	returns the constitution ability
+
+ability ability_int()
+	returns the intelligence ability
+
+ability ability_wis()
+	returns the wisdom ability
+
+ability ability_cha()
+	returns the charisma ability
+
+phase bonus_action()
+	returns the bonus action phase
+
+menu menu_ability_check()
+	returns the ability check menu
+
+process-timing long_rest()
+	returns the long rest timing
+
+process-timing short_rest()
+	returns the short rest timing
+
+process-timing before_turn()
+	returns the before turn timing
+
+process-timing after_turn()
+	returns the after turn timing
+
+process-timing pre_weapon_attack()
+	returns the weapon attack timing
+
+process-timing pre_weapon_damage()
+	returns the weapon damage timing
+
+process-timing when_taking_damage()
+	returns the taking damage timing
+
+damage bludgeoning()
+	returns the bludgeoning damage
+
+damage piercing()
+	returns the piercing damage
+
+damage slashing()
+	returns the slashing damage
+
+flag weapon_flag_melee()
+	returns the melee weapon flag
+
+
+Data evaluation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+bool has_arbitrary_state(string)
+	returns true if there exists an arbitrary state with a name matching arg1
+	returns false if no arbitrary state has a name matching arg1
+
+int val_of_arbitrary_counter(string)
+	returns the int associated with the name arg1
+	returns fail if no int is associated with arg1
+
+ability selected_ability()
+	returns the active ability for the given user interaction
+	returns fail if no ability is selected
+
+damage weapon_damage_type()
+	returns either bludgeoning, piercing, or slashing, whichever appears first in active damage
+	returns fail if no damage of those types are present in active damage
+
+flag weapon_flags()
+	returns the flags present in the selected weapon
+	returns fail if no weapon is selected
+
+flag attack_flags()
+	returns the flags describing how the weapon attack is being carried out
+	returns no flags if no attack is taking place
+
+
+Data manipulation~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+empty disable_spellcasting()
+	revokes the ability to cast spells (verbal and somatic)
+
+empty enable_spellcasting()
+	restores the ability to cast spells (verbal and somatic)
+
+empty disable_concentration()
+	revokes the ability to concentrate on spells
+
+empty enable concentration()
+	restores the ability to concentrate on spells
+
+empty add_note(menu, string, bool, string)
+	creates a note named arg2
+	when on menu arg1 and arg3 is true, arg4 is displayed
+
+empty remove_note(string)
+	deletes a note named arg1, if present
+
+empty add_process(process-timing, string, string, bool, sequence)
+	creates a process named arg2
+	if applicable, arg3 will be used to describe the process's functionality
+	during arg1, if arg4 is true, arg5 executes
+
+empty remove_process(string)
+	deletes a process named arg1, if present
+
+empty enter_arbitrary_state(string, sequence)
+	creates a state named arg1
+	upon deletion, arg2 executes
+
+empty exit_arbitrary_state(string)
+	deletes a state named arg1, if present
+	runs any cleanup sequence assigned to it during creation
+
+empty set_arbitrary_counter(string, int)
+	creates association between arg2 and arg1
+	overrides any associations already present
+
+empty remove_arbitrary_counter(string)
+	deletes any association between arg1 and an integer
+
+empty add_action(phase, string, string, bool, sequence)
+	creates an action referenced internally as arg2, displayed externally as arg3
+	if arg4 is true, the turn menu will list arg3 as an option in the arg1 list
+	if this action is selected in the turn menu, arg5 executes
+
+empty add_resistance(damage+)
+	gives the player resistance to all args+ damage types
+	supports resistance from multiple sources (to no extra player benefit)
+
+empty removes_resistance(damage+)
+	revokes player's resistance to all args+ damage types
+	if resistance was applied by multiple sources, it must be removed as many times before it becomes inactive
+
+
+User interaction~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+empty run_weapon_attack()
+	performs a weapon attack user interaction

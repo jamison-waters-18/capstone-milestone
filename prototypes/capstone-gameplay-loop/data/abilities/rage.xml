@@ -10,16 +10,15 @@
 			add_process(before_turn(),
 				`rage-pre-turn`,
 				`Reduces rage time, resets hit trackers.`,
-				true,
+				has_arbitrary_state(`raging`),
 				set_arbitrary_counter(`rage-timer`,sub(val_of_arbitrary_counter(`rage-timer`),1));
 				if(or(eq(0,val_of_arbitrary_counter(`rage-timer`)),
-						not(or(has_arbitrary_state(`successfully-hit`),
+						not(or(has_arbitrary_state(`performed-attack`),
 								has_arbitrary_state(`been-hit`)))),
 					exit_arbitrary_state(`raging`);,
-					nop();
+					exit_arbitrary_state(`performed-attack`);
+					exit_arbitrary_state(`been-hit`);
 				);
-				exit_arbitrary_state(`successfully-hit`);
-				exit_arbitrary_state(`been-hit`);
 			);
 			add_process(long_rest(),
 				`rage-count-long-rest-reset`,
@@ -31,15 +30,20 @@
 				and(not(has_arbitrary_state(`raging`)),gt(val_of_arbitrary_counter(`rage-count`),0));,
 				add_note(menu_ability_check(),`rage-ability-check`,true,
 					`When raging, you have advantage on STR checks and STR saves.`);
+				add_process(pre_weapon_attack(),
+					`rage-perform-attack`,
+					`Keeps track of when you use the Attack action, to keep rage going.`,
+					true,
+					enter_arbitrary_state(`performed-attack`,nop(););
+				);
 				add_process(pre_weapon_damage(),
 					`rage-weapon-damage`,
 					`When raging, melee attacks deal extra damage, depending on level.`,
 					true,
-					enter_arbitrary_state(`successfully-hit`,nop(););
-					if(and(has_all_flags(weapon_flags(),weapon_flag_melee()),
+					if(and(has_all_flags(attack_flags(),weapon_flag_melee()),
 							eq(selected_ability(),ability_str())
 						),
-						add_to_damage(weapon_damage_type(),val_of_arbitrary_counter(`rage-damage`),1),
+						add_to_damage(weapon_damage_type(),val_of_arbitrary_counter(`rage-damage`),1);,
 						nop();
 					);
 				);
@@ -58,13 +62,13 @@
 					enable_spellcasting();
 					enable_spellcasting();
 					remove_resistance(bludgeoning(),piercing(),slashing());
-					exit_arbitrary_state(`successfully-hit`);
+					exit_arbitrary_state(`performed-attack`);
 					exit_arbitrary_state(`been-hit`);
 					remove_note(`rage-ability-check`);
 					remove_arbitrary_counter(`rage-timer`);
 				);
 			);
 			add_action(bonus_action(),`end-rage`,`End Rage`,
-				has_arbitrary_state(`raging`);,
+				has_arbitrary_state(`raging`),
 				exit_arbitrary_state(`raging`););"
 />

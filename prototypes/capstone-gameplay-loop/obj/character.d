@@ -1,5 +1,6 @@
 obj/character.o: character/character.c character/../includes/character.h \
- character/../includes/utils.h /usr/include/glib-2.0/glib.h \
+ character/../includes/utils.h character/../includes/Dyna.h \
+ character/../includes/item.h /usr/include/glib-2.0/glib.h \
  /usr/include/glib-2.0/glib/galloca.h /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
  /usr/include/glib-2.0/glib/gmacros.h \
@@ -67,7 +68,7 @@ obj/character.o: character/character.c character/../includes/character.h \
  /usr/include/glib-2.0/glib/deprecated/grel.h \
  /usr/include/glib-2.0/glib/deprecated/gthread.h \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
- character/../includes/Dyna.h character/../includes/item.h \
  character/../includes/ability.h character/../includes/glib-facade.h \
  character/../includes/parser.h character/../includes/glib-facade.h \
- character/../includes/DynaImp.h
+ character/../includes/DynaImp.h character/../includes/blob.h \
+ character/../includes/character.h

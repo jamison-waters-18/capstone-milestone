@@ -104,7 +104,7 @@ void blob_init() {
 	DamageDyna_init(&(b->damages));
 	b->selected_ability = NULL;
 	b->selected_weapon = NULL;
-	b->is_ranged = 0;
+	b->wield_mode = 0;
 	turn_state_init(&(b->turn_state));
 }
 
@@ -112,8 +112,10 @@ void blob_clear() {
 	Blob* b = get_blob();
 	ItemDefDyna_clear(&(b->item_db), item_def_clear);
 	player_character_clear(&(b->player));
-	ActDyna_clear(&(b->act_stack), act_clear);
 	DamageDyna_clear(&(b->damages), NULL);
 	free(b->selected_ability);
 	turn_state_clear(&(b->turn_state));
+	b->selected_ability = NULL;
+	b->selected_weapon = NULL;
+	b->wield_mode = 0;
 }

@@ -1,5 +1,5 @@
 #include <glib.h>
-#include "../includes/data_manip_interpreter.h"
+#include "../includes/interpreter.h"
 #include "../includes/item.h"
 
 void* exec_ability_str(GPtrArray* args, returnType* return_type) {
@@ -142,6 +142,16 @@ void* exec_pre_weapon_damage(GPtrArray* args, returnType* return_type) {
 	return p;
 }
 
+void* exec_pre_weapon_attack(GPtrArray* args, returnType* return_type) {
+	if (args->len) {
+		*return_type = RTRN_FAIL;
+		return FAILED_FUNC_EXEC;
+	}
+	processLocationType* p = malloc(sizeof(processLocationType));
+	*p = PRE_WEAPON_ATTACK;
+	return p;
+}
+
 void* exec_bludgeoning(GPtrArray* args, returnType* return_type) {
 	if (args->len) {
 		*return_type = RTRN_FAIL;
@@ -238,6 +248,10 @@ funcType find_const_func(char* func_name, returnType* return_type) {
 	if (!strcmp(func_name, "pre_weapon_damage")) {
 		*return_type = RTRN_PROCESS_TIMING;
 		return exec_pre_weapon_damage;
+	}
+	if (!strcmp(func_name, "pre_weapon_attack")) {
+		*return_type = RTRN_PROCESS_TIMING;
+		return exec_pre_weapon_attack;
 	}
 	if (!strcmp(func_name, "bludgeoning")) {
 		*return_type = RTRN_DAMAGE;

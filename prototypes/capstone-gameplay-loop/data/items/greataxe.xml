@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="greataxe"
+	public-name="Greataxe"
+	category="weapon"
+	flags="heavy, two-handed, martial, melee"
+	damage="1d12 slashing"
+	value="30"
+	weight="7" />

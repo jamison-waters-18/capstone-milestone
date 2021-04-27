@@ -142,6 +142,8 @@ int player_character_clear(PlayerCharacter*);
 
 int player_max_hp(PlayerCharacter*);
 
+int player_ac(PlayerCharacter*);
+
 Dice player_max_hit_dice(PlayerCharacter*);
 
 void execute_player_processes(PlayerCharacter*, processLocationType);

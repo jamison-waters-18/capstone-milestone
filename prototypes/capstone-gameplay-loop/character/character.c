@@ -4,6 +4,7 @@
 #include "../includes/parser.h"
 #include "../includes/glib-facade.h"
 #include "../includes/DynaImp.h"
+#include "../includes/blob.h"
 
 generate_dyna_functions_M(Note);
 
@@ -170,7 +171,7 @@ PlayerCharacter* player_character_init(PlayerCharacter* crctr) {
 	a.private_name = set_string(NULL, "attack");
 	a.public_name = set_string(NULL, "Attack");
 	a.prereqs = set_string(NULL, "true");
-	a.sequence = set_string(NULL, "run_attack();");
+	a.sequence = set_string(NULL, "run_weapon_attack();");
 	ActDyna_add(&(crctr->acts), a);
 	a.sequence = NULL;
 
@@ -243,6 +244,58 @@ int player_max_hp(PlayerCharacter* p) {
 	int selected_bonus = p->chosen_hp_max;
 	//TODO: Do something with class-specific health bonus, allow numbers plus ability mods or whatever
 	return (level * conmod) + selected_bonus;
+}
+
+int player_ac(PlayerCharacter* p) {
+	if (!p) return -1;
+	Blob* b = get_blob();
+
+	int dex_mod = ability_score_to_mod(p->ability_scores[(int) DEX]);
+	int ac = 10;
+	int flags = ARMOR_FLAG_LIGHT;
+
+	int i = 0;
+	if (p->armor.private_name) {
+		for(; i < b->item_db.size; i++) {
+			if (!strcmp(p->armor.private_name, b->item_db.array[i].private_name) &&
+						b->item_db.array[i].category == ITEM_CATEGORY_ARMOR &&
+						!(b->item_db.array[i].flags & ARMOR_FLAG_SHIELD)) {
+				ac = b->item_db.array[i].sub.a->ac;
+				flags = b->item_db.array[i].flags;
+				break;
+			}
+		}
+	}
+
+	if (flags & ARMOR_FLAG_MEDIUM) {
+		if (dex_mod > 2) dex_mod = 2;
+	} else if (flags & (ARMOR_FLAG_LIGHT | ARMOR_FLAG_MEDIUM)) {
+		ac += dex_mod;
+	}
+
+	if (p->main_hand.private_name) {
+		for(i = 0; i < b->item_db.size; i++) {
+			if (string_eq(p->main_hand.private_name, b->item_db.array[i].private_name) &&
+						b->item_db.array[i].category == ITEM_CATEGORY_ARMOR &&
+						b->item_db.array[i].flags & ARMOR_FLAG_SHIELD) {
+				ac += b->item_db.array[i].sub.a->ac;
+				break;
+			}
+		}
+	}
+
+	if (p->off_hand.private_name) {
+		for(i = 0; i < b->item_db.size; i++) {
+			if (string_eq(p->off_hand.private_name, b->item_db.array[i].private_name) &&
+						b->item_db.array[i].category == ITEM_CATEGORY_ARMOR &&
+						b->item_db.array[i].flags & ARMOR_FLAG_SHIELD) {
+				ac += b->item_db.array[i].sub.a->ac;
+				break;
+			}
+		}
+	}
+
+	return ac;
 }
 
 Dice player_max_hit_dice(PlayerCharacter* p) {

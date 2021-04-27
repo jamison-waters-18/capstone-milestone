@@ -2,7 +2,7 @@
 <player-character
 	private-name="shalta"
 	public-name="Shalta"
-	xp="8000"
+	xp="5000"
 	race="human"
 	subrace="standard"
 	hp="22"
@@ -37,8 +37,6 @@
 			private-name="studded-leather" />
 	</armor>
 	<main-hand>
-		<item-ref
-			private-name="greataxe" />
 	</main-hand>
 	<off-hand>
 	</off-hand>
@@ -64,6 +62,12 @@
 					name="">
 			<spell-list/> -->
 		</item-ref>
+		<item-ref private-name="battleaxe" />
+		<item-ref private-name="greataxe" />
+		<item-ref private-name="handaxe" />
+		<item-ref private-name="shortsword" />
+		<item-ref private-name="plate" />
+		<item-ref private-name="shield" />
 	</inventory> <!--
 	<immunities>
 		<damage-type
@@ -86,6 +90,9 @@
 		flags="simple, melee" />
 	<item-proficiency
 		private-name="greataxe" />
+	<item-category-proficiency
+		category="armor"
+		flags="light" />
 	<!--
 	<skill-expertise
 		name="" />

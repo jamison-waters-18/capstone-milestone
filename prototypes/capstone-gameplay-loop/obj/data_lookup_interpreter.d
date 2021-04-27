@@ -1,4 +1,4 @@
-obj/basic_bool_interpreter.o: interpreter/basic_bool_interpreter.c \
+obj/data_lookup_interpreter.o: interpreter/data_lookup_interpreter.c \
  /usr/include/glib-2.0/glib.h /usr/include/glib-2.0/glib/galloca.h \
  /usr/include/glib-2.0/glib/gtypes.h \
  /usr/lib/x86_64-linux-gnu/glib-2.0/include/glibconfig.h \
@@ -68,4 +68,7 @@ obj/basic_bool_interpreter.o: interpreter/basic_bool_interpreter.c \
  /usr/include/glib-2.0/glib/deprecated/gthread.h \
  /usr/include/glib-2.0/glib/glib-autocleanups.h \
  interpreter/../includes/interpreter.h interpreter/../includes/parser.h \
- interpreter/../includes/utils.h interpreter/../includes/Dyna.h
+ interpreter/../includes/utils.h interpreter/../includes/Dyna.h \
+ interpreter/../includes/glib-facade.h interpreter/../includes/blob.h \
+ interpreter/../includes/item.h interpreter/../includes/character.h \
+ interpreter/../includes/ability.h interpreter/../includes/glib-facade.h

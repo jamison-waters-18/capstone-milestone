@@ -1,5 +1,5 @@
 #include <glib.h>
-#include "../includes/math_interpreter.h"
+#include "../includes/interpreter.h"
 
 void* exec_add(GPtrArray* args, returnType* return_type) {
 	if (args->len != 2) {

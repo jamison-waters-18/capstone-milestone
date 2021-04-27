@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF8"?>
+<item-def
+	private-name="shortsword"
+	public-name="Shortsword"
+	category="weapon"
+	flags="martial, melee, finesse, light"
+	damage="1d6 slashing"
+	value="10"
+	weight="2" />
